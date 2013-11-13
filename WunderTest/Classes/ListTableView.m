@@ -3,7 +3,7 @@
 #import "ListItem.h"
 #import "ListItemTableViewCell.h"
 
-@interface ListTableView () <UITableViewDataSource, UITableViewDelegate>
+@interface ListTableView () <UITableViewDataSource, UITableViewDelegate, NSFetchedResultsControllerDelegate>
 
 @end
 
@@ -17,6 +17,8 @@
     self = [super initWithFrame:frame];
     if (self) {
         [self setupFetchController];
+        self.dataSource = self;
+        self.delegate = self;
     }
     return self;
 }
@@ -29,6 +31,7 @@
     if (controllerError != nil) {
         NSLog(@"Error performing fetch on %@ fetch controller. Description: %@", NSStringFromClass(self.class), controllerError.description);
     }
+    fetchController.delegate = self;
 }
 
 -(void)configureCell:(ListItemTableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath {
@@ -37,11 +40,53 @@
     cell.listItem = item;
 }
 
+#pragma mark NSFetchedResultsController Delegate Methods
+
+-(void)controllerWillChangeContent:(NSFetchedResultsController *)controller {
+    [self beginUpdates];
+}
+
+-(void)controllerDidChangeContent:(NSFetchedResultsController *)controller {
+    [self endUpdates];
+}
+
+
+
+
+-(void)controller:(NSFetchedResultsController *)controller didChangeObject:(id)anObject atIndexPath:(NSIndexPath *)indexPath forChangeType:(NSFetchedResultsChangeType)type newIndexPath:(NSIndexPath *)newIndexPath {
+    
+    if (anObject != nil) {
+        switch (type) {
+            case NSFetchedResultsChangeInsert:
+                [self insertRowsAtIndexPaths:@[newIndexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
+                break;
+            case NSFetchedResultsChangeUpdate:
+                [self configureCell:(ListItemTableViewCell *)[self cellForRowAtIndexPath:indexPath] atIndexPath:indexPath];
+            case NSFetchedResultsChangeDelete:
+                [self deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationRight];
+            default:
+                break;
+        }
+    }
+    
+}
+
+-(void)controller:(NSFetchedResultsController *)controller didChangeSection:(id<NSFetchedResultsSectionInfo>)sectionInfo atIndex:(NSUInteger)sectionIndex forChangeType:(NSFetchedResultsChangeType)type {
+    switch (type) {
+        case NSFetchedResultsChangeInsert:
+            [self insertSections:[NSIndexSet indexSetWithIndex:sectionIndex] withRowAnimation:UITableViewRowAnimationFade];
+            break;
+        case NSFetchedResultsChangeDelete:
+            [self deleteSections:[NSIndexSet indexSetWithIndex:sectionIndex] withRowAnimation:UITableViewRowAnimationFade];
+            break;
+    }
+}
+
 #pragma mark UITableViewDataSource Delegate Methods
 
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return [[[fetchController sections] objectAtIndex:section] count];
+    return [[[fetchController sections] objectAtIndex:section] numberOfObjects];
 }
 
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
