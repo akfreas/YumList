@@ -27,6 +27,12 @@
 		19022F0C18333B700057EB7A /* NSManagedObject+Helpers.m in Sources */ = {isa = PBXBuildFile; fileRef = 19022F0B18333B700057EB7A /* NSManagedObject+Helpers.m */; };
 		19022F11183348AA0057EB7A /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 19022F10183348AA0057EB7A /* MainViewController.m */; };
 		19022F1318334E2F0057EB7A /* ListItemTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 19022F1218334E2F0057EB7A /* ListItemTests.m */; };
+		19022F1718335A950057EB7A /* ListTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 19022F1618335A950057EB7A /* ListTableView.m */; };
+		19022F1A18335BD70057EB7A /* NSFetchedResultsControllerFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = 19022F1918335BD70057EB7A /* NSFetchedResultsControllerFactory.m */; };
+		19022F1E183361470057EB7A /* ListItemTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 19022F1D183361470057EB7A /* ListItemTableViewCell.m */; };
+		19022F221833635F0057EB7A /* FormatUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 19022F211833635F0057EB7A /* FormatUtils.m */; };
+		19022F24183365420057EB7A /* LocaleFormattingTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 19022F23183365420057EB7A /* LocaleFormattingTests.m */; };
+		33E85E9DC8F741688B5F9617 /* libPods-WunderTest.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BAD75CB70ACC4647A45D91BD /* libPods-WunderTest.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -67,6 +73,18 @@
 		19022F0F183348AA0057EB7A /* MainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MainViewController.h; path = Classes/MainViewController.h; sourceTree = "<group>"; };
 		19022F10183348AA0057EB7A /* MainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MainViewController.m; path = Classes/MainViewController.m; sourceTree = "<group>"; };
 		19022F1218334E2F0057EB7A /* ListItemTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ListItemTests.m; sourceTree = "<group>"; };
+		19022F1518335A950057EB7A /* ListTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ListTableView.h; path = Classes/ListTableView.h; sourceTree = "<group>"; };
+		19022F1618335A950057EB7A /* ListTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ListTableView.m; path = Classes/ListTableView.m; sourceTree = "<group>"; };
+		19022F1818335BD70057EB7A /* NSFetchedResultsControllerFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NSFetchedResultsControllerFactory.h; path = Classes/NSFetchedResultsControllerFactory.h; sourceTree = "<group>"; };
+		19022F1918335BD70057EB7A /* NSFetchedResultsControllerFactory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NSFetchedResultsControllerFactory.m; path = Classes/NSFetchedResultsControllerFactory.m; sourceTree = "<group>"; };
+		19022F1B18335C830057EB7A /* Constants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
+		19022F1C183361470057EB7A /* ListItemTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ListItemTableViewCell.h; path = Classes/ListItemTableViewCell.h; sourceTree = "<group>"; };
+		19022F1D183361470057EB7A /* ListItemTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ListItemTableViewCell.m; path = Classes/ListItemTableViewCell.m; sourceTree = "<group>"; };
+		19022F201833635F0057EB7A /* FormatUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FormatUtils.h; path = Classes/FormatUtils.h; sourceTree = "<group>"; };
+		19022F211833635F0057EB7A /* FormatUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FormatUtils.m; path = Classes/FormatUtils.m; sourceTree = "<group>"; };
+		19022F23183365420057EB7A /* LocaleFormattingTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocaleFormattingTests.m; sourceTree = "<group>"; };
+		BAD75CB70ACC4647A45D91BD /* libPods-WunderTest.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-WunderTest.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		CF3E5BE010224CDB9FEFF0EB /* Pods-WunderTest.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WunderTest.xcconfig"; path = "Pods/Pods-WunderTest.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -78,6 +96,7 @@
 				19022ED3183328890057EB7A /* CoreData.framework in Frameworks */,
 				19022ED1183328890057EB7A /* UIKit.framework in Frameworks */,
 				19022ECD183328890057EB7A /* Foundation.framework in Frameworks */,
+				33E85E9DC8F741688B5F9617 /* libPods-WunderTest.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -102,6 +121,7 @@
 				19022EF1183328890057EB7A /* WunderTestTests */,
 				19022ECB183328890057EB7A /* Frameworks */,
 				19022ECA183328890057EB7A /* Products */,
+				CF3E5BE010224CDB9FEFF0EB /* Pods-WunderTest.xcconfig */,
 			);
 			sourceTree = "<group>";
 		};
@@ -122,6 +142,7 @@
 				19022ED0183328890057EB7A /* UIKit.framework */,
 				19022ED2183328890057EB7A /* CoreData.framework */,
 				19022EEA183328890057EB7A /* XCTest.framework */,
+				BAD75CB70ACC4647A45D91BD /* libPods-WunderTest.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -129,12 +150,15 @@
 		19022ED4183328890057EB7A /* WunderTest */ = {
 			isa = PBXGroup;
 			children = (
+				19022F1F183363480057EB7A /* Utilities */,
+				19022F1418335A060057EB7A /* Views */,
 				19022F0E183347720057EB7A /* Controllers */,
 				19022F0118332D440057EB7A /* Persistence */,
 				19022EDD183328890057EB7A /* AppDelegate.h */,
 				19022EDE183328890057EB7A /* AppDelegate.m */,
 				19022EE3183328890057EB7A /* Images.xcassets */,
 				19022ED5183328890057EB7A /* Supporting Files */,
+				19022F1B18335C830057EB7A /* Constants.h */,
 			);
 			path = WunderTest;
 			sourceTree = "<group>";
@@ -156,6 +180,7 @@
 				19022EF7183328890057EB7A /* WunderTestTests.m */,
 				19022EF2183328890057EB7A /* Supporting Files */,
 				19022F1218334E2F0057EB7A /* ListItemTests.m */,
+				19022F23183365420057EB7A /* LocaleFormattingTests.m */,
 			);
 			path = WunderTestTests;
 			sourceTree = "<group>";
@@ -195,6 +220,8 @@
 			children = (
 				19022F0A18333B700057EB7A /* NSManagedObject+Helpers.h */,
 				19022F0B18333B700057EB7A /* NSManagedObject+Helpers.m */,
+				19022F1818335BD70057EB7A /* NSFetchedResultsControllerFactory.h */,
+				19022F1918335BD70057EB7A /* NSFetchedResultsControllerFactory.m */,
 			);
 			name = Helpers;
 			sourceTree = "<group>";
@@ -208,6 +235,26 @@
 			name = Controllers;
 			sourceTree = "<group>";
 		};
+		19022F1418335A060057EB7A /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				19022F1518335A950057EB7A /* ListTableView.h */,
+				19022F1618335A950057EB7A /* ListTableView.m */,
+				19022F1C183361470057EB7A /* ListItemTableViewCell.h */,
+				19022F1D183361470057EB7A /* ListItemTableViewCell.m */,
+			);
+			name = Views;
+			sourceTree = "<group>";
+		};
+		19022F1F183363480057EB7A /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				19022F201833635F0057EB7A /* FormatUtils.h */,
+				19022F211833635F0057EB7A /* FormatUtils.m */,
+			);
+			name = Utilities;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -215,9 +262,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 19022EFB183328890057EB7A /* Build configuration list for PBXNativeTarget "WunderTest" */;
 			buildPhases = (
+				5C9E9F6E6CCB4B6CA3014676 /* Check Pods Manifest.lock */,
 				19022EC5183328890057EB7A /* Sources */,
 				19022EC6183328890057EB7A /* Frameworks */,
 				19022EC7183328890057EB7A /* Resources */,
+				4409555694654E7DB5108AEB /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -298,17 +347,54 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		4409555694654E7DB5108AEB /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Pods-WunderTest-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		5C9E9F6E6CCB4B6CA3014676 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		19022EC5183328890057EB7A /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				19022F0818332E400057EB7A /* PersistenceManager.m in Sources */,
+				19022F1718335A950057EB7A /* ListTableView.m in Sources */,
+				19022F1E183361470057EB7A /* ListItemTableViewCell.m in Sources */,
 				19022F0C18333B700057EB7A /* NSManagedObject+Helpers.m in Sources */,
 				19022F0418332E0A0057EB7A /* ListItem.m in Sources */,
+				19022F221833635F0057EB7A /* FormatUtils.m in Sources */,
 				19022EE2183328890057EB7A /* WunderTest.xcdatamodeld in Sources */,
 				19022F11183348AA0057EB7A /* MainViewController.m in Sources */,
 				19022EDF183328890057EB7A /* AppDelegate.m in Sources */,
+				19022F1A18335BD70057EB7A /* NSFetchedResultsControllerFactory.m in Sources */,
 				19022EDB183328890057EB7A /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -319,6 +405,7 @@
 			files = (
 				19022F1318334E2F0057EB7A /* ListItemTests.m in Sources */,
 				19022EF8183328890057EB7A /* WunderTestTests.m in Sources */,
+				19022F24183365420057EB7A /* LocaleFormattingTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -428,6 +515,7 @@
 		};
 		19022EFC183328890057EB7A /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = CF3E5BE010224CDB9FEFF0EB /* Pods-WunderTest.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
@@ -441,6 +529,7 @@
 		};
 		19022EFD183328890057EB7A /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = CF3E5BE010224CDB9FEFF0EB /* Pods-WunderTest.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
@@ -513,6 +602,7 @@
 				19022EFD183328890057EB7A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		19022EFE183328890057EB7A /* Build configuration list for PBXNativeTarget "WunderTestTests" */ = {
 			isa = XCConfigurationList;
@@ -521,6 +611,7 @@
 				19022F00183328890057EB7A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 
