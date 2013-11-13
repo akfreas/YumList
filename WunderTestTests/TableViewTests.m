@@ -23,6 +23,7 @@
 {
     // Put teardown code here; it will be run once, after the last test case.
     [super tearDown];
+    [PersistenceManager deletePersistentStore];
 }
 
 

@@ -9,9 +9,9 @@
     UISwitch *completedSwitch;
 }
 
--(id)init {
+-(id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier {
     
-    self = [super init];
+    self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     
     if (self) {
         [self addUIComponents];
@@ -19,11 +19,16 @@
     return self;
 }
 
+-(void)layoutSubviews {
+    [super layoutSubviews];
+    [self addLayoutConstraints];
+
+}
+
 -(void)addUIComponents {
     [self addTitleLabel];
     [self addCreationDateLabel];
     [self addCompletedSwitch];
-    
 }
 
 -(void)addTitleLabel {
