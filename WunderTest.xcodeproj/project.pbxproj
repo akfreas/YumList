@@ -32,7 +32,12 @@
 		19022F1E183361470057EB7A /* ListItemTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 19022F1D183361470057EB7A /* ListItemTableViewCell.m */; };
 		19022F221833635F0057EB7A /* FormatUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 19022F211833635F0057EB7A /* FormatUtils.m */; };
 		19022F24183365420057EB7A /* LocaleFormattingTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 19022F23183365420057EB7A /* LocaleFormattingTests.m */; };
+		19022F2618336D8F0057EB7A /* TableViewTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 19022F2518336D8F0057EB7A /* TableViewTests.m */; };
+		19022F2918336DF50057EB7A /* TestDataGenerator.m in Sources */ = {isa = PBXBuildFile; fileRef = 19022F2818336DF50057EB7A /* TestDataGenerator.m */; };
+		19022F2F183370190057EB7A /* NSString+Random.m in Sources */ = {isa = PBXBuildFile; fileRef = 19022F2C183370190057EB7A /* NSString+Random.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		19022F30183370190057EB7A /* NSStringRandom.m in Sources */ = {isa = PBXBuildFile; fileRef = 19022F2E183370190057EB7A /* NSStringRandom.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		33E85E9DC8F741688B5F9617 /* libPods-WunderTest.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BAD75CB70ACC4647A45D91BD /* libPods-WunderTest.a */; };
+		9D39F315819346079BFDD5B4 /* libPods-WunderTestTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0C7A10C88FC94EB3AABAA660 /* libPods-WunderTestTests.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -46,6 +51,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0C7A10C88FC94EB3AABAA660 /* libPods-WunderTestTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-WunderTestTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		19022EC9183328890057EB7A /* WunderTest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WunderTest.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		19022ECC183328890057EB7A /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		19022ECE183328890057EB7A /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -83,6 +89,14 @@
 		19022F201833635F0057EB7A /* FormatUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FormatUtils.h; path = Classes/FormatUtils.h; sourceTree = "<group>"; };
 		19022F211833635F0057EB7A /* FormatUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FormatUtils.m; path = Classes/FormatUtils.m; sourceTree = "<group>"; };
 		19022F23183365420057EB7A /* LocaleFormattingTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocaleFormattingTests.m; sourceTree = "<group>"; };
+		19022F2518336D8F0057EB7A /* TableViewTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TableViewTests.m; sourceTree = "<group>"; };
+		19022F2818336DF50057EB7A /* TestDataGenerator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestDataGenerator.m; sourceTree = "<group>"; };
+		19022F2B183370190057EB7A /* NSString+Random.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Random.h"; sourceTree = "<group>"; };
+		19022F2C183370190057EB7A /* NSString+Random.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Random.m"; sourceTree = "<group>"; };
+		19022F2D183370190057EB7A /* NSStringRandom.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NSStringRandom.h; sourceTree = "<group>"; };
+		19022F2E183370190057EB7A /* NSStringRandom.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NSStringRandom.m; sourceTree = "<group>"; };
+		19022F31183376050057EB7A /* TestDataGenerator.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TestDataGenerator.h; sourceTree = "<group>"; };
+		ABFAE3D966F545E385A0486F /* Pods-WunderTestTests.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WunderTestTests.xcconfig"; path = "Pods/Pods-WunderTestTests.xcconfig"; sourceTree = "<group>"; };
 		BAD75CB70ACC4647A45D91BD /* libPods-WunderTest.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-WunderTest.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		CF3E5BE010224CDB9FEFF0EB /* Pods-WunderTest.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WunderTest.xcconfig"; path = "Pods/Pods-WunderTest.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -108,6 +122,7 @@
 				19022EEE183328890057EB7A /* CoreData.framework in Frameworks */,
 				19022EED183328890057EB7A /* UIKit.framework in Frameworks */,
 				19022EEC183328890057EB7A /* Foundation.framework in Frameworks */,
+				9D39F315819346079BFDD5B4 /* libPods-WunderTestTests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -122,6 +137,7 @@
 				19022ECB183328890057EB7A /* Frameworks */,
 				19022ECA183328890057EB7A /* Products */,
 				CF3E5BE010224CDB9FEFF0EB /* Pods-WunderTest.xcconfig */,
+				ABFAE3D966F545E385A0486F /* Pods-WunderTestTests.xcconfig */,
 			);
 			sourceTree = "<group>";
 		};
@@ -143,6 +159,7 @@
 				19022ED2183328890057EB7A /* CoreData.framework */,
 				19022EEA183328890057EB7A /* XCTest.framework */,
 				BAD75CB70ACC4647A45D91BD /* libPods-WunderTest.a */,
+				0C7A10C88FC94EB3AABAA660 /* libPods-WunderTestTests.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -177,10 +194,14 @@
 		19022EF1183328890057EB7A /* WunderTestTests */ = {
 			isa = PBXGroup;
 			children = (
+				19022F2A183370190057EB7A /* NSString+Random */,
 				19022EF7183328890057EB7A /* WunderTestTests.m */,
 				19022EF2183328890057EB7A /* Supporting Files */,
 				19022F1218334E2F0057EB7A /* ListItemTests.m */,
 				19022F23183365420057EB7A /* LocaleFormattingTests.m */,
+				19022F2518336D8F0057EB7A /* TableViewTests.m */,
+				19022F2818336DF50057EB7A /* TestDataGenerator.m */,
+				19022F31183376050057EB7A /* TestDataGenerator.h */,
 			);
 			path = WunderTestTests;
 			sourceTree = "<group>";
@@ -255,6 +276,17 @@
 			name = Utilities;
 			sourceTree = "<group>";
 		};
+		19022F2A183370190057EB7A /* NSString+Random */ = {
+			isa = PBXGroup;
+			children = (
+				19022F2B183370190057EB7A /* NSString+Random.h */,
+				19022F2C183370190057EB7A /* NSString+Random.m */,
+				19022F2D183370190057EB7A /* NSStringRandom.h */,
+				19022F2E183370190057EB7A /* NSStringRandom.m */,
+			);
+			path = "NSString+Random";
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -281,9 +313,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 19022EFE183328890057EB7A /* Build configuration list for PBXNativeTarget "WunderTestTests" */;
 			buildPhases = (
+				899DD8C4D6544FFFB61E0D9B /* Check Pods Manifest.lock */,
 				19022EE5183328890057EB7A /* Sources */,
 				19022EE6183328890057EB7A /* Frameworks */,
 				19022EE7183328890057EB7A /* Resources */,
+				129813A2790D4845B7B5738C /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -348,6 +382,21 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		129813A2790D4845B7B5738C /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Pods-WunderTestTests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		4409555694654E7DB5108AEB /* Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -364,6 +413,21 @@
 			showEnvVarsInLog = 0;
 		};
 		5C9E9F6E6CCB4B6CA3014676 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		899DD8C4D6544FFFB61E0D9B /* Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -404,6 +468,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				19022F1318334E2F0057EB7A /* ListItemTests.m in Sources */,
+				19022F30183370190057EB7A /* NSStringRandom.m in Sources */,
+				19022F2618336D8F0057EB7A /* TableViewTests.m in Sources */,
+				19022F2F183370190057EB7A /* NSString+Random.m in Sources */,
+				19022F2918336DF50057EB7A /* TestDataGenerator.m in Sources */,
 				19022EF8183328890057EB7A /* WunderTestTests.m in Sources */,
 				19022F24183365420057EB7A /* LocaleFormattingTests.m in Sources */,
 			);
@@ -543,6 +611,7 @@
 		};
 		19022EFF183328890057EB7A /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = ABFAE3D966F545E385A0486F /* Pods-WunderTestTests.xcconfig */;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
 				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/WunderTest.app/WunderTest";
@@ -566,6 +635,7 @@
 		};
 		19022F00183328890057EB7A /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = ABFAE3D966F545E385A0486F /* Pods-WunderTestTests.xcconfig */;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
 				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/WunderTest.app/WunderTest";
