@@ -6,7 +6,7 @@
     NSManagedObjectContext *managedObjectContext;
 }
 
-+(instancetype)sharedManager {
++(instancetype)sharedContext {
     static id sharedInstance;
     if (sharedInstance == nil) {
         static dispatch_once_t onceToken;
