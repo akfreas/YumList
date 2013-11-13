@@ -35,11 +35,8 @@
 #pragma mark Inspired by http://www.cimgf.com/2011/03/13/super-happy-easy-fetching-in-core-data/
 
 +(NSEntityDescription *)entityDescriptionInContext:(NSManagedObjectContext *)context {
-    if ([self respondsToSelector:@selector(entityForName:inManagedObjectContext:)] == YES) {
-        return [self performSelector:@selector(entityForName:inManagedObjectContext:)];
-    } else {
-        return nil;
-    }
+    NSEntityDescription *entityDescription = [NSEntityDescription entityForName:NSStringFromClass(self.class) inManagedObjectContext:context];
+        return entityDescription;
 }
 
 +(NSArray *)allObjects {

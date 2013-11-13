@@ -9,5 +9,6 @@
 
 
 -(void)saveInContext:(NSManagedObjectContext *)context;
+-(void)save;
 
 @end
