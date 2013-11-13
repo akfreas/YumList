@@ -9,5 +9,7 @@ end
 
 target "WunderTestTests" do
 
+    pod 'BlocksKit', '~> 1.8.3'
+
 end
 
