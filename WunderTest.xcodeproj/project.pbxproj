@@ -22,6 +22,9 @@
 		19022EEE183328890057EB7A /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 19022ED2183328890057EB7A /* CoreData.framework */; };
 		19022EF6183328890057EB7A /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 19022EF4183328890057EB7A /* InfoPlist.strings */; };
 		19022EF8183328890057EB7A /* WunderTestTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 19022EF7183328890057EB7A /* WunderTestTests.m */; };
+		19022F0418332E0A0057EB7A /* ListItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 19022F0318332E0A0057EB7A /* ListItem.m */; };
+		19022F0818332E400057EB7A /* PersistenceManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 19022F0718332E400057EB7A /* PersistenceManager.m */; };
+		19022F0C18333B700057EB7A /* NSManagedObject+Helpers.m in Sources */ = {isa = PBXBuildFile; fileRef = 19022F0B18333B700057EB7A /* NSManagedObject+Helpers.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +56,12 @@
 		19022EF3183328890057EB7A /* WunderTestTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "WunderTestTests-Info.plist"; sourceTree = "<group>"; };
 		19022EF5183328890057EB7A /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		19022EF7183328890057EB7A /* WunderTestTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WunderTestTests.m; sourceTree = "<group>"; };
+		19022F0218332E0A0057EB7A /* ListItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ListItem.h; path = Classes/ListItem.h; sourceTree = "<group>"; };
+		19022F0318332E0A0057EB7A /* ListItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ListItem.m; path = Classes/ListItem.m; sourceTree = "<group>"; };
+		19022F0618332E400057EB7A /* PersistenceManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PersistenceManager.h; path = Classes/PersistenceManager.h; sourceTree = "<group>"; };
+		19022F0718332E400057EB7A /* PersistenceManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PersistenceManager.m; path = Classes/PersistenceManager.m; sourceTree = "<group>"; };
+		19022F0A18333B700057EB7A /* NSManagedObject+Helpers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSManagedObject+Helpers.h"; path = "Classes/NSManagedObject+Helpers.h"; sourceTree = "<group>"; };
+		19022F0B18333B700057EB7A /* NSManagedObject+Helpers.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSManagedObject+Helpers.m"; path = "Classes/NSManagedObject+Helpers.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -115,10 +124,10 @@
 		19022ED4183328890057EB7A /* WunderTest */ = {
 			isa = PBXGroup;
 			children = (
+				19022F0118332D440057EB7A /* Persistence */,
 				19022EDD183328890057EB7A /* AppDelegate.h */,
 				19022EDE183328890057EB7A /* AppDelegate.m */,
 				19022EE3183328890057EB7A /* Images.xcassets */,
-				19022EE0183328890057EB7A /* WunderTest.xcdatamodeld */,
 				19022ED5183328890057EB7A /* Supporting Files */,
 			);
 			path = WunderTest;
@@ -151,6 +160,36 @@
 				19022EF4183328890057EB7A /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		19022F0118332D440057EB7A /* Persistence */ = {
+			isa = PBXGroup;
+			children = (
+				19022F0918333B580057EB7A /* Helpers */,
+				19022F0518332E220057EB7A /* Models */,
+				19022F0618332E400057EB7A /* PersistenceManager.h */,
+				19022F0718332E400057EB7A /* PersistenceManager.m */,
+			);
+			name = Persistence;
+			sourceTree = "<group>";
+		};
+		19022F0518332E220057EB7A /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				19022EE0183328890057EB7A /* WunderTest.xcdatamodeld */,
+				19022F0218332E0A0057EB7A /* ListItem.h */,
+				19022F0318332E0A0057EB7A /* ListItem.m */,
+			);
+			name = Models;
+			sourceTree = "<group>";
+		};
+		19022F0918333B580057EB7A /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				19022F0A18333B700057EB7A /* NSManagedObject+Helpers.h */,
+				19022F0B18333B700057EB7A /* NSManagedObject+Helpers.m */,
+			);
+			name = Helpers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -248,6 +287,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				19022F0818332E400057EB7A /* PersistenceManager.m in Sources */,
+				19022F0C18333B700057EB7A /* NSManagedObject+Helpers.m in Sources */,
+				19022F0418332E0A0057EB7A /* ListItem.m in Sources */,
 				19022EE2183328890057EB7A /* WunderTest.xcdatamodeld in Sources */,
 				19022EDF183328890057EB7A /* AppDelegate.m in Sources */,
 				19022EDB183328890057EB7A /* main.m in Sources */,
