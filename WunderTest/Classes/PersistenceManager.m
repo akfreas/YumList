@@ -21,6 +21,9 @@
     [[self sharedContext] setupPersistence];
 }
 
++(NSManagedObjectContext *)managedObjectContext {
+    return [[self sharedContext] managedObjectContext];
+}
 
 -(void)setupPersistence {
     [self managedObjectContext];

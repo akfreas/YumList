@@ -25,9 +25,9 @@
     XCTAssertFalse(manager == nil, @"PersistenceManager was not setup, is nil.");
 }
 
-- (void)testExample
-{
-    XCTFail(@"No implementation for \"%s\"", __PRETTY_FUNCTION__);
+-(void)testPersistenceManagerManagedObjectContextNotNil {
+    NSManagedObjectContext *context = [PersistenceManager managedObjectContext];
+    XCTAssertTrue(context != nil, @"Persistence manager's managed object context was not set up, is nil.");
 }
 
 @end
