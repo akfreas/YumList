@@ -9,5 +9,7 @@
 
 +(void)deletePersistentStore;
 +(void)resetManagedObjectContext;
++(void)save;
++(void)saveContext:(NSManagedObjectContext *)context;
 
 @end

@@ -33,6 +33,14 @@
     [[self sharedInstance] resetManagedObjectContext];
 }
 
++(void)save {
+    [self saveContext:[PersistenceManager managedObjectContext]];
+}
+
++(void)saveContext:(NSManagedObjectContext *)context {
+    [[self sharedInstance] saveContext:context];
+}
+
 -(void)setupPersistence {
     [self managedObjectContext];
 }
@@ -80,10 +88,10 @@
     return managedObjectContext;
 }
 
--(void)save {
+-(void)saveContext:(NSManagedObjectContext *)context {
     NSError *error;
-    if (managedObjectContext.hasChanges == YES) {
-        [managedObjectContext save:&error];
+    if (context.hasChanges == YES) {
+        [context save:&error];
     }
     
     if (error != nil) {
