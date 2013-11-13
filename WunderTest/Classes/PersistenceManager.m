@@ -6,7 +6,7 @@
     NSManagedObjectContext *managedObjectContext;
 }
 
-+(instancetype)sharedContext {
++(instancetype)sharedInstance {
     static id sharedInstance;
     if (sharedInstance == nil) {
         static dispatch_once_t onceToken;
@@ -18,19 +18,19 @@
 }
 
 +(void)setupPersistence {
-    [[self sharedContext] setupPersistence];
+    [[self sharedInstance] setupPersistence];
 }
 
 +(NSManagedObjectContext *)managedObjectContext {
-    return [[self sharedContext] managedObjectContext];
+    return [[self sharedInstance] managedObjectContext];
 }
 
 +(void)deletePersistentStore {
-    [[self sharedContext] deletePersistentStore];
+    [[self sharedInstance] deletePersistentStore];
 }
 
 +(void)resetManagedObjectContext {
-    [[self sharedContext] resetManagedObjectContext];
+    [[self sharedInstance] resetManagedObjectContext];
 }
 
 -(void)setupPersistence {

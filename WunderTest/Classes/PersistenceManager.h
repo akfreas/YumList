@@ -1,7 +1,7 @@
 @class ListItem;
 @interface PersistenceManager : NSObject
 
-+(instancetype)sharedContext;
++(instancetype)sharedInstance;
 
 +(void)setupPersistence;
 
