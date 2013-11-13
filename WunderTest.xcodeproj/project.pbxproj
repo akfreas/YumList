@@ -36,6 +36,8 @@
 		19022F2918336DF50057EB7A /* TestDataGenerator.m in Sources */ = {isa = PBXBuildFile; fileRef = 19022F2818336DF50057EB7A /* TestDataGenerator.m */; };
 		19022F2F183370190057EB7A /* NSString+Random.m in Sources */ = {isa = PBXBuildFile; fileRef = 19022F2C183370190057EB7A /* NSString+Random.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		19022F30183370190057EB7A /* NSStringRandom.m in Sources */ = {isa = PBXBuildFile; fileRef = 19022F2E183370190057EB7A /* NSStringRandom.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		19022F32183381B50057EB7A /* TestDataGenerator.m in Sources */ = {isa = PBXBuildFile; fileRef = 19022F2818336DF50057EB7A /* TestDataGenerator.m */; };
+		19022F33183381C40057EB7A /* NSString+Random.m in Sources */ = {isa = PBXBuildFile; fileRef = 19022F2C183370190057EB7A /* NSString+Random.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		33E85E9DC8F741688B5F9617 /* libPods-WunderTest.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BAD75CB70ACC4647A45D91BD /* libPods-WunderTest.a */; };
 		9D39F315819346079BFDD5B4 /* libPods-WunderTestTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0C7A10C88FC94EB3AABAA660 /* libPods-WunderTestTests.a */; };
 /* End PBXBuildFile section */
@@ -451,6 +453,7 @@
 			files = (
 				19022F0818332E400057EB7A /* PersistenceManager.m in Sources */,
 				19022F1718335A950057EB7A /* ListTableView.m in Sources */,
+				19022F33183381C40057EB7A /* NSString+Random.m in Sources */,
 				19022F1E183361470057EB7A /* ListItemTableViewCell.m in Sources */,
 				19022F0C18333B700057EB7A /* NSManagedObject+Helpers.m in Sources */,
 				19022F0418332E0A0057EB7A /* ListItem.m in Sources */,
@@ -460,6 +463,7 @@
 				19022EDF183328890057EB7A /* AppDelegate.m in Sources */,
 				19022F1A18335BD70057EB7A /* NSFetchedResultsControllerFactory.m in Sources */,
 				19022EDB183328890057EB7A /* main.m in Sources */,
+				19022F32183381B50057EB7A /* TestDataGenerator.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
