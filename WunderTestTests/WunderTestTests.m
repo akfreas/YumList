@@ -21,7 +21,7 @@
 }
 
 -(void)testPersistenceWasSetup {
-    PersistenceManager *manager = [PersistenceManager sharedContext];
+    PersistenceManager *manager = [PersistenceManager sharedInstance];
     XCTAssertFalse(manager == nil, @"PersistenceManager was not setup, is nil.");
 }
 
