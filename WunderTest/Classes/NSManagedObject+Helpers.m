@@ -18,7 +18,7 @@
 }
 
 -(void)save {
-    [self saveInContext:[PersistenceManager managedObjectContext]];
+    [PersistenceManager save];
 }
 
 -(void)saveInContext:(NSManagedObjectContext *)context {
@@ -50,7 +50,7 @@
     NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:entityName];
     [request setEntity:[self entityDescriptionInContext:context]];
     NSArray *objects = [context executeFetchRequest:request error:&getterError];
-    if (getterError == nil) {
+    if (getterError != nil) {
         NSLog(@"Error getting all objects for entity name %@. Description: %@", entityName, getterError.description);
     }
     return objects;
