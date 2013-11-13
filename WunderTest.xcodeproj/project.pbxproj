@@ -25,6 +25,8 @@
 		19022F0418332E0A0057EB7A /* ListItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 19022F0318332E0A0057EB7A /* ListItem.m */; };
 		19022F0818332E400057EB7A /* PersistenceManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 19022F0718332E400057EB7A /* PersistenceManager.m */; };
 		19022F0C18333B700057EB7A /* NSManagedObject+Helpers.m in Sources */ = {isa = PBXBuildFile; fileRef = 19022F0B18333B700057EB7A /* NSManagedObject+Helpers.m */; };
+		19022F11183348AA0057EB7A /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 19022F10183348AA0057EB7A /* MainViewController.m */; };
+		19022F1318334E2F0057EB7A /* ListItemTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 19022F1218334E2F0057EB7A /* ListItemTests.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -62,6 +64,9 @@
 		19022F0718332E400057EB7A /* PersistenceManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PersistenceManager.m; path = Classes/PersistenceManager.m; sourceTree = "<group>"; };
 		19022F0A18333B700057EB7A /* NSManagedObject+Helpers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSManagedObject+Helpers.h"; path = "Classes/NSManagedObject+Helpers.h"; sourceTree = "<group>"; };
 		19022F0B18333B700057EB7A /* NSManagedObject+Helpers.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSManagedObject+Helpers.m"; path = "Classes/NSManagedObject+Helpers.m"; sourceTree = "<group>"; };
+		19022F0F183348AA0057EB7A /* MainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MainViewController.h; path = Classes/MainViewController.h; sourceTree = "<group>"; };
+		19022F10183348AA0057EB7A /* MainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MainViewController.m; path = Classes/MainViewController.m; sourceTree = "<group>"; };
+		19022F1218334E2F0057EB7A /* ListItemTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ListItemTests.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -124,6 +129,7 @@
 		19022ED4183328890057EB7A /* WunderTest */ = {
 			isa = PBXGroup;
 			children = (
+				19022F0E183347720057EB7A /* Controllers */,
 				19022F0118332D440057EB7A /* Persistence */,
 				19022EDD183328890057EB7A /* AppDelegate.h */,
 				19022EDE183328890057EB7A /* AppDelegate.m */,
@@ -149,6 +155,7 @@
 			children = (
 				19022EF7183328890057EB7A /* WunderTestTests.m */,
 				19022EF2183328890057EB7A /* Supporting Files */,
+				19022F1218334E2F0057EB7A /* ListItemTests.m */,
 			);
 			path = WunderTestTests;
 			sourceTree = "<group>";
@@ -190,6 +197,15 @@
 				19022F0B18333B700057EB7A /* NSManagedObject+Helpers.m */,
 			);
 			name = Helpers;
+			sourceTree = "<group>";
+		};
+		19022F0E183347720057EB7A /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				19022F0F183348AA0057EB7A /* MainViewController.h */,
+				19022F10183348AA0057EB7A /* MainViewController.m */,
+			);
+			name = Controllers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -291,6 +307,7 @@
 				19022F0C18333B700057EB7A /* NSManagedObject+Helpers.m in Sources */,
 				19022F0418332E0A0057EB7A /* ListItem.m in Sources */,
 				19022EE2183328890057EB7A /* WunderTest.xcdatamodeld in Sources */,
+				19022F11183348AA0057EB7A /* MainViewController.m in Sources */,
 				19022EDF183328890057EB7A /* AppDelegate.m in Sources */,
 				19022EDB183328890057EB7A /* main.m in Sources */,
 			);
@@ -300,6 +317,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				19022F1318334E2F0057EB7A /* ListItemTests.m in Sources */,
 				19022EF8183328890057EB7A /* WunderTestTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
