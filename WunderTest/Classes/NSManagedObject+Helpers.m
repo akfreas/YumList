@@ -17,8 +17,21 @@
     return instance;
 }
 
++(instancetype)objectWithObjectID:(NSManagedObjectID *)objectId {
+    return [self objectWithObjectID:objectId inContext:[[PersistenceManager sharedInstance] managedObjectContext]];
+}
+
++(instancetype)objectWithObjectID:(NSManagedObjectID *)objectId inContext:(NSManagedObjectContext *)context {
+    id objectWithID = [context objectWithID:objectId];
+    return objectWithID;
+}
+
 -(void)save {
     [PersistenceManager save];
+}
+
+-(void)delete {
+    [PersistenceManager deleteObject:self];
 }
 
 -(void)saveInContext:(NSManagedObjectContext *)context {
