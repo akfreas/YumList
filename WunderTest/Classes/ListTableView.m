@@ -118,7 +118,16 @@
     return cell;
 }
 
+-(void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
+    if (editingStyle == UITableViewCellEditingStyleDelete) {
+        ListItem *deleteItem = [self.fetchController objectAtIndexPath:indexPath];
+        [deleteItem delete];
+    }
+}
+
 #pragma mark UITableViewDelegate Delegate Methods
+
+
 
 
 
