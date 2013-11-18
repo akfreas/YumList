@@ -2,18 +2,15 @@
 #import "NSFetchedResultsControllerFactory.h"
 #import "ListItem.h"
 #import "ListItemTableViewCell.h"
+#import "AddListItemTableViewHeader.h"
 
-@interface ListTableView () <UITableViewDataSource, UITableViewDelegate, NSFetchedResultsControllerDelegate>
+@interface ListTableView () <UITableViewDataSource, UITableViewDelegate>
 
 @end
 
-@implementation ListTableView {
-    
-    NSFetchedResultsController *fetchController;
-}
+@implementation ListTableView
 
-- (id)initWithFrame:(CGRect)frame
-{
+-(id)initWithFrame:(CGRect)frame {
     self = [super initWithFrame:frame];
     if (self) {
         [self setupFetchController];
