@@ -21,19 +21,19 @@
 }
 
 -(void)setupFetchController {
-    fetchController = [NSFetchedResultsControllerFactory fetchControllerForAllListItems];
+    self.fetchController = [NSFetchedResultsControllerFactory fetchControllerForAllListItems];
     
     NSError *controllerError = nil;
-    [fetchController performFetch:&controllerError];
+    self.fetchController.delegate = self;
+    [self.fetchController performFetch:&controllerError];
     if (controllerError != nil) {
         NSLog(@"Error performing fetch on %@ fetch controller. Description: %@", NSStringFromClass(self.class), controllerError.description);
     }
-    fetchController.delegate = self;
 }
 
 -(void)configureCell:(ListItemTableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath {
     
-    ListItem *item = [fetchController objectAtIndexPath:indexPath];
+    ListItem *item = [self.fetchController objectAtIndexPath:indexPath];
     cell.listItem = item;
 }
 
@@ -79,13 +79,30 @@
 
 #pragma mark UITableViewDataSource Delegate Methods
 
+-(UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
+    
+    UIView *headerView = nil;
+    if (section == 0) {
+        headerView = [[AddListItemTableViewHeader alloc] initWithFrame:CGRectMake(0, 0, 320, 70)];
+    }
+    return headerView;
+}
+
+-(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
+    
+    NSInteger retVal = 0;
+    if (section == 0) {
+        retVal = 70;
+    }
+    return retVal;
+}
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return [[[fetchController sections] objectAtIndex:section] numberOfObjects];
+    return [[[self.fetchController sections] objectAtIndex:section] numberOfObjects];
 }
 
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return [[fetchController sections] count];
+    return [[self.fetchController sections] count];
 }
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
