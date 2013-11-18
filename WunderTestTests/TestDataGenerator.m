@@ -7,22 +7,27 @@
 @implementation TestDataGenerator
 
 
+
 +(void)generateTestListItemDataWithCount:(NSInteger)count {
-    
-    for (int i=0; i < count; i++) {
-        ListItem *aListItem = [self populatedTestListItem];
-        aListItem.listOrder = [NSNumber numberWithInteger:i];
-    }
-    [PersistenceManager save];
+    [self generateTestListItemDataWithCount:count context:[PersistenceManager managedObjectContext]];
 }
 
-+(ListItem *)populatedTestListItem {
++(void)generateTestListItemDataWithCount:(NSInteger)count context:(NSManagedObjectContext *)context {
     
-    ListItem *aListItem = [ListItem new];
+    for (int i=0; i < count; i++) {
+        ListItem *aListItem = [self populatedTestListItemInContext:context];
+        aListItem.listOrder = [NSNumber numberWithInteger:i];
+    }
+    [PersistenceManager saveContext:context];
+}
+
++(ListItem *)populatedTestListItemInContext:(NSManagedObjectContext *)context {
+    
+    ListItem *aListItem = [ListItem newInContext:context];
     
     aListItem.title = [NSString randomizedString];
     aListItem.creationDate = [self randomDateWithinReason];
-    aListItem.completed = [NSNumber numberWithBool:arc4random() % 1];
+    aListItem.completed = [NSNumber numberWithBool:arc4random() % 2];
     
     return aListItem;
 }
