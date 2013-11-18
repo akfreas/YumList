@@ -3,7 +3,6 @@
 @implementation PersistenceManager {
     
     NSPersistentStoreCoordinator *persistentStoreCoordinator;
-    NSManagedObjectContext *managedObjectContext;
 }
 
 +(instancetype)sharedInstance {
@@ -40,6 +39,15 @@
 +(void)saveContext:(NSManagedObjectContext *)context {
     [[self sharedInstance] saveContext:context];
 }
+
++(void)deleteObject:(id)object {
+    [[self sharedInstance] deleteObject:object];
+}
+
++(void)deleteAllObjects {
+    [[self sharedInstance] deleteAllObjects];
+}
+
 
 -(void)setupPersistence {
     [self managedObjectContext];
@@ -81,11 +89,11 @@
 }
 
 -(NSManagedObjectContext *)managedObjectContext {
-    if (managedObjectContext == nil) {
-        managedObjectContext = [[NSManagedObjectContext alloc] initWithConcurrencyType:NSMainQueueConcurrencyType];
-        managedObjectContext.persistentStoreCoordinator = [self persistentStoreCoordinator];
+    if (_managedObjectContext == nil) {
+        _managedObjectContext = [[NSManagedObjectContext alloc] initWithConcurrencyType:NSMainQueueConcurrencyType];
+        _managedObjectContext.persistentStoreCoordinator = [self persistentStoreCoordinator];
     }
-    return managedObjectContext;
+    return _managedObjectContext;
 }
 
 -(void)saveContext:(NSManagedObjectContext *)context {
@@ -100,7 +108,7 @@
 }
 
 -(void)resetManagedObjectContext {
-    managedObjectContext = nil;
+    self.managedObjectContext = nil;
 }
 
 -(void)deletePersistentStore {
@@ -110,6 +118,44 @@
     }
     persistentStoreCoordinator = nil;
     [self resetManagedObjectContext];
+}
+
+-(void)deleteObject:(id)object {
+    [self deleteObject:object inContext:self.managedObjectContext];
+}
+  
+-(void)deleteObject:(id)object inContext:(NSManagedObjectContext *)context {
+    [context deleteObject:object];
+    [self saveContext:context];
+}
+
+-(void)deleteAllObjects {
+    [self deleteAllObjectsInContext:self.managedObjectContext];
+}
+
+-(void)deleteAllObjectsInContext:(NSManagedObjectContext *)context {
+    NSManagedObjectModel *mom = [self managedObjectModel];
+    NSError *error;
+    NSArray *objArray;
+    for (NSEntityDescription *entityDesc in mom) {
+        NSEntityDescription *ourDesc = [NSEntityDescription entityForName:entityDesc.name inManagedObjectContext:self.managedObjectContext];
+        NSFetchRequest *fetch = [NSFetchRequest new];
+        fetch.entity = ourDesc;
+        objArray = [context executeFetchRequest:fetch error:&error];
+        if (objArray != nil) {
+            if (error != nil || [objArray respondsToSelector:@selector(count)] == NO) {
+                NSLog(@"Error fetching instances of %@ from core data.", entityDesc.name);
+                return;
+            }
+            for (NSManagedObject *obj in objArray) {
+                [self.managedObjectContext deleteObject:obj];
+            }
+        }
+    }
+    [self.managedObjectContext save:&error];
+    if (error != nil) {
+        NSLog(@"Error deleting all instances of %@ from core data.",  mom.entities);
+    }
 }
 
 @end

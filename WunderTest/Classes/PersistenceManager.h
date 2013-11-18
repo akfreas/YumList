@@ -1,5 +1,6 @@
-@class ListItem;
 @interface PersistenceManager : NSObject
+
+@property (strong, nonatomic) NSManagedObjectContext *managedObjectContext;
 
 +(instancetype)sharedInstance;
 
@@ -11,5 +12,11 @@
 +(void)resetManagedObjectContext;
 +(void)save;
 +(void)saveContext:(NSManagedObjectContext *)context;
++(void)deleteObject:(id)object;
++(void)deleteAllObjects;
+
+-(void)resetManagedObjectContext;
+-(void)deleteObject:(id)object;
+-(void)deleteAllObjects;
 
 @end
