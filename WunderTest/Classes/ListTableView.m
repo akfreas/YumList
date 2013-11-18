@@ -57,6 +57,7 @@
                 break;
             case NSFetchedResultsChangeUpdate:
                 [self configureCell:(ListItemTableViewCell *)[self cellForRowAtIndexPath:indexPath] atIndexPath:indexPath];
+                break;
             case NSFetchedResultsChangeDelete:
                 [self deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationRight];
             default:
