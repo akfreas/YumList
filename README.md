@@ -18,6 +18,7 @@ Things of note
 *  Centralized Core Data functionality, with convenience methods attached to NSManagedObjects using categories
 *  Standard functionality (reordering, create, delete, etc.)
 *  iPhone and iPad compatible
+*  Supports all interface orientations
 
 
 
