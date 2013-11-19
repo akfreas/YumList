@@ -67,7 +67,6 @@
     for (int i=0; i<numRows; i++) {
         currentIndexPath = [NSIndexPath indexPathForRow:i inSection:0];
         ListItem *currentItem = [tableView.fetchController objectAtIndexPath:currentIndexPath];
-        [currentItem description];
         XCTAssertEqual(i, [currentItem.listOrder integerValue], @"Ordering for '%@' should be %i, is %@", currentItem.title, i, currentItem.listOrder);
     }
 }
