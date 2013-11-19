@@ -3,12 +3,16 @@
 #import "ListItem.h"
 #import "ListItemTableViewCell.h"
 #import "AddListItemTableViewHeader.h"
+#import "TestDataGenerator.h"
+#import "PersistenceManager.h"
 
 @interface ListTableView () <UITableViewDataSource, UITableViewDelegate>
 
 @end
 
-@implementation ListTableView
+@implementation ListTableView {
+    BOOL userDrivenChange;
+}
 
 -(id)initWithFrame:(CGRect)frame {
     self = [super initWithFrame:frame];
@@ -16,6 +20,7 @@
         [self setupFetchController];
         self.dataSource = self;
         self.delegate = self;
+        userDrivenChange = NO;
     }
     return self;
 }
@@ -37,20 +42,41 @@
     cell.listItem = item;
 }
 
+#pragma mark UITableView Override Methods
+
+-(void)moveRowAtIndexPath:(NSIndexPath *)indexPath toIndexPath:(NSIndexPath *)newIndexPath {
+    userDrivenChange = YES;
+    
+    NSMutableArray *reorderArray = [[self.fetchController fetchedObjects] mutableCopy];
+    ListItem *itemToMove = [self.fetchController objectAtIndexPath:indexPath];
+    [reorderArray removeObject:itemToMove];
+    [reorderArray insertObject:itemToMove atIndex:newIndexPath.row];
+    for (int i=0; i<[reorderArray count]; i++) {
+        ListItem *reorderingItem = reorderArray[i];
+        reorderingItem.listOrder = [NSNumber numberWithInteger:i];
+    }
+    [PersistenceManager saveContext:self.fetchController.managedObjectContext];
+    userDrivenChange = NO;
+}
+
 #pragma mark NSFetchedResultsController Delegate Methods
 
 -(void)controllerWillChangeContent:(NSFetchedResultsController *)controller {
-    [self beginUpdates];
+    if (userDrivenChange == NO) {
+        [self beginUpdates];
+    }
 }
 
 -(void)controllerDidChangeContent:(NSFetchedResultsController *)controller {
-    [self endUpdates];
+    if (userDrivenChange == NO) {
+        [self endUpdates];
+    }
 }
 
 
 -(void)controller:(NSFetchedResultsController *)controller didChangeObject:(id)anObject atIndexPath:(NSIndexPath *)indexPath forChangeType:(NSFetchedResultsChangeType)type newIndexPath:(NSIndexPath *)newIndexPath {
     
-    if (anObject != nil) {
+    if (anObject != nil && userDrivenChange == NO) {
         switch (type) {
             case NSFetchedResultsChangeInsert:
                 [self insertRowsAtIndexPaths:@[newIndexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
@@ -60,6 +86,7 @@
                 break;
             case NSFetchedResultsChangeDelete:
                 [self deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationRight];
+                break;
             default:
                 break;
         }
@@ -80,11 +107,19 @@
 
 #pragma mark UITableViewDataSource Delegate Methods
 
+-(void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)sourceIndexPath toIndexPath:(NSIndexPath *)destinationIndexPath {
+    [self moveRowAtIndexPath:sourceIndexPath toIndexPath:destinationIndexPath];
+}
+
 -(UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
     
     UIView *headerView = nil;
     if (section == 0) {
-        headerView = [[AddListItemTableViewHeader alloc] initWithFrame:CGRectMake(0, 0, 320, 70)];
+        AddListItemTableViewHeader *addHeader = [[AddListItemTableViewHeader alloc] initWithFrame:CGRectMake(0, 0, 320, 70)];
+        addHeader.editButtonAction = ^{
+            tableView.editing = !tableView.editing;
+        };
+        headerView = addHeader;
     }
     return headerView;
 }
