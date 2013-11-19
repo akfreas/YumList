@@ -11,7 +11,7 @@
     self = [super init];
     if (self) {
         self.view.autoresizesSubviews = YES;
-        self.view.autoresizingMask = (UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleTopMargin);
+        self.view.autoresizingMask = ( UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleTopMargin);
     }
     return self;
 }
@@ -23,7 +23,12 @@
     
     [tableViewList reloadData];
 }
-
+-(BOOL)shouldAutorotate {
+    return YES;
+}
+-(void)willAnimateRotationToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration {
+    
+}
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];

@@ -24,11 +24,11 @@ static NSString *identifier = @"ListCellID";
         self.delegate = self;
         self.autoresizesSubviews = YES;
         self.allowsSelection = NO;
-        self.autoresizingMask = (UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleTopMargin | UIViewAutoresizingFlexibleBottomMargin | UIViewAutoresizingFlexibleWidth);
+        self.autoresizingMask = (UIViewAutoresizingFlexibleHeight  | UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleRightMargin |UIViewAutoresizingFlexibleTopMargin);
         userDrivenChange = NO;
         [self registerClass:[ListItemTableViewCell class] forCellReuseIdentifier:identifier];
         [self setupFetchController];
-
+        
     }
     return self;
 }

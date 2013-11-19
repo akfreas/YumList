@@ -11,6 +11,5 @@
 +(void)removeListItemAndReorderListItems:(ListItem *)item;
 +(void)insertListItemAndReorderListItems:(ListItem *)item inContext:(NSManagedObjectContext *)context;
 +(void)insertListItemAndReorderListItems:(ListItem *)item;
-+(void)changeOrderOfListItem:(ListItem *)item toOrder:(NSNumber *)order;
 
 @end

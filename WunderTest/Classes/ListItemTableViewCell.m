@@ -18,6 +18,7 @@
     
     if (self) {
         [self addUIComponents];
+        self.autoresizesSubviews = YES;
         self.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleRightMargin | UIViewAutoresizingFlexibleLeftMargin;
         self.backgroundColor = [UIColor colorWithWhite:0.9 alpha:1];
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(toggleEditing:) name:@"ListTableEditing" object:nil];
@@ -33,13 +34,15 @@
 -(void)addUIComponents {
     [self addTitleLabel];
     [self addCreationDateLabel];
-    [self addCompletedSwitch];
+    [self addCompletedButton];
+    [self setNeedsLayout];
 }
 
 -(void)addTitleLabel {
     titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(15, 2, 260, 20)];
     titleLabel.numberOfLines = 1;
     titleLabel.textAlignment = NSTextAlignmentLeft;
+    titleLabel.autoresizingMask = (UIViewAutoresizingFlexibleRightMargin | UIViewAutoresizingFlexibleWidth);
     titleLabel.font = [UIFont fontWithName:@"Raleway-regular" size:14.0f];
     [self.contentView addSubview:titleLabel];
 }
@@ -50,14 +53,19 @@
     [self.contentView addSubview:creationDateLabel];
 }
 
--(void)addCompletedSwitch {
+-(void)addCompletedButton {
     checkboxButton = [[AFCheckbox alloc] initWithFrame:CGRectMake(280, 7, 30, 30)];
-    checkboxButton.buttonChecked = ^(BOOL checked){
+    
+    void(^block)(BOOL checked) = ^(BOOL checked){
         ourListItem.completed = [NSNumber numberWithBool:checked];
         [ourListItem save];
     };
-    checkboxButton.autoresizingMask = (UIViewAutoresizingFlexibleRightMargin);
+
+    checkboxButton.buttonChecked = block;
+    checkboxButton.autoresizingMask = (UIViewAutoresizingFlexibleTopMargin  | UIViewAutoresizingFlexibleLeftMargin);
+    checkboxButton.autoresizesSubviews = YES;
     [self addSubview:checkboxButton];
+    [self setNeedsLayout];
 }
 
 -(void)setEditing:(BOOL)editing {
