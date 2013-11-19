@@ -21,6 +21,19 @@
     [PersistenceManager saveContext:context];
 }
 
++(void)generateNumberedTestListItemsWithCount:(NSInteger)count {
+    [self generateNumberedTestListItemsWithCount:count context:[PersistenceManager managedObjectContext]];
+}
+
++(void)generateNumberedTestListItemsWithCount:(NSInteger)count context:(NSManagedObjectContext *)context {
+    for (int i=0; i < count; i++) {
+        ListItem *aListItem = [self populatedTestListItemInContext:context ];
+        aListItem.listOrder = [NSNumber numberWithInt:i];
+        aListItem.title = [aListItem.listOrder stringValue];
+    }
+    [PersistenceManager saveContext:context];
+}
+
 +(ListItem *)populatedTestListItemInContext:(NSManagedObjectContext *)context {
     
     ListItem *aListItem = [ListItem newInContext:context];
