@@ -26,16 +26,16 @@
 }
 
 -(void)resetPersistenceLayer {
-    [ourManager deleteAllObjects];
+    [ourManager deleteAllObjectsAndSave];
 }
 
 -(void)generateRandomDummyData {
-    numRowsGenerated = (arc4random() + 1) % 100;
+    numRowsGenerated = arc4random_uniform(100);
     [TestDataGenerator generateTestListItemDataWithCount:numRowsGenerated context:ourManager.managedObjectContext];
 }
 
 -(void)generateOrderedDummyData {
-    numRowsGenerated = (arc4random() + 1) % 100;
+    numRowsGenerated = arc4random_uniform(100);
     [TestDataGenerator generateNumberedTestListItemsWithCount:numRowsGenerated context:ourManager.managedObjectContext];
 }
 
@@ -99,7 +99,7 @@
 -(void)testReorderingOfListItems {
     [self resetPersistenceLayer];
     [self generateOrderedDummyData];
-    NSInteger orderInt = (arc4random() % numRowsGenerated) - 1;
+    NSInteger orderInt = arc4random_uniform(numRowsGenerated - 1);
     NSNumber *order = [NSNumber numberWithInteger:orderInt];
     
     
