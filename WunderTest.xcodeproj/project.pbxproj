@@ -32,10 +32,7 @@
 		19022F24183365420057EB7A /* LocaleFormattingTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 19022F23183365420057EB7A /* LocaleFormattingTests.m */; };
 		19022F2618336D8F0057EB7A /* TableViewTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 19022F2518336D8F0057EB7A /* TableViewTests.m */; };
 		19022F2918336DF50057EB7A /* TestDataGenerator.m in Sources */ = {isa = PBXBuildFile; fileRef = 19022F2818336DF50057EB7A /* TestDataGenerator.m */; };
-		19022F2F183370190057EB7A /* NSString+Random.m in Sources */ = {isa = PBXBuildFile; fileRef = 19022F2C183370190057EB7A /* NSString+Random.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
-		19022F30183370190057EB7A /* NSStringRandom.m in Sources */ = {isa = PBXBuildFile; fileRef = 19022F2E183370190057EB7A /* NSStringRandom.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		19022F32183381B50057EB7A /* TestDataGenerator.m in Sources */ = {isa = PBXBuildFile; fileRef = 19022F2818336DF50057EB7A /* TestDataGenerator.m */; };
-		19022F33183381C40057EB7A /* NSString+Random.m in Sources */ = {isa = PBXBuildFile; fileRef = 19022F2C183370190057EB7A /* NSString+Random.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		19022F51183442D00057EB7A /* AddListItemTableViewHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = 19022F50183442D00057EB7A /* AddListItemTableViewHeader.m */; };
 		19022F5418344AD90057EB7A /* AFTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 19022F5318344AD90057EB7A /* AFTextField.m */; };
 		19A633F5183B5B32002B8867 /* ListItem+ListItemHelpers.m in Sources */ = {isa = PBXBuildFile; fileRef = 19A633F3183B5B32002B8867 /* ListItem+ListItemHelpers.m */; };
@@ -46,6 +43,8 @@
 		19A63403183BAA59002B8867 /* Raleway-Thin.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 19A63402183BAA59002B8867 /* Raleway-Thin.ttf */; };
 		19A63406183BAF8E002B8867 /* checkbox_underline.png in Resources */ = {isa = PBXBuildFile; fileRef = 19A63404183BAF8E002B8867 /* checkbox_underline.png */; };
 		19A63407183BAF8E002B8867 /* checkbox_underline@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 19A63405183BAF8E002B8867 /* checkbox_underline@2x.png */; };
+		19A6340C183BB5DA002B8867 /* NSString+Random.m in Sources */ = {isa = PBXBuildFile; fileRef = 19A63409183BB5DA002B8867 /* NSString+Random.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		19A6340D183BB5DA002B8867 /* NSStringRandom.m in Sources */ = {isa = PBXBuildFile; fileRef = 19A6340B183BB5DA002B8867 /* NSStringRandom.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		19BD001C183AEBCD00A95C6C /* NSManagedObject+Helpers.m in Sources */ = {isa = PBXBuildFile; fileRef = 19022F0B18333B700057EB7A /* NSManagedObject+Helpers.m */; };
 		33E85E9DC8F741688B5F9617 /* libPods-WunderTest.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BAD75CB70ACC4647A45D91BD /* libPods-WunderTest.a */; };
 		9D39F315819346079BFDD5B4 /* libPods-WunderTestTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0C7A10C88FC94EB3AABAA660 /* libPods-WunderTestTests.a */; };
@@ -102,10 +101,6 @@
 		19022F23183365420057EB7A /* LocaleFormattingTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocaleFormattingTests.m; sourceTree = "<group>"; };
 		19022F2518336D8F0057EB7A /* TableViewTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TableViewTests.m; sourceTree = "<group>"; };
 		19022F2818336DF50057EB7A /* TestDataGenerator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestDataGenerator.m; sourceTree = "<group>"; };
-		19022F2B183370190057EB7A /* NSString+Random.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Random.h"; sourceTree = "<group>"; };
-		19022F2C183370190057EB7A /* NSString+Random.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Random.m"; sourceTree = "<group>"; };
-		19022F2D183370190057EB7A /* NSStringRandom.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NSStringRandom.h; sourceTree = "<group>"; };
-		19022F2E183370190057EB7A /* NSStringRandom.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NSStringRandom.m; sourceTree = "<group>"; };
 		19022F31183376050057EB7A /* TestDataGenerator.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TestDataGenerator.h; sourceTree = "<group>"; };
 		19022F4F183442D00057EB7A /* AddListItemTableViewHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AddListItemTableViewHeader.h; path = Classes/AddListItemTableViewHeader.h; sourceTree = "<group>"; };
 		19022F50183442D00057EB7A /* AddListItemTableViewHeader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AddListItemTableViewHeader.m; path = Classes/AddListItemTableViewHeader.m; sourceTree = "<group>"; };
@@ -120,6 +115,10 @@
 		19A63402183BAA59002B8867 /* Raleway-Thin.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Raleway-Thin.ttf"; sourceTree = "<group>"; };
 		19A63404183BAF8E002B8867 /* checkbox_underline.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = checkbox_underline.png; sourceTree = "<group>"; };
 		19A63405183BAF8E002B8867 /* checkbox_underline@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "checkbox_underline@2x.png"; sourceTree = "<group>"; };
+		19A63408183BB5DA002B8867 /* NSString+Random.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSString+Random.h"; path = "NSStringRandom/NSString+Random.h"; sourceTree = "<group>"; };
+		19A63409183BB5DA002B8867 /* NSString+Random.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSString+Random.m"; path = "NSStringRandom/NSString+Random.m"; sourceTree = "<group>"; };
+		19A6340A183BB5DA002B8867 /* NSStringRandom.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NSStringRandom.h; path = NSStringRandom/NSStringRandom.h; sourceTree = "<group>"; };
+		19A6340B183BB5DA002B8867 /* NSStringRandom.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NSStringRandom.m; path = NSStringRandom/NSStringRandom.m; sourceTree = "<group>"; };
 		ABFAE3D966F545E385A0486F /* Pods-WunderTestTests.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WunderTestTests.xcconfig"; path = "Pods/Pods-WunderTestTests.xcconfig"; sourceTree = "<group>"; };
 		BAD75CB70ACC4647A45D91BD /* libPods-WunderTest.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-WunderTest.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		CF3E5BE010224CDB9FEFF0EB /* Pods-WunderTest.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WunderTest.xcconfig"; path = "Pods/Pods-WunderTest.xcconfig"; sourceTree = "<group>"; };
@@ -224,7 +223,7 @@
 		19022EF1183328890057EB7A /* WunderTestTests */ = {
 			isa = PBXGroup;
 			children = (
-				19022F2A183370190057EB7A /* NSString+Random */,
+				19A6340E183BB5DE002B8867 /* NSString+Random */,
 				19022EF7183328890057EB7A /* WunderTestTests.m */,
 				19022EF2183328890057EB7A /* Supporting Files */,
 				19022F1218334E2F0057EB7A /* ListItemTests.m */,
@@ -314,15 +313,15 @@
 			name = Utilities;
 			sourceTree = "<group>";
 		};
-		19022F2A183370190057EB7A /* NSString+Random */ = {
+		19A6340E183BB5DE002B8867 /* NSString+Random */ = {
 			isa = PBXGroup;
 			children = (
-				19022F2B183370190057EB7A /* NSString+Random.h */,
-				19022F2C183370190057EB7A /* NSString+Random.m */,
-				19022F2D183370190057EB7A /* NSStringRandom.h */,
-				19022F2E183370190057EB7A /* NSStringRandom.m */,
+				19A63408183BB5DA002B8867 /* NSString+Random.h */,
+				19A63409183BB5DA002B8867 /* NSString+Random.m */,
+				19A6340A183BB5DA002B8867 /* NSStringRandom.h */,
+				19A6340B183BB5DA002B8867 /* NSStringRandom.m */,
 			);
-			path = "NSString+Random";
+			name = "NSString+Random";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -494,7 +493,6 @@
 				19022F51183442D00057EB7A /* AddListItemTableViewHeader.m in Sources */,
 				19022F0818332E400057EB7A /* PersistenceManager.m in Sources */,
 				19022F1718335A950057EB7A /* ListTableView.m in Sources */,
-				19022F33183381C40057EB7A /* NSString+Random.m in Sources */,
 				19022F1E183361470057EB7A /* ListItemTableViewCell.m in Sources */,
 				19A633FD183B90DE002B8867 /* AFCheckbox.m in Sources */,
 				19022F5418344AD90057EB7A /* AFTextField.m in Sources */,
@@ -516,9 +514,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				19022F1318334E2F0057EB7A /* ListItemTests.m in Sources */,
-				19022F30183370190057EB7A /* NSStringRandom.m in Sources */,
+				19A6340D183BB5DA002B8867 /* NSStringRandom.m in Sources */,
 				19022F2618336D8F0057EB7A /* TableViewTests.m in Sources */,
-				19022F2F183370190057EB7A /* NSString+Random.m in Sources */,
+				19A6340C183BB5DA002B8867 /* NSString+Random.m in Sources */,
 				19022F2918336DF50057EB7A /* TestDataGenerator.m in Sources */,
 				19022EF8183328890057EB7A /* WunderTestTests.m in Sources */,
 				19022F24183365420057EB7A /* LocaleFormattingTests.m in Sources */,
