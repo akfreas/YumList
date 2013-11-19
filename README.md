@@ -2,7 +2,7 @@ WunderTest
 ==========
 
 
-WunderTest is the test app I built for the fine folks at 6Wunderkinder!  I hope you guys like it!
+WunderTest is the test app I built for the fine folks at 6Wunderkinder!
 
 
 Setup
@@ -17,3 +17,7 @@ Things of note
 *  Several custom, reusable UI components related to common UITableView functionality
 *  Centralized Core Data functionality, with convenience methods attached to NSManagedObjects using categories
 *  Standard functionality (reordering, create, delete, etc.)
+*  iPhone and iPad compatible
+
+
+
