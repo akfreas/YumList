@@ -24,8 +24,11 @@
     [super tearDown];
 }
 
--(void)reset {
+-(void)resetPersistenceLayer {
     [ourManager deleteAllObjects];
+}
+
+-(void)generateDummyData {
     NSInteger numRows = arc4random() % 100;
     [TestDataGenerator generateTestListItemDataWithCount:numRows context:ourManager.managedObjectContext];
 }
@@ -67,7 +70,8 @@
 
 -(void)testCoreDataDeletionCorrectness {
     
-    [self reset];
+    [self resetPersistenceLayer];
+    [self generateDummyData];
     NSArray *allObjects = [ListItem allObjectsInContext:ourManager.managedObjectContext];
     NSInteger numRows = [allObjects count];
     ListItem *ourListItem = [allObjects lastObject];
@@ -76,5 +80,17 @@
     NSInteger newCount = [[ListItem allObjectsInContext:ourManager.managedObjectContext] count];
     XCTAssertEqual(newCount, numRows - 1, @"The item was not successfully deleted in the db.");
 }
+
+-(void)testListOrderCorrectnessAfterCreatingNewObject {
+    [self resetPersistenceLayer];
+    NSInteger numRows = arc4random() % 100;
+    [TestDataGenerator generateNumberedTestListItemsWithCount:numRows];
+    
+    ListItem *newListItem = [ListItem newOrderedItemInContext:ourManager.managedObjectContext];
+    [newListItem save];
+    NSNumber *expectedNumber = [NSNumber numberWithInt:numRows]; //We are checking against numRows because listOrder is 0 based.
+    XCTAssertTrue([expectedNumber isEqualToNumber:newListItem.listOrder], @"List order should be %@, got back %@", expectedNumber, newListItem.listOrder);
+}
+
 
 @end
