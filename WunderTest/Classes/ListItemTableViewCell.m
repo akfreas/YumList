@@ -1,13 +1,15 @@
 #import "ListItemTableViewCell.h"
 #import "ListItem.h"
 #import "FormatUtils.h"
+#import "AFCheckbox.h"
 
 @implementation ListItemTableViewCell {
     
-    UILabel *titleLabel;
+
     UILabel *creationDateLabel;
-    UISwitch *completedSwitch;
+    AFCheckbox *checkboxButton;
     ListItem *ourListItem;
+    UILabel *titleLabel;
 }
 
 -(id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier {
@@ -16,23 +18,16 @@
     
     if (self) {
         [self addUIComponents];
-        self.translatesAutoresizingMaskIntoConstraints = NO;
+        self.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleRightMargin | UIViewAutoresizingFlexibleLeftMargin;
+        self.backgroundColor = [UIColor colorWithWhite:0.9 alpha:1];
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(toggleEditing:) name:@"ListTableEditing" object:nil];
     }
     return self;
 }
 
--(void)layoutSubviews {
-    [super layoutSubviews];
-    titleLabel.frame = CGRectMake(0, 0, 100, 30);
-    creationDateLabel.frame = CGRectMake(100, 0, 100, 30);
-    completedSwitch.frame = CGRectMake(270, 0, 30, 30);
-    [completedSwitch addTarget:self action:@selector(switchAction) forControlEvents:UIControlEventValueChanged];
-    //    [self addLayoutConstraints];
-}
-
--(void)switchAction {
-    ourListItem.completed = [NSNumber numberWithBool:completedSwitch.isOn];
-    [ourListItem save];
+-(void)toggleEditing:(NSNotification *)notif {
+    NSNumber *isEditing = notif.userInfo[@"editing"];
+    self.editing = [isEditing boolValue];
 }
 
 -(void)addUIComponents {
@@ -42,49 +37,39 @@
 }
 
 -(void)addTitleLabel {
-    titleLabel = [[UILabel alloc] initWithFrame:CGRectZero];
-    titleLabel.translatesAutoresizingMaskIntoConstraints = NO;
-    titleLabel.backgroundColor = [UIColor redColor];
-    
-    [self addSubview:titleLabel];
+    titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(5, 2, 260, 20)];
+    titleLabel.numberOfLines = 1;
+    titleLabel.textAlignment = NSTextAlignmentLeft;
+    titleLabel.font = [UIFont fontWithName:@"Raleway-regular" size:14.0f];
+    [self.contentView addSubview:titleLabel];
 }
 
 -(void)addCreationDateLabel {
-    creationDateLabel = [[UILabel alloc] initWithFrame:CGRectZero];
-    [self addSubview:creationDateLabel];
+    creationDateLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, 22, 200, 20)];
+    creationDateLabel.font = [UIFont fontWithName:@"HelveticaNeue-Light" size:12.0f];
+    [self.contentView addSubview:creationDateLabel];
 }
 
 -(void)addCompletedSwitch {
-    completedSwitch = [[UISwitch alloc] initWithFrame:CGRectZero];
-    [self addSubview:completedSwitch];
+    checkboxButton = [[AFCheckbox alloc] initWithFrame:CGRectMake(280, 7, 30, 30)];
+    checkboxButton.buttonChecked = ^(BOOL checked){
+        ourListItem.completed = [NSNumber numberWithBool:checked];
+        [ourListItem save];
+    };
+    checkboxButton.autoresizingMask = (UIViewAutoresizingFlexibleRightMargin);
+    [self addSubview:checkboxButton];
 }
 
--(void)addLayoutConstraints {
-    [self addTitleConstraints];
-//    [self addCreationDateContstraints];
-//    [self addCompletedSwitchConstraints];
-}
-
--(void)addTitleConstraints {
-    
-//    NSArray *titleConstraints = @[
-//                                  [NSLayoutConstraint constraintWithItem:titleLabel attribute:NSLayoutAttributeRight relatedBy:NSLayoutRelationEqual toItem:self attribute:NSLayoutAttributeLeft multiplier:0 constant:5],
-//                                  [NSLayoutConstraint constraintWithItem:titleLabel attribute:NSLayoutAttributeTop relatedBy:NSLayoutRelationEqual toItem:self attribute:NSLayoutAttributeTop multiplier:0 constant:5]];
-//    
-//    [self addConstraints:titleConstraints];
-    NSDictionary *viewsDictionary = NSDictionaryOfVariableBindings(titleLabel, self);
-    NSMutableArray *array = [NSMutableArray new];
-    [array addObjectsFromArray:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|[titleLabel]|" options:0 metrics:nil views:viewsDictionary]];
-    [array addObjectsFromArray:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|[titleLabel]|" options:0 metrics:nil views:viewsDictionary]];
-    [self addConstraints:array];
-}
-
--(void)addCreationDateContstraints {
-    
-}
-
--(void)addCompletedSwitchConstraints {
-    
+-(void)setEditing:(BOOL)editing {
+    [UIView animateWithDuration:0.1f animations:^{
+        checkboxButton.alpha = (editing == NO);
+        NSInteger multiplier = editing ? 1 : -1;
+        titleLabel.frame = CGRectOffset(titleLabel.frame, 10 * multiplier, 0);
+    } completion:^(BOOL finished) {
+        if (finished) {
+            checkboxButton.hidden = editing;
+        }
+    }];
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated
@@ -99,9 +84,9 @@
 -(void)setListItem:(ListItem *)listItem {
     ourListItem = listItem;
     titleLabel.text = ourListItem.title;
-    creationDateLabel.text = [NSString stringWithFormat:@"%@: %@", NSLocalizedString(@"Created", @"Created label."), [FormatUtils stringFromDate:listItem.creationDate]];
-    completedSwitch.on = [ourListItem.completed boolValue];
-//    [self setNeedsLayout];
+    creationDateLabel.text = [FormatUtils stringFromDate:listItem.creationDate];
+    checkboxButton.checked = [ourListItem.completed boolValue];
+    [self setNeedsLayout];
 }
 
 @end
