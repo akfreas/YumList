@@ -23,6 +23,7 @@ static NSString *identifier = @"ListCellID";
         self.dataSource = self;
         self.delegate = self;
         self.autoresizesSubviews = YES;
+        self.allowsSelection = NO;
         self.autoresizingMask = (UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleTopMargin | UIViewAutoresizingFlexibleBottomMargin | UIViewAutoresizingFlexibleWidth);
         userDrivenChange = NO;
         [self registerClass:[ListItemTableViewCell class] forCellReuseIdentifier:identifier];
@@ -34,7 +35,6 @@ static NSString *identifier = @"ListCellID";
 
 -(void)setupFetchController {
     self.fetchController = [NSFetchedResultsControllerFactory fetchControllerForAllListItems];
-    
     NSError *controllerError = nil;
     self.fetchController.delegate = self;
     [self.fetchController performFetch:&controllerError];
@@ -78,7 +78,6 @@ static NSString *identifier = @"ListCellID";
         [self endUpdates];
     }
 }
-
 
 -(void)controller:(NSFetchedResultsController *)controller didChangeObject:(id)anObject atIndexPath:(NSIndexPath *)indexPath forChangeType:(NSFetchedResultsChangeType)type newIndexPath:(NSIndexPath *)newIndexPath {
     
@@ -170,7 +169,6 @@ static NSString *identifier = @"ListCellID";
     ListItem *item = [self.fetchController objectAtIndexPath:indexPath];
     cell.listItem = item;
 }
-
 
 -(void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
     if (editingStyle == UITableViewCellEditingStyleDelete) {

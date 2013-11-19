@@ -86,7 +86,9 @@
     tableView.editing = YES;
     [tableView moveRowAtIndexPath:currentIndexPath toIndexPath:newIndexPath];
     tableView.editing = NO;
-    [tableView.fetchController performFetch:NULL];
+    NSError *err = nil;
+    [tableView.fetchController performFetch:&err];
+    XCTAssertNil(err, @"Error fetching items with fetch controller. Error: %@", err);
     ListItem *newIndexPathItem = [tableView.fetchController objectAtIndexPath:newIndexPath];
     
     XCTAssertTrue(newIndexPathItem.objectID == currentIndexPathItem.objectID, @"The list item currently in row %i is not the same as the one we attempted to move. \nWhat's there now: %@\nWhat should be there:%@\n", newIndexPath.row, newIndexPathItem, currentIndexPathItem);

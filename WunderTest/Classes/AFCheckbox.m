@@ -1,15 +1,8 @@
-//
-//  AFCheckbox.m
-//  WunderTest
-//
-//  Created by Alexander Freas on 11/19/13.
-//  Copyright (c) 2013 Sashimiblade. All rights reserved.
-//
-
 #import "AFCheckbox.h"
 
 @implementation AFCheckbox {
     UILabel *checkedLabel;
+    UIImage *backgroundImage;
 }
 
 - (id)initWithFrame:(CGRect)frame
@@ -17,7 +10,10 @@
     self = [super initWithFrame:frame];
     if (self) {
         // Initialization code
-        self.backgroundColor = [UIColor grayColor];
+        UIImage *baseImage = [[UIImage alloc] initWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"checkbox_underline" ofType:@"png"]];
+        backgroundImage = [baseImage resizableImageWithCapInsets:UIEdgeInsetsMake(0.0f, 2.0f, 5.0f, 2.0f)];
+        
+        [self setBackgroundImage:backgroundImage forState:UIControlStateNormal];
         checkedLabel = [[UILabel alloc] initWithFrame:CGRectMake(8, 5, 22, 25)];
         [self addSubview:checkedLabel];
     }

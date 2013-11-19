@@ -37,7 +37,7 @@
 }
 
 -(void)addTitleLabel {
-    titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(5, 2, 260, 20)];
+    titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(15, 2, 260, 20)];
     titleLabel.numberOfLines = 1;
     titleLabel.textAlignment = NSTextAlignmentLeft;
     titleLabel.font = [UIFont fontWithName:@"Raleway-regular" size:14.0f];
@@ -45,7 +45,7 @@
 }
 
 -(void)addCreationDateLabel {
-    creationDateLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, 22, 200, 20)];
+    creationDateLabel = [[UILabel alloc] initWithFrame:CGRectMake(25, 22, 200, 20)];
     creationDateLabel.font = [UIFont fontWithName:@"HelveticaNeue-Light" size:12.0f];
     [self.contentView addSubview:creationDateLabel];
 }
