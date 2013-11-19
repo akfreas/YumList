@@ -40,7 +40,7 @@
     
     aListItem.title = [NSString randomizedString];
     aListItem.creationDate = [self randomDateWithinReason];
-    aListItem.completed = [NSNumber numberWithBool:arc4random() % 2];
+    aListItem.completed = [NSNumber numberWithBool:arc4random_uniform(1)];
     
     return aListItem;
 }
