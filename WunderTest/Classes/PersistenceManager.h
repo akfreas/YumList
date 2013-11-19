@@ -12,11 +12,11 @@
 +(void)resetManagedObjectContext;
 +(void)save;
 +(void)saveContext:(NSManagedObjectContext *)context;
-+(void)deleteObject:(id)object;
++(void)deleteObject:(NSManagedObject *)object;
 +(void)deleteAllObjects;
 
 -(void)resetManagedObjectContext;
--(void)deleteObject:(id)object;
--(void)deleteAllObjects;
+-(void)deleteObject:(NSManagedObject *)object;
+-(void)deleteAllObjectsAndSave;
 
 @end

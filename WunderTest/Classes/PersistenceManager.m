@@ -40,12 +40,12 @@
     [[self sharedInstance] saveContext:context];
 }
 
-+(void)deleteObject:(id)object {
++(void)deleteObject:(NSManagedObject *)object {
     [[self sharedInstance] deleteObject:object];
 }
 
 +(void)deleteAllObjects {
-    [[self sharedInstance] deleteAllObjects];
+    [[self sharedInstance] deleteAllObjectsAndSave];
 }
 
 
@@ -120,16 +120,11 @@
     [self resetManagedObjectContext];
 }
 
--(void)deleteObject:(id)object {
-    [self deleteObject:object inContext:self.managedObjectContext];
-}
-  
--(void)deleteObject:(id)object inContext:(NSManagedObjectContext *)context {
-    [context deleteObject:object];
-    [self saveContext:context];
+-(void)deleteObject:(NSManagedObject *)object {
+    [object.managedObjectContext deleteObject:object];
 }
 
--(void)deleteAllObjects {
+-(void)deleteAllObjectsAndSave {
     [self deleteAllObjectsInContext:self.managedObjectContext];
 }
 
