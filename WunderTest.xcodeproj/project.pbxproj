@@ -24,7 +24,6 @@
 		19022EF8183328890057EB7A /* WunderTestTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 19022EF7183328890057EB7A /* WunderTestTests.m */; };
 		19022F0418332E0A0057EB7A /* ListItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 19022F0318332E0A0057EB7A /* ListItem.m */; };
 		19022F0818332E400057EB7A /* PersistenceManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 19022F0718332E400057EB7A /* PersistenceManager.m */; };
-		19022F11183348AA0057EB7A /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 19022F10183348AA0057EB7A /* MainViewController.m */; };
 		19022F1318334E2F0057EB7A /* ListItemTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 19022F1218334E2F0057EB7A /* ListItemTests.m */; };
 		19022F1718335A950057EB7A /* ListTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 19022F1618335A950057EB7A /* ListTableView.m */; };
 		19022F1A18335BD70057EB7A /* NSFetchedResultsControllerFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = 19022F1918335BD70057EB7A /* NSFetchedResultsControllerFactory.m */; };
@@ -39,7 +38,12 @@
 		19022F33183381C40057EB7A /* NSString+Random.m in Sources */ = {isa = PBXBuildFile; fileRef = 19022F2C183370190057EB7A /* NSString+Random.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		19022F51183442D00057EB7A /* AddListItemTableViewHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = 19022F50183442D00057EB7A /* AddListItemTableViewHeader.m */; };
 		19022F5418344AD90057EB7A /* AFTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 19022F5318344AD90057EB7A /* AFTextField.m */; };
-		198EDA95183AE5260098EFCF /* ListItem+ListItemHelpers.m in Sources */ = {isa = PBXBuildFile; fileRef = 198EDA94183AE5260098EFCF /* ListItem+ListItemHelpers.m */; };
+		19A633F5183B5B32002B8867 /* ListItem+ListItemHelpers.m in Sources */ = {isa = PBXBuildFile; fileRef = 19A633F3183B5B32002B8867 /* ListItem+ListItemHelpers.m */; };
+		19A633F9183B5F13002B8867 /* Reveal.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 19A633F8183B5F13002B8867 /* Reveal.framework */; };
+		19A633FA183B8DAA002B8867 /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 19022F10183348AA0057EB7A /* MainViewController.m */; };
+		19A633FD183B90DE002B8867 /* AFCheckbox.m in Sources */ = {isa = PBXBuildFile; fileRef = 19A633FC183B90DE002B8867 /* AFCheckbox.m */; };
+		19A63401183B9EA2002B8867 /* Raleway-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 19A63400183B9EA2002B8867 /* Raleway-Regular.ttf */; };
+		19A63403183BAA59002B8867 /* Raleway-Thin.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 19A63402183BAA59002B8867 /* Raleway-Thin.ttf */; };
 		19BD001C183AEBCD00A95C6C /* NSManagedObject+Helpers.m in Sources */ = {isa = PBXBuildFile; fileRef = 19022F0B18333B700057EB7A /* NSManagedObject+Helpers.m */; };
 		33E85E9DC8F741688B5F9617 /* libPods-WunderTest.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BAD75CB70ACC4647A45D91BD /* libPods-WunderTest.a */; };
 		9D39F315819346079BFDD5B4 /* libPods-WunderTestTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0C7A10C88FC94EB3AABAA660 /* libPods-WunderTestTests.a */; };
@@ -105,8 +109,13 @@
 		19022F50183442D00057EB7A /* AddListItemTableViewHeader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AddListItemTableViewHeader.m; path = Classes/AddListItemTableViewHeader.m; sourceTree = "<group>"; };
 		19022F5218344AD90057EB7A /* AFTextField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AFTextField.h; path = Classes/AFTextField.h; sourceTree = "<group>"; };
 		19022F5318344AD90057EB7A /* AFTextField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AFTextField.m; path = Classes/AFTextField.m; sourceTree = "<group>"; };
-		198EDA93183AE5260098EFCF /* ListItem+ListItemHelpers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "ListItem+ListItemHelpers.h"; path = "../ListItem+ListItemHelpers.h"; sourceTree = "<group>"; };
-		198EDA94183AE5260098EFCF /* ListItem+ListItemHelpers.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "ListItem+ListItemHelpers.m"; path = "../ListItem+ListItemHelpers.m"; sourceTree = "<group>"; };
+		19A633F3183B5B32002B8867 /* ListItem+ListItemHelpers.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "ListItem+ListItemHelpers.m"; path = "Classes/ListItem+ListItemHelpers.m"; sourceTree = "<group>"; };
+		19A633F4183B5B32002B8867 /* ListItem+ListItemHelpers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "ListItem+ListItemHelpers.h"; path = "Classes/ListItem+ListItemHelpers.h"; sourceTree = "<group>"; };
+		19A633F8183B5F13002B8867 /* Reveal.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Reveal.framework; path = "../../../../../../Applications/Reveal.app/Contents/SharedSupport/iOS-Libraries/Reveal.framework"; sourceTree = "<group>"; };
+		19A633FB183B90DE002B8867 /* AFCheckbox.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AFCheckbox.h; path = Classes/AFCheckbox.h; sourceTree = "<group>"; };
+		19A633FC183B90DE002B8867 /* AFCheckbox.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AFCheckbox.m; path = Classes/AFCheckbox.m; sourceTree = "<group>"; };
+		19A63400183B9EA2002B8867 /* Raleway-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Raleway-Regular.ttf"; sourceTree = "<group>"; };
+		19A63402183BAA59002B8867 /* Raleway-Thin.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Raleway-Thin.ttf"; sourceTree = "<group>"; };
 		ABFAE3D966F545E385A0486F /* Pods-WunderTestTests.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WunderTestTests.xcconfig"; path = "Pods/Pods-WunderTestTests.xcconfig"; sourceTree = "<group>"; };
 		BAD75CB70ACC4647A45D91BD /* libPods-WunderTest.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-WunderTest.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		CF3E5BE010224CDB9FEFF0EB /* Pods-WunderTest.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WunderTest.xcconfig"; path = "Pods/Pods-WunderTest.xcconfig"; sourceTree = "<group>"; };
@@ -120,6 +129,7 @@
 				19022ECF183328890057EB7A /* CoreGraphics.framework in Frameworks */,
 				19022ED3183328890057EB7A /* CoreData.framework in Frameworks */,
 				19022ED1183328890057EB7A /* UIKit.framework in Frameworks */,
+				19A633F9183B5F13002B8867 /* Reveal.framework in Frameworks */,
 				19022ECD183328890057EB7A /* Foundation.framework in Frameworks */,
 				33E85E9DC8F741688B5F9617 /* libPods-WunderTest.a in Frameworks */,
 			);
@@ -178,6 +188,7 @@
 		19022ED4183328890057EB7A /* WunderTest */ = {
 			isa = PBXGroup;
 			children = (
+				19A633F8183B5F13002B8867 /* Reveal.framework */,
 				19022F1F183363480057EB7A /* Utilities */,
 				19022F1418335A060057EB7A /* Views */,
 				19022F0E183347720057EB7A /* Controllers */,
@@ -194,6 +205,8 @@
 		19022ED5183328890057EB7A /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				19A63402183BAA59002B8867 /* Raleway-Thin.ttf */,
+				19A63400183B9EA2002B8867 /* Raleway-Regular.ttf */,
 				19022ED6183328890057EB7A /* WunderTest-Info.plist */,
 				19022ED7183328890057EB7A /* InfoPlist.strings */,
 				19022EDA183328890057EB7A /* main.m */,
@@ -250,12 +263,12 @@
 		19022F0918333B580057EB7A /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				19A633F3183B5B32002B8867 /* ListItem+ListItemHelpers.m */,
+				19A633F4183B5B32002B8867 /* ListItem+ListItemHelpers.h */,
 				19022F0A18333B700057EB7A /* NSManagedObject+Helpers.h */,
 				19022F0B18333B700057EB7A /* NSManagedObject+Helpers.m */,
 				19022F1818335BD70057EB7A /* NSFetchedResultsControllerFactory.h */,
 				19022F1918335BD70057EB7A /* NSFetchedResultsControllerFactory.m */,
-				198EDA93183AE5260098EFCF /* ListItem+ListItemHelpers.h */,
-				198EDA94183AE5260098EFCF /* ListItem+ListItemHelpers.m */,
 			);
 			name = Helpers;
 			sourceTree = "<group>";
@@ -280,6 +293,8 @@
 				19022F1D183361470057EB7A /* ListItemTableViewCell.m */,
 				19022F4F183442D00057EB7A /* AddListItemTableViewHeader.h */,
 				19022F50183442D00057EB7A /* AddListItemTableViewHeader.m */,
+				19A633FB183B90DE002B8867 /* AFCheckbox.h */,
+				19A633FC183B90DE002B8867 /* AFCheckbox.m */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -384,7 +399,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				19022ED9183328890057EB7A /* InfoPlist.strings in Resources */,
+				19A63403183BAA59002B8867 /* Raleway-Thin.ttf in Resources */,
 				19022EE4183328890057EB7A /* Images.xcassets in Resources */,
+				19A63401183B9EA2002B8867 /* Raleway-Regular.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -471,15 +488,16 @@
 				19022F1718335A950057EB7A /* ListTableView.m in Sources */,
 				19022F33183381C40057EB7A /* NSString+Random.m in Sources */,
 				19022F1E183361470057EB7A /* ListItemTableViewCell.m in Sources */,
+				19A633FD183B90DE002B8867 /* AFCheckbox.m in Sources */,
 				19022F5418344AD90057EB7A /* AFTextField.m in Sources */,
 				19022F0418332E0A0057EB7A /* ListItem.m in Sources */,
+				19A633FA183B8DAA002B8867 /* MainViewController.m in Sources */,
 				19BD001C183AEBCD00A95C6C /* NSManagedObject+Helpers.m in Sources */,
 				19022F221833635F0057EB7A /* FormatUtils.m in Sources */,
-				198EDA95183AE5260098EFCF /* ListItem+ListItemHelpers.m in Sources */,
 				19022EE2183328890057EB7A /* WunderTest.xcdatamodeld in Sources */,
-				19022F11183348AA0057EB7A /* MainViewController.m in Sources */,
 				19022EDF183328890057EB7A /* AppDelegate.m in Sources */,
 				19022F1A18335BD70057EB7A /* NSFetchedResultsControllerFactory.m in Sources */,
+				19A633F5183B5B32002B8867 /* ListItem+ListItemHelpers.m in Sources */,
 				19022EDB183328890057EB7A /* main.m in Sources */,
 				19022F32183381B50057EB7A /* TestDataGenerator.m in Sources */,
 			);
@@ -610,9 +628,17 @@
 				ARCHS = "$(ARCHS_STANDARD)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(SYSTEM_APPS_DIR)/Reveal.app/Contents/SharedSupport/iOS-Libraries",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "WunderTest/WunderTest-Prefix.pch";
 				INFOPLIST_FILE = "WunderTest/WunderTest-Info.plist";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					/Users/akfreas/github/mPillar,
+				);
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
@@ -626,9 +652,17 @@
 				ARCHS = "$(ARCHS_STANDARD)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(SYSTEM_APPS_DIR)/Reveal.app/Contents/SharedSupport/iOS-Libraries",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "WunderTest/WunderTest-Prefix.pch";
 				INFOPLIST_FILE = "WunderTest/WunderTest-Info.plist";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					/Users/akfreas/github/mPillar,
+				);
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
