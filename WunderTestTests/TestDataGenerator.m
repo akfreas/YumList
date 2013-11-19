@@ -53,7 +53,7 @@
     NSRange days = [cal rangeOfUnit:NSDayCalendarUnit inUnit:NSMonthCalendarUnit forDate:today];
     [currentComponents setDay:arc4random() % days.length];
     
-    return currentComponents.date;
+    return [cal dateFromComponents:currentComponents];
 }
 
 
