@@ -5,6 +5,7 @@
 
 @interface ListItemTests : XCTestCase {
     PersistenceManager *ourManager;
+    NSInteger numRowsGenerated;
 }
 
 @end
@@ -28,9 +29,14 @@
     [ourManager deleteAllObjects];
 }
 
--(void)generateDummyData {
-    NSInteger numRows = arc4random() % 100;
-    [TestDataGenerator generateTestListItemDataWithCount:numRows context:ourManager.managedObjectContext];
+-(void)generateRandomDummyData {
+    numRowsGenerated = (arc4random() + 1) % 100;
+    [TestDataGenerator generateTestListItemDataWithCount:numRowsGenerated context:ourManager.managedObjectContext];
+}
+
+-(void)generateOrderedDummyData {
+    numRowsGenerated = (arc4random() + 1) % 100;
+    [TestDataGenerator generateNumberedTestListItemsWithCount:numRowsGenerated context:ourManager.managedObjectContext];
 }
 
 -(void)testCreateAndSaveListItem {
@@ -71,26 +77,63 @@
 -(void)testCoreDataDeletionCorrectness {
     
     [self resetPersistenceLayer];
-    [self generateDummyData];
+    [self generateRandomDummyData];
     NSArray *allObjects = [ListItem allObjectsInContext:ourManager.managedObjectContext];
-    NSInteger numRows = [allObjects count];
+    NSInteger countRows = [allObjects count];
     ListItem *ourListItem = [allObjects lastObject];
     [ourManager deleteObject:ourListItem];
     
     NSInteger newCount = [[ListItem allObjectsInContext:ourManager.managedObjectContext] count];
-    XCTAssertEqual(newCount, numRows - 1, @"The item was not successfully deleted in the db.");
+    XCTAssertEqual(newCount, countRows - 1, @"The item was not successfully deleted in the db.");
 }
 
 -(void)testListOrderCorrectnessAfterCreatingNewObject {
     [self resetPersistenceLayer];
-    NSInteger numRows = arc4random() % 100;
-    [TestDataGenerator generateNumberedTestListItemsWithCount:numRows];
-    
+    [self generateOrderedDummyData];
     ListItem *newListItem = [ListItem newOrderedItemInContext:ourManager.managedObjectContext];
     [newListItem save];
-    NSNumber *expectedNumber = [NSNumber numberWithInt:numRows]; //We are checking against numRows because listOrder is 0 based.
+    NSNumber *expectedNumber = [NSNumber numberWithInt:numRowsGenerated]; //We are checking against numRows because listOrder is 0 based.
     XCTAssertTrue([expectedNumber isEqualToNumber:newListItem.listOrder], @"List order should be %@, got back %@", expectedNumber, newListItem.listOrder);
 }
 
+-(void)testReorderingOfListItems {
+    [self resetPersistenceLayer];
+    [self generateOrderedDummyData];
+    NSInteger orderInt = (arc4random() % numRowsGenerated) - 1;
+    NSNumber *order = [NSNumber numberWithInteger:orderInt];
+    
+    NSArray *listItemArray = [ListItem listItemsGreaterThanOrEqualToOrder:order inContext:ourManager.managedObjectContext];
+    
+    for (ListItem *incrementItem in listItemArray) {
+        incrementItem.listOrder = [NSNumber numberWithInteger:[incrementItem.listOrder integerValue] + 1];
+    }
+    
+    ListItem *newListItem = [ListItem newInContext:ourManager.managedObjectContext];
+    NSString *newItemTitle = [NSString stringWithFormat:@"I should be in the %@th place!", order];
+    newListItem.title = newItemTitle;
+    newListItem.creationDate = [NSDate date];
+    newListItem.completed = [NSNumber numberWithBool:NO];
+    newListItem.listOrder = order;
+    
+    [PersistenceManager saveContext:ourManager.managedObjectContext];
+    NSArray *allObjects = [ListItem allObjectsSortedByListOrderInContext:ourManager.managedObjectContext];
+    
+    for (ListItem *item in allObjects) {
+        NSNumber *itemOrder = item.listOrder;
+        NSNumber *previousListOrderFromTitle = [NSNumber numberWithInt:[item.title integerValue]];
+        if ([itemOrder compare:previousListOrderFromTitle] == NSOrderedSame) {
+            XCTAssertTrue([previousListOrderFromTitle integerValue] == [item.listOrder integerValue], @"Item with list order #%@ should have the same order as contained in its title.  Title is %@.", item.listOrder, item.title);
+        } else if ([itemOrder compare:order] == NSOrderedSame) {
+            XCTAssertTrue([item.title isEqualToString:newItemTitle], @"Item with list order #%@ should have title '%@'. It doesn't. Reordering failed!", order, newItemTitle);
+        } else if ([itemOrder compare:previousListOrderFromTitle] == NSOrderedDescending) {
+            
+            NSInteger orderIntFromTitle = [previousListOrderFromTitle integerValue];
+            NSInteger expectedListOrder = [item.listOrder integerValue] - 1;
+            XCTAssertTrue(orderIntFromTitle == expectedListOrder, @"Item with list order #%@ should have had %@ set as its title. Reordering failed!", item.listOrder, previousListOrderFromTitle);
+        } else {
+            XCTFail(@"Comparison didn't happen. Something is wrong.");
+        }
+    }
+}
 
 @end
