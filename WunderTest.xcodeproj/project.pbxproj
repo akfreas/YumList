@@ -29,7 +29,6 @@
 		19022F1A18335BD70057EB7A /* NSFetchedResultsControllerFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = 19022F1918335BD70057EB7A /* NSFetchedResultsControllerFactory.m */; };
 		19022F1E183361470057EB7A /* ListItemTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 19022F1D183361470057EB7A /* ListItemTableViewCell.m */; };
 		19022F221833635F0057EB7A /* FormatUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 19022F211833635F0057EB7A /* FormatUtils.m */; };
-		19022F24183365420057EB7A /* LocaleFormattingTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 19022F23183365420057EB7A /* LocaleFormattingTests.m */; };
 		19022F2618336D8F0057EB7A /* TableViewTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 19022F2518336D8F0057EB7A /* TableViewTests.m */; };
 		19022F2918336DF50057EB7A /* TestDataGenerator.m in Sources */ = {isa = PBXBuildFile; fileRef = 19022F2818336DF50057EB7A /* TestDataGenerator.m */; };
 		19022F32183381B50057EB7A /* TestDataGenerator.m in Sources */ = {isa = PBXBuildFile; fileRef = 19022F2818336DF50057EB7A /* TestDataGenerator.m */; };
@@ -98,7 +97,6 @@
 		19022F1D183361470057EB7A /* ListItemTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ListItemTableViewCell.m; path = Classes/ListItemTableViewCell.m; sourceTree = "<group>"; };
 		19022F201833635F0057EB7A /* FormatUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FormatUtils.h; path = Classes/FormatUtils.h; sourceTree = "<group>"; };
 		19022F211833635F0057EB7A /* FormatUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FormatUtils.m; path = Classes/FormatUtils.m; sourceTree = "<group>"; };
-		19022F23183365420057EB7A /* LocaleFormattingTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocaleFormattingTests.m; sourceTree = "<group>"; };
 		19022F2518336D8F0057EB7A /* TableViewTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TableViewTests.m; sourceTree = "<group>"; };
 		19022F2818336DF50057EB7A /* TestDataGenerator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestDataGenerator.m; sourceTree = "<group>"; };
 		19022F31183376050057EB7A /* TestDataGenerator.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TestDataGenerator.h; sourceTree = "<group>"; };
@@ -227,7 +225,6 @@
 				19022EF7183328890057EB7A /* WunderTestTests.m */,
 				19022EF2183328890057EB7A /* Supporting Files */,
 				19022F1218334E2F0057EB7A /* ListItemTests.m */,
-				19022F23183365420057EB7A /* LocaleFormattingTests.m */,
 				19022F2518336D8F0057EB7A /* TableViewTests.m */,
 				19022F2818336DF50057EB7A /* TestDataGenerator.m */,
 				19022F31183376050057EB7A /* TestDataGenerator.h */,
@@ -519,7 +516,6 @@
 				19A6340C183BB5DA002B8867 /* NSString+Random.m in Sources */,
 				19022F2918336DF50057EB7A /* TestDataGenerator.m in Sources */,
 				19022EF8183328890057EB7A /* WunderTestTests.m in Sources */,
-				19022F24183365420057EB7A /* LocaleFormattingTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
