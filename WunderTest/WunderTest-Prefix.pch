@@ -15,5 +15,6 @@
     #import <Foundation/Foundation.h>
     #import <CoreData/CoreData.h>
     #import "NSManagedObject+Helpers.h"
+    #import "ListItem+ListItemHelpers.h"
     #import <BlocksKit/BlocksKit.h>
 #endif
