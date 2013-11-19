@@ -24,7 +24,6 @@
 		19022EF8183328890057EB7A /* WunderTestTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 19022EF7183328890057EB7A /* WunderTestTests.m */; };
 		19022F0418332E0A0057EB7A /* ListItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 19022F0318332E0A0057EB7A /* ListItem.m */; };
 		19022F0818332E400057EB7A /* PersistenceManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 19022F0718332E400057EB7A /* PersistenceManager.m */; };
-		19022F0C18333B700057EB7A /* NSManagedObject+Helpers.m in Sources */ = {isa = PBXBuildFile; fileRef = 19022F0B18333B700057EB7A /* NSManagedObject+Helpers.m */; };
 		19022F11183348AA0057EB7A /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 19022F10183348AA0057EB7A /* MainViewController.m */; };
 		19022F1318334E2F0057EB7A /* ListItemTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 19022F1218334E2F0057EB7A /* ListItemTests.m */; };
 		19022F1718335A950057EB7A /* ListTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 19022F1618335A950057EB7A /* ListTableView.m */; };
@@ -40,6 +39,8 @@
 		19022F33183381C40057EB7A /* NSString+Random.m in Sources */ = {isa = PBXBuildFile; fileRef = 19022F2C183370190057EB7A /* NSString+Random.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		19022F51183442D00057EB7A /* AddListItemTableViewHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = 19022F50183442D00057EB7A /* AddListItemTableViewHeader.m */; };
 		19022F5418344AD90057EB7A /* AFTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 19022F5318344AD90057EB7A /* AFTextField.m */; };
+		198EDA95183AE5260098EFCF /* ListItem+ListItemHelpers.m in Sources */ = {isa = PBXBuildFile; fileRef = 198EDA94183AE5260098EFCF /* ListItem+ListItemHelpers.m */; };
+		19BD001C183AEBCD00A95C6C /* NSManagedObject+Helpers.m in Sources */ = {isa = PBXBuildFile; fileRef = 19022F0B18333B700057EB7A /* NSManagedObject+Helpers.m */; };
 		33E85E9DC8F741688B5F9617 /* libPods-WunderTest.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BAD75CB70ACC4647A45D91BD /* libPods-WunderTest.a */; };
 		9D39F315819346079BFDD5B4 /* libPods-WunderTestTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0C7A10C88FC94EB3AABAA660 /* libPods-WunderTestTests.a */; };
 /* End PBXBuildFile section */
@@ -104,6 +105,8 @@
 		19022F50183442D00057EB7A /* AddListItemTableViewHeader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AddListItemTableViewHeader.m; path = Classes/AddListItemTableViewHeader.m; sourceTree = "<group>"; };
 		19022F5218344AD90057EB7A /* AFTextField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AFTextField.h; path = Classes/AFTextField.h; sourceTree = "<group>"; };
 		19022F5318344AD90057EB7A /* AFTextField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AFTextField.m; path = Classes/AFTextField.m; sourceTree = "<group>"; };
+		198EDA93183AE5260098EFCF /* ListItem+ListItemHelpers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "ListItem+ListItemHelpers.h"; path = "../ListItem+ListItemHelpers.h"; sourceTree = "<group>"; };
+		198EDA94183AE5260098EFCF /* ListItem+ListItemHelpers.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "ListItem+ListItemHelpers.m"; path = "../ListItem+ListItemHelpers.m"; sourceTree = "<group>"; };
 		ABFAE3D966F545E385A0486F /* Pods-WunderTestTests.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WunderTestTests.xcconfig"; path = "Pods/Pods-WunderTestTests.xcconfig"; sourceTree = "<group>"; };
 		BAD75CB70ACC4647A45D91BD /* libPods-WunderTest.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-WunderTest.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		CF3E5BE010224CDB9FEFF0EB /* Pods-WunderTest.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WunderTest.xcconfig"; path = "Pods/Pods-WunderTest.xcconfig"; sourceTree = "<group>"; };
@@ -251,6 +254,8 @@
 				19022F0B18333B700057EB7A /* NSManagedObject+Helpers.m */,
 				19022F1818335BD70057EB7A /* NSFetchedResultsControllerFactory.h */,
 				19022F1918335BD70057EB7A /* NSFetchedResultsControllerFactory.m */,
+				198EDA93183AE5260098EFCF /* ListItem+ListItemHelpers.h */,
+				198EDA94183AE5260098EFCF /* ListItem+ListItemHelpers.m */,
 			);
 			name = Helpers;
 			sourceTree = "<group>";
@@ -467,9 +472,10 @@
 				19022F33183381C40057EB7A /* NSString+Random.m in Sources */,
 				19022F1E183361470057EB7A /* ListItemTableViewCell.m in Sources */,
 				19022F5418344AD90057EB7A /* AFTextField.m in Sources */,
-				19022F0C18333B700057EB7A /* NSManagedObject+Helpers.m in Sources */,
 				19022F0418332E0A0057EB7A /* ListItem.m in Sources */,
+				19BD001C183AEBCD00A95C6C /* NSManagedObject+Helpers.m in Sources */,
 				19022F221833635F0057EB7A /* FormatUtils.m in Sources */,
+				198EDA95183AE5260098EFCF /* ListItem+ListItemHelpers.m in Sources */,
 				19022EE2183328890057EB7A /* WunderTest.xcdatamodeld in Sources */,
 				19022F11183348AA0057EB7A /* MainViewController.m in Sources */,
 				19022EDF183328890057EB7A /* AppDelegate.m in Sources */,
