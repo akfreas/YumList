@@ -8,9 +8,9 @@
 +(ListItem *)listItemWithListOrder:(NSNumber *)order;
 +(ListItem *)listItemWithListOrder:(NSNumber *)order inContext:(NSManagedObjectContext *)context;
 
-+(NSArray *)listItemsGreaterThanOrder:(NSNumber *)order;
-+(NSArray *)listItemsGreaterThanOrder:(NSNumber *)order inContext:(NSManagedObjectContext *)context;
++(void)removeListItemAndReorderListItems:(ListItem *)item;
 +(void)insertListItemAndReorderListItems:(ListItem *)item inContext:(NSManagedObjectContext *)context;
 +(void)insertListItemAndReorderListItems:(ListItem *)item;
++(void)changeOrderOfListItem:(ListItem *)item toOrder:(NSNumber *)order;
 
 @end

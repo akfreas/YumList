@@ -50,49 +50,51 @@
     }
 }
 
++(void)removeListItemAndReorderListItems:(ListItem *)item {
+    
+    NSArray *listItemSortedFilteredArray = [ListItem listItemsGreaterThanOrderOfListItem:item inContext:item.managedObjectContext];
+    
+    for (ListItem *decrementItem in listItemSortedFilteredArray) {
+        decrementItem.listOrder = [NSNumber numberWithInteger:[decrementItem.listOrder integerValue] - 1];
+    }
+    [item delete];
+}
+
+
 +(void)insertListItemAndReorderListItems:(ListItem *)item {
     return [self insertListItemAndReorderListItems:item inContext:[PersistenceManager managedObjectContext]];
 }
 
 +(void)insertListItemAndReorderListItems:(ListItem *)item inContext:(NSManagedObjectContext *)context {
     
-    NSArray *listItemSortedFilteredArray = [ListItem listItemsGreaterThanOrder:item.listOrder inContext:context];
+    if (item.managedObjectContext == nil || item.managedObjectContext != context) {
+        [context insertObject:item];
+    }
     
+    NSArray *listItemSortedFilteredArray = [ListItem listItemsGreaterThanOrderOfListItem:item inContext:context];
+    int i = [item.listOrder integerValue];
     for (ListItem *incrementItem in listItemSortedFilteredArray) {
-        incrementItem.listOrder = [NSNumber numberWithInteger:[incrementItem.listOrder integerValue] + 1];
+        i++;
+        incrementItem.listOrder = [NSNumber numberWithInteger:i];
     }
 }
 
-+(NSArray *)listItemsGreaterThanOrder:(NSNumber *)order {
-    return [self listItemsGreaterThanOrder:order inContext:[PersistenceManager managedObjectContext]];
++(NSArray *)listItemsGreaterThanOrderOfListItem:(ListItem *)item {
+    return [self listItemsGreaterThanOrderOfListItem:item inContext:[PersistenceManager managedObjectContext]];
 }
 
-+(NSArray *)listItemsGreaterThanOrder:(NSNumber *)order inContext:(NSManagedObjectContext *)context {
++(NSArray *)listItemsGreaterThanOrderOfListItem:(ListItem *)item inContext:(NSManagedObjectContext *)context {
     NSFetchRequest *request = [ListItem baseFetchRequest];
-    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"listOrder > %@", order];
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"listOrder >= %@ && self != %@", item.listOrder, item];
+    NSSortDescriptor *sortDescriptor = [NSSortDescriptor sortDescriptorWithKey:@"listOrder" ascending:YES];
     request.predicate = predicate;
+    request.sortDescriptors = @[sortDescriptor];
     NSError *error = nil;
     NSArray *itemsMatching = [context executeFetchRequest:request error:&error];
     if (error != nil) {
-        [NSException raise:@"WLTFetchException" format:@"Error fetching list item with order %@ in MOC: %@ Error: %@", order, error, context];
+        [NSException raise:@"WLTFetchException" format:@"Error fetching list item with order %@ in MOC: %@ Error: %@", item, error, context];
     }
     return itemsMatching;
-}
-
--(void)insertIntoListOrder:(NSNumber *)listOrder {
-    ListItem *currentListItem = [ListItem listItemWithListOrder:listOrder inContext:self.managedObjectContext];
-    if (currentListItem != nil) {
-        NSComparisonResult comparison = [currentListItem.listOrder compare:listOrder];
-        if (comparison == NSOrderedAscending || comparison == NSOrderedSame) {
-            [self willChangeValueForKey:@"listOrder"];
-            currentListItem.listOrder = [NSNumber numberWithInteger:[currentListItem.listOrder integerValue] + 1];
-            [self didChangeValueForKey:@"listOrder"];
-        }
-    } else {
-        [self willChangeValueForKey:@"listOrder"];
-        [self setValue:listOrder forKey:@"listOrder"];
-        [self didChangeValueForKey:@"listOrder"];
-    }
 }
 
 @end
