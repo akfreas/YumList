@@ -102,11 +102,6 @@
     NSInteger orderInt = (arc4random() % numRowsGenerated) - 1;
     NSNumber *order = [NSNumber numberWithInteger:orderInt];
     
-    NSArray *listItemArray = [ListItem listItemsGreaterThanOrEqualToOrder:order inContext:ourManager.managedObjectContext];
-    
-    for (ListItem *incrementItem in listItemArray) {
-        incrementItem.listOrder = [NSNumber numberWithInteger:[incrementItem.listOrder integerValue] + 1];
-    }
     
     ListItem *newListItem = [ListItem newInContext:ourManager.managedObjectContext];
     NSString *newItemTitle = [NSString stringWithFormat:@"I should be in the %@th place!", order];
@@ -115,10 +110,13 @@
     newListItem.completed = [NSNumber numberWithBool:NO];
     newListItem.listOrder = order;
     
-    [PersistenceManager saveContext:ourManager.managedObjectContext];
-    NSArray *allObjects = [ListItem allObjectsSortedByListOrderInContext:ourManager.managedObjectContext];
+    [ListItem insertListItemAndReorderListItems:newListItem inContext:ourManager.managedObjectContext];
     
-    for (ListItem *item in allObjects) {
+    [PersistenceManager saveContext:ourManager.managedObjectContext];
+    
+    NSArray *allListItemsSorted = [ListItem allObjectsSortedByListOrderInContext:ourManager.managedObjectContext];
+    
+    for (ListItem *item in allListItemsSorted) {
         NSNumber *itemOrder = item.listOrder;
         NSNumber *previousListOrderFromTitle = [NSNumber numberWithInt:[item.title integerValue]];
         if ([itemOrder compare:previousListOrderFromTitle] == NSOrderedSame) {
@@ -129,7 +127,7 @@
             
             NSInteger orderIntFromTitle = [previousListOrderFromTitle integerValue];
             NSInteger expectedListOrder = [item.listOrder integerValue] - 1;
-            XCTAssertTrue(orderIntFromTitle == expectedListOrder, @"Item with list order #%@ should have had %@ set as its title. Reordering failed!", item.listOrder, previousListOrderFromTitle);
+            XCTAssertTrue(orderIntFromTitle == expectedListOrder, @"Item with list order #%@ should have had %@ set as its title, instead it's %@. Reordering failed!", item.listOrder, previousListOrderFromTitle, item.title);
         } else {
             XCTFail(@"Comparison didn't happen. Something is wrong.");
         }
