@@ -69,6 +69,15 @@
     return objects;
 }
 
+-(NSString *)description {
+    NSEntityDescription *entityDescription = [self.class entityDescriptionInContext:self.managedObjectContext];
+    NSArray *instanceProperties = entityDescription.properties;
+    NSMutableString *descriptionString = [NSMutableString new];
+    for (NSPropertyDescription *propertyDesc in instanceProperties) {
+        [descriptionString appendFormat:@"%@ = %@, ", propertyDesc.name, [self valueForKey:propertyDesc.name]];
+    }
+    return descriptionString;
+}
 
 
 @end
