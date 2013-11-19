@@ -7,7 +7,7 @@
 
 +(NSFetchedResultsController *)fetchControllerForAllListItemsInContext:(NSManagedObjectContext *)context {
     
-    NSSortDescriptor *listOrderSortDescriptor = [NSSortDescriptor sortDescriptorWithKey:@"listOrder" ascending:NO];
+    NSSortDescriptor *listOrderSortDescriptor = [NSSortDescriptor sortDescriptorWithKey:@"listOrder" ascending:YES];
     
     NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:NSStringFromClass([ListItem class])];
     request.sortDescriptors = @[listOrderSortDescriptor];
