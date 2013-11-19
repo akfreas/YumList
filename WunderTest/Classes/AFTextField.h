@@ -3,7 +3,5 @@
 @property (copy, nonatomic) void(^didBeginEditingAction)(AFTextField *textField);
 @property (copy, nonatomic) void(^didEndEditingAction)(AFTextField *textField);
 
--(void)setUnselectedBackground;
--(void)setSelectedBackground;
 
 @end

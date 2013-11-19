@@ -2,7 +2,7 @@
 
 @interface AFTextFieldDelegate : NSObject <UITextFieldDelegate>
 
-
+@property (strong, nonatomic) NSString *placeholder;
 @property (copy) void(^returnKeyboardButtonAction)(AFTextField *textField);
 @property (copy) void(^didBeginEditingAction)(AFTextField *textField);
 @property (copy) void(^didEndEditingAction)(AFTextField *textField);
@@ -14,19 +14,17 @@
 #pragma mark Delegate Methods
 
 -(void)textFieldDidBeginEditing:(AFTextField *)textField {
-    [textField setSelectedBackground];
-    
     if (_didBeginEditingAction != NULL) {
         _didBeginEditingAction(textField);
     }
 }
 
 -(void)textFieldDidEndEditing:(AFTextField*)textField {
-    [textField setUnselectedBackground];
     if (_didEndEditingAction != NULL) {
         _didEndEditingAction(textField);
     }
 }
+
 
 -(BOOL)textFieldShouldReturn:(AFTextField *)textField {
     if (_returnKeyboardButtonAction != NULL) {
@@ -44,7 +42,7 @@
 @end
 
 @implementation AFTextField {
-    NSString *placeHolder;
+    NSAttributedString *placeHolder;
     AFTextFieldDelegate *delegate;
 }
 
@@ -100,8 +98,7 @@
     [self setLeftPadding];
     self.rightViewMode = UITextFieldViewModeWhileEditing;
     self.borderStyle = UITextBorderStyleNone;
-    placeHolder = self.placeholder;
-    [self setUnselectedBackground];
+    placeHolder = self.attributedPlaceholder;
 }
 
 - (void)setLeftPadding {
@@ -112,24 +109,11 @@
     self.leftViewMode = UITextFieldViewModeAlways;
 }
 
-- (void)setUnselectedBackground {
-//    [self setBackground:[[UIImage imageNamed:@"textfield_unselected.png"] resizableImageWithCapInsets:UIEdgeInsetsMake(0.0f, 2.0f, 5.0f, 2.0f)]];
-    self.textColor = [UIColor colorWithRed:122.0f/256.0f green:122.0f/256.0f blue:122.0f/256.0f alpha:1.0f];
-    if ([self.text length] == 0 ) {
-        self.leftViewMode = UITextFieldViewModeNever;
-    }
-    self.placeholder = placeHolder;
+-(void)setAttributedPlaceholder:(NSAttributedString *)attributedPlaceholder {
+    attributedPlaceholder = attributedPlaceholder;
+    [super setAttributedPlaceholder:attributedPlaceholder];
 }
-
-- (void)setSelectedBackground {
-//    [self setBackground:[[UIImage imageNamed:@"textfield_selected.png"] resizableImageWithCapInsets:UIEdgeInsetsMake(0.0f, 2.0f, 5.0f, 2.0f)]];
-    self.textColor = [UIColor colorWithRed:32.0f/256.0f green:171.0f/256.0f blue:17.0f/256.0f alpha:1.0f];
-    self.placeholder = @"";
-    self.leftViewMode = UITextFieldViewModeAlways;
+-(CGRect)textRectForBounds:(CGRect)bounds {
+    return CGRectInset(bounds, 4, 0);
 }
-
-
-
-
-
 @end
