@@ -8,7 +8,7 @@
 +(instancetype)objectWithObjectID:(NSManagedObjectID *)objectId;
 +(NSArray *)allObjects;
 +(NSArray *)allObjectsInContext:(NSManagedObjectContext *)context;
-
++(NSFetchRequest *)baseFetchRequest;
 -(void)saveInContext:(NSManagedObjectContext *)context;
 -(void)save;
 -(void)delete;

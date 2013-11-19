@@ -69,6 +69,10 @@
     return objects;
 }
 
++(NSFetchRequest *)baseFetchRequest {
+    return [NSFetchRequest fetchRequestWithEntityName:NSStringFromClass(self.class)];
+}
+
 -(NSString *)description {
     NSEntityDescription *entityDescription = [self.class entityDescriptionInContext:self.managedObjectContext];
     NSArray *instanceProperties = entityDescription.properties;
