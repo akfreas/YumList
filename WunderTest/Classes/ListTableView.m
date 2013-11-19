@@ -8,19 +8,24 @@
 
 @interface ListTableView () <UITableViewDataSource, UITableViewDelegate>
 
-@end
+@end 
 
 @implementation ListTableView {
     BOOL userDrivenChange;
 }
 
+static NSString *identifier = @"ListCellID";
+
+
 -(id)initWithFrame:(CGRect)frame {
     self = [super initWithFrame:frame];
     if (self) {
-        [self setupFetchController];
         self.dataSource = self;
         self.delegate = self;
         userDrivenChange = NO;
+        [self registerClass:[ListItemTableViewCell class] forCellReuseIdentifier:identifier];
+        [self setupFetchController];
+
     }
     return self;
 }
@@ -34,12 +39,6 @@
     if (controllerError != nil) {
         NSLog(@"Error performing fetch on %@ fetch controller. Description: %@", NSStringFromClass(self.class), controllerError.description);
     }
-}
-
--(void)configureCell:(ListItemTableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath {
-    
-    ListItem *item = [self.fetchController objectAtIndexPath:indexPath];
-    cell.listItem = item;
 }
 
 #pragma mark UITableView Override Methods
@@ -57,6 +56,11 @@
     }
     [PersistenceManager saveContext:self.fetchController.managedObjectContext];
     userDrivenChange = NO;
+}
+
+-(void)setEditing:(BOOL)editing {
+    [super setEditing:editing];
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"ListTableEditing" object:nil userInfo:@{@"editing": [NSNumber numberWithBool:editing]}];
 }
 
 #pragma mark NSFetchedResultsController Delegate Methods
@@ -111,6 +115,16 @@
     [self moveRowAtIndexPath:sourceIndexPath toIndexPath:destinationIndexPath];
 }
 
+-(void)tableView:(UITableView *)tableView willBeginEditingRowAtIndexPath:(NSIndexPath *)indexPath {
+    ListItemTableViewCell *cell = (ListItemTableViewCell *)[tableView cellForRowAtIndexPath:indexPath];
+    cell.editing = YES;
+}
+
+-(void)tableView:(UITableView *)tableView didEndEditingRowAtIndexPath:(NSIndexPath *)indexPath {
+    ListItemTableViewCell *cell = (ListItemTableViewCell *)[tableView cellForRowAtIndexPath:indexPath];
+    cell.editing = NO;
+}
+
 -(UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
     
     UIView *headerView = nil;
@@ -143,15 +157,18 @@
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    static NSString *identifier = @"ListCellID";
     ListItemTableViewCell *cell = (ListItemTableViewCell *)[tableView dequeueReusableCellWithIdentifier:identifier];
-    
-    if (cell == nil) {
-        cell = [[ListItemTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
-    }
     [self configureCell:cell atIndexPath:indexPath];
     return cell;
 }
+
+
+-(void)configureCell:(ListItemTableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath {
+    
+    ListItem *item = [self.fetchController objectAtIndexPath:indexPath];
+    cell.listItem = item;
+}
+
 
 -(void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
     if (editingStyle == UITableViewCellEditingStyleDelete) {
