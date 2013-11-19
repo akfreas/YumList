@@ -36,7 +36,7 @@
 		19022F51183442D00057EB7A /* AddListItemTableViewHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = 19022F50183442D00057EB7A /* AddListItemTableViewHeader.m */; };
 		19022F5418344AD90057EB7A /* AFTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 19022F5318344AD90057EB7A /* AFTextField.m */; };
 		19A633F5183B5B32002B8867 /* ListItem+ListItemHelpers.m in Sources */ = {isa = PBXBuildFile; fileRef = 19A633F3183B5B32002B8867 /* ListItem+ListItemHelpers.m */; };
-		19A633F9183B5F13002B8867 /* Reveal.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 19A633F8183B5F13002B8867 /* Reveal.framework */; };
+		19A633F9183B5F13002B8867 /* Reveal.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 19A633F8183B5F13002B8867 /* Reveal.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		19A633FA183B8DAA002B8867 /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 19022F10183348AA0057EB7A /* MainViewController.m */; };
 		19A633FD183B90DE002B8867 /* AFCheckbox.m in Sources */ = {isa = PBXBuildFile; fileRef = 19A633FC183B90DE002B8867 /* AFCheckbox.m */; };
 		19A63401183B9EA2002B8867 /* Raleway-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 19A63400183B9EA2002B8867 /* Raleway-Regular.ttf */; };
