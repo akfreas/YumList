@@ -13,7 +13,7 @@ I used CocoaPods to install some third-party libraries into the project.  Becaus
 Things of note
 -------------------
 
-*Includes Unit Test target with 10 tests, mostly related to Core Data coverage
-*Several custom, reusable UI components related to common UITableView functionality
-*Centralized Core Data functionality, with convenience methods attached to NSManagedObjects using categories
-*Standard functionality (reordering, create, delete, etc.)
+*  Includes Unit Test target with 10 tests, mostly related to Core Data coverage
+*  Several custom, reusable UI components related to common UITableView functionality
+*  Centralized Core Data functionality, with convenience methods attached to NSManagedObjects using categories
+*  Standard functionality (reordering, create, delete, etc.)
