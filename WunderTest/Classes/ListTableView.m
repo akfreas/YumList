@@ -22,6 +22,8 @@ static NSString *identifier = @"ListCellID";
     if (self) {
         self.dataSource = self;
         self.delegate = self;
+        self.autoresizesSubviews = YES;
+        self.autoresizingMask = (UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleTopMargin | UIViewAutoresizingFlexibleBottomMargin | UIViewAutoresizingFlexibleWidth);
         userDrivenChange = NO;
         [self registerClass:[ListItemTableViewCell class] forCellReuseIdentifier:identifier];
         [self setupFetchController];
