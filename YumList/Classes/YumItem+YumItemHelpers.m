@@ -1,4 +1,5 @@
 #import "YumItem+YumItemHelpers.h"
+#import "NSManagedObject+Helpers.h"
 #import "PersistenceManager.h"
 
 @implementation YumItem (YumItemHelpers)
@@ -8,7 +9,7 @@
 }
 
 +(YumItem *)itemWithExternalID:(NSString *)externalID context:(NSManagedObjectContext *)context {
-    static NSFetchRequest *request;
+    NSFetchRequest *request;
     if (request == nil) {
         request = [NSFetchRequest fetchRequestWithEntityName:NSStringFromClass(self.class)];
     }
@@ -29,6 +30,16 @@
         retItem = nil;
     }
     return retItem;
+}
+
++(YumItem *)newItemWithDictionary:(NSDictionary *)dict {
+    return [self newItemWithDictionary:dict context:[PersistenceManager managedObjectContext]];
+}
+
++(YumItem *)newItemWithDictionary:(NSDictionary *)dict context:(NSManagedObjectContext *)context {
+    YumItem *newItem = [YumItem newInContext:context];
+    [newItem setValuesForKeysWithDictionary:dict];
+    return newItem;
 }
 
 @end
