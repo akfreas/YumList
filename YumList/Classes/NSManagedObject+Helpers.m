@@ -27,7 +27,13 @@
 }
 
 -(void)save {
-    [PersistenceManager save];
+    NSError *saveError = nil;
+    if ([self.managedObjectContext hasChanges]) {
+        [self.managedObjectContext save:&saveError];
+    }
+    if (saveError != nil) {
+        NSLog(@"Error saving %@, error: %@", self, [saveError description]);
+    }
 }
 
 -(void)delete {
