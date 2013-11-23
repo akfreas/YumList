@@ -16,5 +16,7 @@
     #import <CoreData/CoreData.h>
     #import "NSManagedObject+Helpers.h"
     #import "ListItem+ListItemHelpers.h"
+    #import "YumItem+YumItemHelpers.h"
     #import <BlocksKit/BlocksKit.h>
+    #import "Constants.h"
 #endif
