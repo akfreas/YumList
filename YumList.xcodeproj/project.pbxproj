@@ -14,14 +14,14 @@
 		19022ED9183328890057EB7A /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 19022ED7183328890057EB7A /* InfoPlist.strings */; };
 		19022EDB183328890057EB7A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 19022EDA183328890057EB7A /* main.m */; };
 		19022EDF183328890057EB7A /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 19022EDE183328890057EB7A /* AppDelegate.m */; };
-		19022EE2183328890057EB7A /* WunderTest.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 19022EE0183328890057EB7A /* WunderTest.xcdatamodeld */; };
+		19022EE2183328890057EB7A /* YumList.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 19022EE0183328890057EB7A /* YumList.xcdatamodeld */; };
 		19022EE4183328890057EB7A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 19022EE3183328890057EB7A /* Images.xcassets */; };
 		19022EEB183328890057EB7A /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 19022EEA183328890057EB7A /* XCTest.framework */; };
 		19022EEC183328890057EB7A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 19022ECC183328890057EB7A /* Foundation.framework */; };
 		19022EED183328890057EB7A /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 19022ED0183328890057EB7A /* UIKit.framework */; };
 		19022EEE183328890057EB7A /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 19022ED2183328890057EB7A /* CoreData.framework */; };
 		19022EF6183328890057EB7A /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 19022EF4183328890057EB7A /* InfoPlist.strings */; };
-		19022EF8183328890057EB7A /* WunderTestTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 19022EF7183328890057EB7A /* WunderTestTests.m */; };
+		19022EF8183328890057EB7A /* YumListTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 19022EF7183328890057EB7A /* YumListTests.m */; };
 		19022F0418332E0A0057EB7A /* ListItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 19022F0318332E0A0057EB7A /* ListItem.m */; };
 		19022F0818332E400057EB7A /* PersistenceManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 19022F0718332E400057EB7A /* PersistenceManager.m */; };
 		19022F1318334E2F0057EB7A /* ListItemTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 19022F1218334E2F0057EB7A /* ListItemTests.m */; };
@@ -45,8 +45,8 @@
 		19A6340C183BB5DA002B8867 /* NSString+Random.m in Sources */ = {isa = PBXBuildFile; fileRef = 19A63409183BB5DA002B8867 /* NSString+Random.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		19A6340D183BB5DA002B8867 /* NSStringRandom.m in Sources */ = {isa = PBXBuildFile; fileRef = 19A6340B183BB5DA002B8867 /* NSStringRandom.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		19BD001C183AEBCD00A95C6C /* NSManagedObject+Helpers.m in Sources */ = {isa = PBXBuildFile; fileRef = 19022F0B18333B700057EB7A /* NSManagedObject+Helpers.m */; };
-		33E85E9DC8F741688B5F9617 /* libPods-WunderTest.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BAD75CB70ACC4647A45D91BD /* libPods-WunderTest.a */; };
-		9D39F315819346079BFDD5B4 /* libPods-WunderTestTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0C7A10C88FC94EB3AABAA660 /* libPods-WunderTestTests.a */; };
+		33E85E9DC8F741688B5F9617 /* libPods-YumList.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BAD75CB70ACC4647A45D91BD /* libPods-YumList.a */; };
+		9D39F315819346079BFDD5B4 /* libPods-YumListTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0C7A10C88FC94EB3AABAA660 /* libPods-YumListTests.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -55,30 +55,30 @@
 			containerPortal = 19022EC1183328890057EB7A /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = 19022EC8183328890057EB7A;
-			remoteInfo = WunderTest;
+			remoteInfo = YumList;
 		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		0C7A10C88FC94EB3AABAA660 /* libPods-WunderTestTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-WunderTestTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		19022EC9183328890057EB7A /* WunderTest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WunderTest.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		0C7A10C88FC94EB3AABAA660 /* libPods-YumListTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-YumListTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		19022EC9183328890057EB7A /* YumList.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = YumList.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		19022ECC183328890057EB7A /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		19022ECE183328890057EB7A /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		19022ED0183328890057EB7A /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		19022ED2183328890057EB7A /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
-		19022ED6183328890057EB7A /* WunderTest-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "WunderTest-Info.plist"; sourceTree = "<group>"; };
+		19022ED6183328890057EB7A /* YumList-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "YumList-Info.plist"; sourceTree = "<group>"; };
 		19022ED8183328890057EB7A /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		19022EDA183328890057EB7A /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		19022EDC183328890057EB7A /* WunderTest-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "WunderTest-Prefix.pch"; sourceTree = "<group>"; };
+		19022EDC183328890057EB7A /* YumList-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "YumList-Prefix.pch"; sourceTree = "<group>"; };
 		19022EDD183328890057EB7A /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		19022EDE183328890057EB7A /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		19022EE1183328890057EB7A /* WunderTest.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = WunderTest.xcdatamodel; sourceTree = "<group>"; };
+		19022EE1183328890057EB7A /* YumList.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = YumList.xcdatamodel; sourceTree = "<group>"; };
 		19022EE3183328890057EB7A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
-		19022EE9183328890057EB7A /* WunderTestTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WunderTestTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		19022EE9183328890057EB7A /* YumListTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = YumListTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		19022EEA183328890057EB7A /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
-		19022EF3183328890057EB7A /* WunderTestTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "WunderTestTests-Info.plist"; sourceTree = "<group>"; };
+		19022EF3183328890057EB7A /* YumListTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "YumListTests-Info.plist"; sourceTree = "<group>"; };
 		19022EF5183328890057EB7A /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		19022EF7183328890057EB7A /* WunderTestTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WunderTestTests.m; sourceTree = "<group>"; };
+		19022EF7183328890057EB7A /* YumListTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YumListTests.m; sourceTree = "<group>"; };
 		19022F0218332E0A0057EB7A /* ListItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ListItem.h; path = Classes/ListItem.h; sourceTree = "<group>"; };
 		19022F0318332E0A0057EB7A /* ListItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ListItem.m; path = Classes/ListItem.m; sourceTree = "<group>"; };
 		19022F0618332E400057EB7A /* PersistenceManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PersistenceManager.h; path = Classes/PersistenceManager.h; sourceTree = "<group>"; };
@@ -117,9 +117,9 @@
 		19A63409183BB5DA002B8867 /* NSString+Random.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSString+Random.m"; path = "NSStringRandom/NSString+Random.m"; sourceTree = "<group>"; };
 		19A6340A183BB5DA002B8867 /* NSStringRandom.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NSStringRandom.h; path = NSStringRandom/NSStringRandom.h; sourceTree = "<group>"; };
 		19A6340B183BB5DA002B8867 /* NSStringRandom.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NSStringRandom.m; path = NSStringRandom/NSStringRandom.m; sourceTree = "<group>"; };
-		ABFAE3D966F545E385A0486F /* Pods-WunderTestTests.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WunderTestTests.xcconfig"; path = "Pods/Pods-WunderTestTests.xcconfig"; sourceTree = "<group>"; };
-		BAD75CB70ACC4647A45D91BD /* libPods-WunderTest.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-WunderTest.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		CF3E5BE010224CDB9FEFF0EB /* Pods-WunderTest.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WunderTest.xcconfig"; path = "Pods/Pods-WunderTest.xcconfig"; sourceTree = "<group>"; };
+		ABFAE3D966F545E385A0486F /* Pods-YumListTests.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-YumListTests.xcconfig"; path = "Pods/Pods-YumListTests.xcconfig"; sourceTree = "<group>"; };
+		BAD75CB70ACC4647A45D91BD /* libPods-YumList.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-YumList.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		CF3E5BE010224CDB9FEFF0EB /* Pods-YumList.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-YumList.xcconfig"; path = "Pods/Pods-YumList.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -132,7 +132,7 @@
 				19022ED1183328890057EB7A /* UIKit.framework in Frameworks */,
 				19A633F9183B5F13002B8867 /* Reveal.framework in Frameworks */,
 				19022ECD183328890057EB7A /* Foundation.framework in Frameworks */,
-				33E85E9DC8F741688B5F9617 /* libPods-WunderTest.a in Frameworks */,
+				33E85E9DC8F741688B5F9617 /* libPods-YumList.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -144,7 +144,7 @@
 				19022EEE183328890057EB7A /* CoreData.framework in Frameworks */,
 				19022EED183328890057EB7A /* UIKit.framework in Frameworks */,
 				19022EEC183328890057EB7A /* Foundation.framework in Frameworks */,
-				9D39F315819346079BFDD5B4 /* libPods-WunderTestTests.a in Frameworks */,
+				9D39F315819346079BFDD5B4 /* libPods-YumListTests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -154,20 +154,20 @@
 		19022EC0183328890057EB7A = {
 			isa = PBXGroup;
 			children = (
-				19022ED4183328890057EB7A /* WunderTest */,
-				19022EF1183328890057EB7A /* WunderTestTests */,
+				19022ED4183328890057EB7A /* YumList */,
+				19022EF1183328890057EB7A /* YumListTests */,
 				19022ECB183328890057EB7A /* Frameworks */,
 				19022ECA183328890057EB7A /* Products */,
-				CF3E5BE010224CDB9FEFF0EB /* Pods-WunderTest.xcconfig */,
-				ABFAE3D966F545E385A0486F /* Pods-WunderTestTests.xcconfig */,
+				CF3E5BE010224CDB9FEFF0EB /* Pods-YumList.xcconfig */,
+				ABFAE3D966F545E385A0486F /* Pods-YumListTests.xcconfig */,
 			);
 			sourceTree = "<group>";
 		};
 		19022ECA183328890057EB7A /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				19022EC9183328890057EB7A /* WunderTest.app */,
-				19022EE9183328890057EB7A /* WunderTestTests.xctest */,
+				19022EC9183328890057EB7A /* YumList.app */,
+				19022EE9183328890057EB7A /* YumListTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -180,13 +180,13 @@
 				19022ED0183328890057EB7A /* UIKit.framework */,
 				19022ED2183328890057EB7A /* CoreData.framework */,
 				19022EEA183328890057EB7A /* XCTest.framework */,
-				BAD75CB70ACC4647A45D91BD /* libPods-WunderTest.a */,
-				0C7A10C88FC94EB3AABAA660 /* libPods-WunderTestTests.a */,
+				BAD75CB70ACC4647A45D91BD /* libPods-YumList.a */,
+				0C7A10C88FC94EB3AABAA660 /* libPods-YumListTests.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		19022ED4183328890057EB7A /* WunderTest */ = {
+		19022ED4183328890057EB7A /* YumList */ = {
 			isa = PBXGroup;
 			children = (
 				19A633F8183B5F13002B8867 /* Reveal.framework */,
@@ -200,7 +200,7 @@
 				19022ED5183328890057EB7A /* Supporting Files */,
 				19022F1B18335C830057EB7A /* Constants.h */,
 			);
-			path = WunderTest;
+			path = YumList;
 			sourceTree = "<group>";
 		};
 		19022ED5183328890057EB7A /* Supporting Files */ = {
@@ -210,32 +210,32 @@
 				19A63405183BAF8E002B8867 /* checkbox_underline@2x.png */,
 				19A63402183BAA59002B8867 /* Raleway-Thin.ttf */,
 				19A63400183B9EA2002B8867 /* Raleway-Regular.ttf */,
-				19022ED6183328890057EB7A /* WunderTest-Info.plist */,
+				19022ED6183328890057EB7A /* YumList-Info.plist */,
 				19022ED7183328890057EB7A /* InfoPlist.strings */,
 				19022EDA183328890057EB7A /* main.m */,
-				19022EDC183328890057EB7A /* WunderTest-Prefix.pch */,
+				19022EDC183328890057EB7A /* YumList-Prefix.pch */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		19022EF1183328890057EB7A /* WunderTestTests */ = {
+		19022EF1183328890057EB7A /* YumListTests */ = {
 			isa = PBXGroup;
 			children = (
 				19A6340E183BB5DE002B8867 /* NSString+Random */,
-				19022EF7183328890057EB7A /* WunderTestTests.m */,
+				19022EF7183328890057EB7A /* YumListTests.m */,
 				19022EF2183328890057EB7A /* Supporting Files */,
 				19022F1218334E2F0057EB7A /* ListItemTests.m */,
 				19022F2518336D8F0057EB7A /* TableViewTests.m */,
 				19022F2818336DF50057EB7A /* TestDataGenerator.m */,
 				19022F31183376050057EB7A /* TestDataGenerator.h */,
 			);
-			path = WunderTestTests;
+			path = YumListTests;
 			sourceTree = "<group>";
 		};
 		19022EF2183328890057EB7A /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				19022EF3183328890057EB7A /* WunderTestTests-Info.plist */,
+				19022EF3183328890057EB7A /* YumListTests-Info.plist */,
 				19022EF4183328890057EB7A /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
@@ -255,7 +255,7 @@
 		19022F0518332E220057EB7A /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				19022EE0183328890057EB7A /* WunderTest.xcdatamodeld */,
+				19022EE0183328890057EB7A /* YumList.xcdatamodeld */,
 				19022F0218332E0A0057EB7A /* ListItem.h */,
 				19022F0318332E0A0057EB7A /* ListItem.m */,
 			);
@@ -324,9 +324,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		19022EC8183328890057EB7A /* WunderTest */ = {
+		19022EC8183328890057EB7A /* YumList */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 19022EFB183328890057EB7A /* Build configuration list for PBXNativeTarget "WunderTest" */;
+			buildConfigurationList = 19022EFB183328890057EB7A /* Build configuration list for PBXNativeTarget "YumList" */;
 			buildPhases = (
 				5C9E9F6E6CCB4B6CA3014676 /* Check Pods Manifest.lock */,
 				19022EC5183328890057EB7A /* Sources */,
@@ -338,14 +338,14 @@
 			);
 			dependencies = (
 			);
-			name = WunderTest;
-			productName = WunderTest;
-			productReference = 19022EC9183328890057EB7A /* WunderTest.app */;
+			name = YumList;
+			productName = YumList;
+			productReference = 19022EC9183328890057EB7A /* YumList.app */;
 			productType = "com.apple.product-type.application";
 		};
-		19022EE8183328890057EB7A /* WunderTestTests */ = {
+		19022EE8183328890057EB7A /* YumListTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 19022EFE183328890057EB7A /* Build configuration list for PBXNativeTarget "WunderTestTests" */;
+			buildConfigurationList = 19022EFE183328890057EB7A /* Build configuration list for PBXNativeTarget "YumListTests" */;
 			buildPhases = (
 				899DD8C4D6544FFFB61E0D9B /* Check Pods Manifest.lock */,
 				19022EE5183328890057EB7A /* Sources */,
@@ -358,9 +358,9 @@
 			dependencies = (
 				19022EF0183328890057EB7A /* PBXTargetDependency */,
 			);
-			name = WunderTestTests;
-			productName = WunderTestTests;
-			productReference = 19022EE9183328890057EB7A /* WunderTestTests.xctest */;
+			name = YumListTests;
+			productName = YumListTests;
+			productReference = 19022EE9183328890057EB7A /* YumListTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
@@ -377,7 +377,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 19022EC4183328890057EB7A /* Build configuration list for PBXProject "WunderTest" */;
+			buildConfigurationList = 19022EC4183328890057EB7A /* Build configuration list for PBXProject "YumList" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -389,8 +389,8 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				19022EC8183328890057EB7A /* WunderTest */,
-				19022EE8183328890057EB7A /* WunderTestTests */,
+				19022EC8183328890057EB7A /* YumList */,
+				19022EE8183328890057EB7A /* YumListTests */,
 			);
 		};
 /* End PBXProject section */
@@ -432,7 +432,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Pods-WunderTestTests-resources.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Pods-YumListTests-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		4409555694654E7DB5108AEB /* Copy Pods Resources */ = {
@@ -447,7 +447,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Pods-WunderTest-resources.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Pods-YumList-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		5C9E9F6E6CCB4B6CA3014676 /* Check Pods Manifest.lock */ = {
@@ -497,7 +497,7 @@
 				19A633FA183B8DAA002B8867 /* MainViewController.m in Sources */,
 				19BD001C183AEBCD00A95C6C /* NSManagedObject+Helpers.m in Sources */,
 				19022F221833635F0057EB7A /* FormatUtils.m in Sources */,
-				19022EE2183328890057EB7A /* WunderTest.xcdatamodeld in Sources */,
+				19022EE2183328890057EB7A /* YumList.xcdatamodeld in Sources */,
 				19022EDF183328890057EB7A /* AppDelegate.m in Sources */,
 				19022F1A18335BD70057EB7A /* NSFetchedResultsControllerFactory.m in Sources */,
 				19A633F5183B5B32002B8867 /* ListItem+ListItemHelpers.m in Sources */,
@@ -515,7 +515,7 @@
 				19022F2618336D8F0057EB7A /* TableViewTests.m in Sources */,
 				19A6340C183BB5DA002B8867 /* NSString+Random.m in Sources */,
 				19022F2918336DF50057EB7A /* TestDataGenerator.m in Sources */,
-				19022EF8183328890057EB7A /* WunderTestTests.m in Sources */,
+				19022EF8183328890057EB7A /* YumListTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -524,7 +524,7 @@
 /* Begin PBXTargetDependency section */
 		19022EF0183328890057EB7A /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 19022EC8183328890057EB7A /* WunderTest */;
+			target = 19022EC8183328890057EB7A /* YumList */;
 			targetProxy = 19022EEF183328890057EB7A /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -625,7 +625,7 @@
 		};
 		19022EFC183328890057EB7A /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = CF3E5BE010224CDB9FEFF0EB /* Pods-WunderTest.xcconfig */;
+			baseConfigurationReference = CF3E5BE010224CDB9FEFF0EB /* Pods-YumList.xcconfig */;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -635,8 +635,8 @@
 					"$(SYSTEM_APPS_DIR)/Reveal.app/Contents/SharedSupport/iOS-Libraries",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "WunderTest/WunderTest-Prefix.pch";
-				INFOPLIST_FILE = "WunderTest/WunderTest-Info.plist";
+				GCC_PREFIX_HEADER = "YumList/YumList-Prefix.pch";
+				INFOPLIST_FILE = "YumList/YumList-Info.plist";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					/Users/akfreas/github/mPillar,
@@ -649,7 +649,7 @@
 		};
 		19022EFD183328890057EB7A /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = CF3E5BE010224CDB9FEFF0EB /* Pods-WunderTest.xcconfig */;
+			baseConfigurationReference = CF3E5BE010224CDB9FEFF0EB /* Pods-YumList.xcconfig */;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -659,8 +659,8 @@
 					"$(SYSTEM_APPS_DIR)/Reveal.app/Contents/SharedSupport/iOS-Libraries",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "WunderTest/WunderTest-Prefix.pch";
-				INFOPLIST_FILE = "WunderTest/WunderTest-Info.plist";
+				GCC_PREFIX_HEADER = "YumList/YumList-Prefix.pch";
+				INFOPLIST_FILE = "YumList/YumList-Info.plist";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					/Users/akfreas/github/mPillar,
@@ -673,22 +673,22 @@
 		};
 		19022EFF183328890057EB7A /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = ABFAE3D966F545E385A0486F /* Pods-WunderTestTests.xcconfig */;
+			baseConfigurationReference = ABFAE3D966F545E385A0486F /* Pods-YumListTests.xcconfig */;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD)";
-				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/WunderTest.app/WunderTest";
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/YumList.app/YumList";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
 					"$(DEVELOPER_FRAMEWORKS_DIR)",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "WunderTest/WunderTest-Prefix.pch";
+				GCC_PREFIX_HEADER = "YumList/YumList-Prefix.pch";
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
 					"$(inherited)",
 				);
-				INFOPLIST_FILE = "WunderTestTests/WunderTestTests-Info.plist";
+				INFOPLIST_FILE = "YumListTests/YumListTests-Info.plist";
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUNDLE_LOADER)";
@@ -698,10 +698,10 @@
 		};
 		19022F00183328890057EB7A /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = ABFAE3D966F545E385A0486F /* Pods-WunderTestTests.xcconfig */;
+			baseConfigurationReference = ABFAE3D966F545E385A0486F /* Pods-YumListTests.xcconfig */;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD)";
-				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/WunderTest.app/WunderTest";
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/YumList.app/YumList";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
@@ -709,8 +709,8 @@
 				);
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "WunderTest/WunderTest-Prefix.pch";
-				INFOPLIST_FILE = "WunderTestTests/WunderTestTests-Info.plist";
+				GCC_PREFIX_HEADER = "YumList/YumList-Prefix.pch";
+				INFOPLIST_FILE = "YumListTests/YumListTests-Info.plist";
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUNDLE_LOADER)";
@@ -721,7 +721,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		19022EC4183328890057EB7A /* Build configuration list for PBXProject "WunderTest" */ = {
+		19022EC4183328890057EB7A /* Build configuration list for PBXProject "YumList" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				19022EF9183328890057EB7A /* Debug */,
@@ -730,7 +730,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		19022EFB183328890057EB7A /* Build configuration list for PBXNativeTarget "WunderTest" */ = {
+		19022EFB183328890057EB7A /* Build configuration list for PBXNativeTarget "YumList" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				19022EFC183328890057EB7A /* Debug */,
@@ -739,7 +739,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		19022EFE183328890057EB7A /* Build configuration list for PBXNativeTarget "WunderTestTests" */ = {
+		19022EFE183328890057EB7A /* Build configuration list for PBXNativeTarget "YumListTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				19022EFF183328890057EB7A /* Debug */,
@@ -751,13 +751,13 @@
 /* End XCConfigurationList section */
 
 /* Begin XCVersionGroup section */
-		19022EE0183328890057EB7A /* WunderTest.xcdatamodeld */ = {
+		19022EE0183328890057EB7A /* YumList.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
-				19022EE1183328890057EB7A /* WunderTest.xcdatamodel */,
+				19022EE1183328890057EB7A /* YumList.xcdatamodel */,
 			);
-			currentVersion = 19022EE1183328890057EB7A /* WunderTest.xcdatamodel */;
-			path = WunderTest.xcdatamodeld;
+			currentVersion = 19022EE1183328890057EB7A /* YumList.xcdatamodel */;
+			path = YumList.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
 		};
