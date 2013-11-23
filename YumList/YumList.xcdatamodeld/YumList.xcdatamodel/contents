@@ -6,7 +6,15 @@
         <attribute name="listOrder" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
         <attribute name="title" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
+    <entity name="YumItem" representedClassName="YumItem" syncable="YES">
+        <attribute name="externalURL" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="externalYumID" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="imageURL" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="syncDate" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="title" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
     <elements>
         <element name="ListItem" positionX="0" positionY="0" width="0" height="0"/>
+        <element name="YumItem" positionX="0" positionY="0" width="0" height="0"/>
     </elements>
 </model>
