@@ -18,5 +18,6 @@
 -(void)resetManagedObjectContext;
 -(void)deleteObject:(NSManagedObject *)object;
 -(void)deleteAllObjectsAndSave;
+-(void)save;
 
 @end

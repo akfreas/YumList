@@ -5,6 +5,18 @@
     NSPersistentStoreCoordinator *persistentStoreCoordinator;
 }
 
+-(id)init {
+    self = [super init];
+    if (self) {
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(mergeChanges:) name:NSManagedObjectContextDidSaveNotification object:nil];
+    }
+    return self;
+}
+
+-(void)mergeChanges:(NSNotification *)notif {
+    [self.managedObjectContext mergeChangesFromContextDidSaveNotification:notif];
+}
+
 +(instancetype)sharedInstance {
     static id sharedInstance;
     if (sharedInstance == nil) {
@@ -71,7 +83,9 @@
 -(NSPersistentStoreCoordinator *)persistentStoreCoordinator {
     
     NSError *error;
-    if (persistentStoreCoordinator != nil) {
+    static NSPersistentStoreCoordinator *staticCoordinator;
+    if (staticCoordinator != nil) {
+        persistentStoreCoordinator = staticCoordinator;
         return persistentStoreCoordinator;
     } else {
         NSURL *dbPath = [self persistentStoreURL];
@@ -104,6 +118,16 @@
     
     if (error != nil) {
         NSLog(@"Error saving into managedObjectContext. Message: %@", error.description);
+    }
+}
+
+-(void)save {
+    NSError *saveError = nil;
+    if ([_managedObjectContext hasChanges]) {
+        [_managedObjectContext save:&saveError];
+    }
+    if (saveError != nil) {
+        [NSException raise:YLCoreDataException format:@"Error saving context %@. Error: %@", _managedObjectContext, saveError];
     }
 }
 
@@ -147,10 +171,14 @@
             }
         }
     }
-    [self.managedObjectContext save:&error];
+    [self save];
     if (error != nil) {
         NSLog(@"Error deleting all instances of %@ from core data.",  mom.entities);
     }
+}
+
+-(void)dealloc {
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 @end
