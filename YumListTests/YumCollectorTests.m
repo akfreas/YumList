@@ -3,6 +3,16 @@
 #import "YumItem.h"
 #import "PersistenceManager.h"
 #import "YumParser.h"
+#import "YumCollector.h"
+#import "NSManagedObject+Helpers.h"
+
+#define StartOperation() __block BOOL waitingForBlock = YES
+#define CompleteOperation() waitingForBlock = NO
+
+#define WaitUntilDone()  while(waitingForBlock) {\
+[[NSRunLoop currentRunLoop] runMode:NSDefaultRunLoopMode\
+                         beforeDate:[NSDate dateWithTimeIntervalSinceNow:0.1]];\
+}
 
 @interface YumCollectorTests : XCTestCase
 
@@ -18,7 +28,6 @@
 {
     [super setUp];
     ourManager = [PersistenceManager new];
-    
     NSString *fixturePath = [[NSBundle bundleForClass:self.class] pathForResource:@"yum-collection" ofType:@"html"];
     yumData = [NSData dataWithContentsOfFile:fixturePath];
     parsedArray = [YumParser parseYumData:yumData];
@@ -38,20 +47,20 @@
 }
 
 -(void)testYumItemPersistenceFromParser {
-    
+    [ourManager deleteAllObjectsAndSave];
     for (NSDictionary *parsedDict in parsedArray) {
         YumItem *item = [YumItem newInContext:ourManager.managedObjectContext];
         item.title = parsedDict[@"title"];
         item.externalURL = parsedDict[@"externalURL"];
         item.externalYumID = parsedDict[@"externalYumID"];
         item.imageURL = parsedDict[@"imageURL"];
-        [item save];
+        [item saveInContext:ourManager.managedObjectContext];
     }
     
     NSInteger count = 0;
     for (NSDictionary *parsedDict in parsedArray) {
         NSString *externalID = parsedDict[@"externalYumID"];
-        YumItem *fetchedItem = [YumItem itemWithExternalID:externalID];
+        YumItem *fetchedItem = [YumItem itemWithExternalID:externalID context:ourManager.managedObjectContext];
         XCTAssertNotNil(fetchedItem, @"Could not find item with external ID %@ in context %@", externalID, ourManager.managedObjectContext);
         count++;
     }
@@ -59,6 +68,42 @@
     NSInteger yumItemCount = [allYumItems count];
     XCTAssertTrue(count == [allYumItems count], @"Number of items found with external IDs from parser is not the same as the number found in the MOC. Expected %i, got back %i.", count, yumItemCount);
     
+}
+
+-(void)testFetchYumItemListFromServer {
+    [ourManager deleteAllObjectsAndSave];
+    YumCollector *collector = [[YumCollector alloc] init];
+    StartOperation();
+    [collector syncYums:^(NSArray *newYums) {
+        XCTAssertNotNil(newYums, @"Error fetching yums from server.");
+        CompleteOperation();
+    }];
+    WaitUntilDone();
+}
+
+-(void)testYumListSyncCorrectness {
+    [ourManager deleteAllObjectsAndSave];
+    YumCollector *collector = [[YumCollector alloc] init];
+    StartOperation();
+    __block NSString *aNewYumExternalID;
+    [collector syncYums:^(NSArray *newYums) {
+        CompleteOperation();
+        aNewYumExternalID = [newYums[0] valueForKey:@"externalYumID"];
+        XCTAssertNotNil(newYums, @"Error fetching yums from server.");
+    }];
+    WaitUntilDone();
+    YumItem *item = [YumItem itemWithExternalID:aNewYumExternalID context:ourManager.managedObjectContext];
+    [item delete];
+    [ourManager save];
+    [collector syncYums:^(NSArray *newYums) {
+        CompleteOperation();
+        NSInteger newYumCount = [newYums count];
+        XCTAssertTrue(newYumCount == 1, @"The number of new yums retrieved from the server is not equal to the number of expected yums.  Got back %i, expected 1", newYumCount);
+        YumItem *item = newYums[0];
+        XCTAssertTrue([item.externalYumID isEqualToString:aNewYumExternalID], @"The external yum id from the server (%@) didn't match the one we expected (%@)", item.externalYumID, aNewYumExternalID);
+        
+    }];
+    WaitUntilDone();
 }
 
 @end
