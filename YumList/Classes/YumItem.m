@@ -16,5 +16,6 @@
 @dynamic title;
 @dynamic externalYumID;
 @dynamic syncDate;
+@dynamic completed;
 
 @end

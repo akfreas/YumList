@@ -17,5 +17,6 @@
 @property (nonatomic, retain) NSString * title;
 @property (nonatomic, retain) NSString * externalYumID;
 @property (nonatomic, retain) NSDate * syncDate;
+@property (nonatomic, retain) NSNumber * completed;
 
 @end

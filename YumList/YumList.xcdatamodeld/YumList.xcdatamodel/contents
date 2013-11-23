@@ -7,6 +7,7 @@
         <attribute name="title" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
     <entity name="YumItem" representedClassName="YumItem" syncable="YES">
+        <attribute name="completed" optional="YES" attributeType="Boolean" syncable="YES"/>
         <attribute name="externalURL" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="externalYumID" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="imageURL" optional="YES" attributeType="String" syncable="YES"/>

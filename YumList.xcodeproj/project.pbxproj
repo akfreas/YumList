@@ -39,7 +39,7 @@
 		19A35AC71841345700F5966A /* YumCollector.m in Sources */ = {isa = PBXBuildFile; fileRef = 19A35AC61841345700F5966A /* YumCollector.m */; };
 		19A35ACA184135EA00F5966A /* YumItem+YumItemHelpers.m in Sources */ = {isa = PBXBuildFile; fileRef = 19A35AC9184135EA00F5966A /* YumItem+YumItemHelpers.m */; };
 		19A35ACD18413A0300F5966A /* YumParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 19A35ACC18413A0300F5966A /* YumParser.m */; };
-		19A35AD418413BF400F5966A /* YumItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 19A35AD318413BF400F5966A /* YumItem.m */; };
+		19A35AD71841437200F5966A /* YumItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 19A35AD61841437200F5966A /* YumItem.m */; };
 		19A633F5183B5B32002B8867 /* ListItem+ListItemHelpers.m in Sources */ = {isa = PBXBuildFile; fileRef = 19A633F3183B5B32002B8867 /* ListItem+ListItemHelpers.m */; };
 		19A633FA183B8DAA002B8867 /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 19022F10183348AA0057EB7A /* MainViewController.m */; };
 		19A633FD183B90DE002B8867 /* AFCheckbox.m in Sources */ = {isa = PBXBuildFile; fileRef = 19A633FC183B90DE002B8867 /* AFCheckbox.m */; };
@@ -117,8 +117,8 @@
 		19A35AC9184135EA00F5966A /* YumItem+YumItemHelpers.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "YumItem+YumItemHelpers.m"; path = "Classes/YumItem+YumItemHelpers.m"; sourceTree = "<group>"; };
 		19A35ACB18413A0300F5966A /* YumParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = YumParser.h; path = Classes/YumParser.h; sourceTree = "<group>"; };
 		19A35ACC18413A0300F5966A /* YumParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = YumParser.m; path = Classes/YumParser.m; sourceTree = "<group>"; };
-		19A35AD218413BF400F5966A /* YumItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = YumItem.h; path = Classes/YumItem.h; sourceTree = "<group>"; };
-		19A35AD318413BF400F5966A /* YumItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = YumItem.m; path = Classes/YumItem.m; sourceTree = "<group>"; };
+		19A35AD51841437200F5966A /* YumItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = YumItem.h; path = Classes/YumItem.h; sourceTree = "<group>"; };
+		19A35AD61841437200F5966A /* YumItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = YumItem.m; path = Classes/YumItem.m; sourceTree = "<group>"; };
 		19A633F3183B5B32002B8867 /* ListItem+ListItemHelpers.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "ListItem+ListItemHelpers.m"; path = "Classes/ListItem+ListItemHelpers.m"; sourceTree = "<group>"; };
 		19A633F4183B5B32002B8867 /* ListItem+ListItemHelpers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "ListItem+ListItemHelpers.h"; path = "Classes/ListItem+ListItemHelpers.h"; sourceTree = "<group>"; };
 		19A633FB183B90DE002B8867 /* AFCheckbox.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AFCheckbox.h; path = Classes/AFCheckbox.h; sourceTree = "<group>"; };
@@ -271,9 +271,9 @@
 		19022F0518332E220057EB7A /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				19A35AD51841437200F5966A /* YumItem.h */,
+				19A35AD61841437200F5966A /* YumItem.m */,
 				19022EE0183328890057EB7A /* YumList.xcdatamodeld */,
-				19A35AD218413BF400F5966A /* YumItem.h */,
-				19A35AD318413BF400F5966A /* YumItem.m */,
 				19022F0218332E0A0057EB7A /* ListItem.h */,
 				19022F0318332E0A0057EB7A /* ListItem.m */,
 			);
@@ -552,7 +552,7 @@
 				19022EDB183328890057EB7A /* main.m in Sources */,
 				19A35AC71841345700F5966A /* YumCollector.m in Sources */,
 				19A35ACA184135EA00F5966A /* YumItem+YumItemHelpers.m in Sources */,
-				19A35AD418413BF400F5966A /* YumItem.m in Sources */,
+				19A35AD71841437200F5966A /* YumItem.m in Sources */,
 				19022F32183381B50057EB7A /* TestDataGenerator.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
