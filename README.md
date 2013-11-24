@@ -8,7 +8,7 @@ WunderTest is the test app I built for the fine folks at 6Wunderkinder!
 Setup
 -----------------
 
-I used CocoaPods to install some third-party libraries into the project.  Because the current release of CocoaPods lacks support for some Xcode 5 related features, you may have to run `bundle install` to fetch the latest version.   Just run `pod install` in the main directory after that, and open WunderTest.xcodeworkspace.
+I used CocoaPods to install some third-party libraries into the project.  Because the current release of CocoaPods lacks support for some Xcode 5 related features, you may have to run `bundle install` to fetch the latest version.   Just run `pod install` in the main directory after that, and open WunderTest.xcworkspace.
 
 Things of note
 -------------------
@@ -18,6 +18,7 @@ Things of note
 *  Centralized Core Data functionality, with convenience methods attached to NSManagedObjects using categories
 *  Standard functionality (reordering, create, delete, etc.)
 *  iPhone and iPad compatible
+*  Supports all interface orientations
 
 
 
