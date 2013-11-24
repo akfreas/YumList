@@ -1,6 +1,6 @@
-@class ListItem;
+@class YumItem;
 @interface ListItemTableViewCell : UITableViewCell
 
-@property (strong, nonatomic) ListItem *listItem;
+@property (strong, nonatomic) YumItem *yumItem;
 
 @end

@@ -1,15 +1,17 @@
 #import "ListItemTableViewCell.h"
-#import "ListItem.h"
 #import "FormatUtils.h"
 #import "AFCheckbox.h"
+#import "UIView+LayoutHelpers.h"
+#import <AFNetworking.h>
 
 @implementation ListItemTableViewCell {
     
 
     UILabel *creationDateLabel;
     AFCheckbox *checkboxButton;
-    ListItem *ourListItem;
+    YumItem *ourYumItem;
     UILabel *titleLabel;
+    UIImageView *imageView;
 }
 
 -(id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier {
@@ -35,15 +37,37 @@
     [self addTitleLabel];
     [self addCreationDateLabel];
     [self addCompletedButton];
+    [self addYumImage];
+    [self addConstraintsToSubviews];
     [self setNeedsLayout];
 }
 
+-(void)addYumImage {
+    if (imageView == nil) {
+        imageView = [[UIImageView alloc] initWithFrame:CGRectZero];
+        imageView.contentMode = UIViewContentModeScaleAspectFill;
+        imageView.layer.masksToBounds = YES;
+        [self addSubview:imageView];
+    }
+    if (ourYumItem.image == nil) {
+        [ourYumItem fetchImageAndSave:^(UIImage *image) {
+            imageView.image = image;
+        }];
+    } else {
+        imageView.image = [UIImage imageWithData:ourYumItem.image];
+    }
+}
+-(CGSize)intrinsicContentSize {
+    return CGSizeMake(320.0f, 120.0f);
+}
+
 -(void)addTitleLabel {
-    titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(15, 2, 260, 20)];
+    titleLabel = [[UILabel alloc] initWithFrame:CGRectZero];
     titleLabel.numberOfLines = 1;
     titleLabel.textAlignment = NSTextAlignmentLeft;
-    titleLabel.autoresizingMask = (UIViewAutoresizingFlexibleRightMargin | UIViewAutoresizingFlexibleWidth);
+//    titleLabel.autoresizingMask = (UIViewAutoresizingFlexibleRightMargin | UIViewAutoresizingFlexibleWidth);
     titleLabel.font = [UIFont fontWithName:@"Raleway-regular" size:14.0f];
+    titleLabel.translatesAutoresizingMaskIntoConstraints = NO;
     [self.contentView addSubview:titleLabel];
 }
 
@@ -57,8 +81,8 @@
     checkboxButton = [[AFCheckbox alloc] initWithFrame:CGRectMake(280, 7, 30, 30)];
     
     void(^block)(BOOL checked) = ^(BOOL checked){
-        ourListItem.completed = [NSNumber numberWithBool:checked];
-        [ourListItem save];
+        ourYumItem.completed = [NSNumber numberWithBool:checked];
+        [ourYumItem save];
     };
 
     checkboxButton.buttonChecked = block;
@@ -80,6 +104,14 @@
     }];
 }
 
+-(void)addConstraintsToSubviews {
+    NSDictionary *bindings = MXDictionaryOfVariableBindings(titleLabel, imageView, creationDateLabel);
+    [self addConstraintWithVisualFormat:@"H:|-10-[imageView(50)]-10-[titleLabel]-|" bindings:bindings];
+    [self addConstraintWithVisualFormat:@"H:[imageView]-10-[creationDateLabel]" bindings:bindings];
+    [self addConstraintWithVisualFormat:@"V:|-5-[titleLabel]" bindings:bindings];
+    [self addConstraintWithVisualFormat:@"V:|-20-[imageView(50)]" bindings:bindings];
+}
+
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated
 {
     [super setSelected:selected animated:animated];
@@ -89,12 +121,12 @@
 
 #pragma mark Accessors
 
--(void)setListItem:(ListItem *)listItem {
-    ourListItem = listItem;
-    titleLabel.text = ourListItem.title;
-    creationDateLabel.text = [FormatUtils stringFromDate:listItem.creationDate];
-    checkboxButton.checked = [ourListItem.completed boolValue];
-    [self setNeedsLayout];
+-(void)setYumItem:(YumItem *)listItem {
+    ourYumItem = listItem;
+    titleLabel.text = ourYumItem.title;
+    creationDateLabel.text = [FormatUtils stringFromDate:listItem.syncDate];
+    checkboxButton.checked = [ourYumItem.completed boolValue];
+    [self addYumImage];
 }
 
 @end
