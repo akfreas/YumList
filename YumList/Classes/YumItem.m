@@ -11,11 +11,12 @@
 
 @implementation YumItem
 
-@dynamic externalURL;
-@dynamic imageURL;
-@dynamic title;
-@dynamic externalYumID;
-@dynamic syncDate;
 @dynamic completed;
+@dynamic externalURL;
+@dynamic externalYumID;
+@dynamic image;
+@dynamic imageURL;
+@dynamic syncDate;
+@dynamic title;
 
 @end
