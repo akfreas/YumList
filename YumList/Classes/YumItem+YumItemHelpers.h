@@ -6,4 +6,6 @@
 +(YumItem *)itemWithExternalID:(NSString *)externalID context:(NSManagedObjectContext *)context;
 +(YumItem *)newItemWithDictionary:(NSDictionary *)dict;
 +(YumItem *)newItemWithDictionary:(NSDictionary *)dict context:(NSManagedObjectContext *)context;
+
+-(void)fetchImageAndSave:(void (^)(UIImage *))completion;
 @end
