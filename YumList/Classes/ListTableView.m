@@ -1,16 +1,19 @@
 #import "ListTableView.h"
 #import "NSFetchedResultsControllerFactory.h"
-#import "ListItem.h"
 #import "ListItemTableViewCell.h"
 #import "AddListItemTableViewHeader.h"
 #import "TestDataGenerator.h"
 #import "PersistenceManager.h"
+#import "YumCollector.h"
+#import "YumItem.h"
 
 @interface ListTableView () <UITableViewDataSource, UITableViewDelegate>
 
 @end 
 
 @implementation ListTableView {
+    
+    YumCollector *collector;
     BOOL userDrivenChange;
 }
 
@@ -28,13 +31,17 @@ static NSString *identifier = @"ListCellID";
         userDrivenChange = NO;
         [self registerClass:[ListItemTableViewCell class] forCellReuseIdentifier:identifier];
         [self setupFetchController];
+        collector = [YumCollector new];
+        [collector syncYums:^(NSArray *newYums) {
+            NSLog(@"New yums: %@", newYums);
+        }];
         
     }
     return self;
 }
 
 -(void)setupFetchController {
-    self.fetchController = [NSFetchedResultsControllerFactory fetchControllerForAllListItems];
+    self.fetchController = [NSFetchedResultsControllerFactory fetchControllerForAllYumItems];
     NSError *controllerError = nil;
     self.fetchController.delegate = self;
     [self.fetchController performFetch:&controllerError];
@@ -126,24 +133,11 @@ static NSString *identifier = @"ListCellID";
     cell.editing = NO;
 }
 
--(UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
-    
-    UIView *headerView = nil;
-    if (section == 0) {
-        AddListItemTableViewHeader *addHeader = [[AddListItemTableViewHeader alloc] initWithFrame:CGRectMake(0, 0, 320, 70)];
-        addHeader.editButtonAction = ^{
-            tableView.editing = !tableView.editing;
-        };
-        headerView = addHeader;
-    }
-    return headerView;
-}
-
 -(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
     
     NSInteger retVal = 0;
     if (section == 0) {
-        retVal = 70;
+        retVal = 20;
     }
     return retVal;
 }
@@ -166,8 +160,8 @@ static NSString *identifier = @"ListCellID";
 
 -(void)configureCell:(ListItemTableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath {
     
-    ListItem *item = [self.fetchController objectAtIndexPath:indexPath];
-    cell.listItem = item;
+    YumItem *item = [self.fetchController objectAtIndexPath:indexPath];
+    cell.yumItem = item;
 }
 
 -(void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -175,6 +169,14 @@ static NSString *identifier = @"ListCellID";
         ListItem *deleteItem = [self.fetchController objectAtIndexPath:indexPath];
         [deleteItem delete];
     }
+}
+
+-(CGFloat)tableView:(UITableView *)tableView estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    return 120.0f;
+}
+
+-(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    return 120.0f;
 }
 
 #pragma mark UITableViewDelegate Delegate Methods
