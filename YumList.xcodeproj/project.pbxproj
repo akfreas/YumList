@@ -22,7 +22,6 @@
 		19022EEE183328890057EB7A /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 19022ED2183328890057EB7A /* CoreData.framework */; };
 		19022EF6183328890057EB7A /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 19022EF4183328890057EB7A /* InfoPlist.strings */; };
 		19022EF8183328890057EB7A /* YumListTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 19022EF7183328890057EB7A /* YumListTests.m */; };
-		19022F0418332E0A0057EB7A /* ListItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 19022F0318332E0A0057EB7A /* ListItem.m */; };
 		19022F0818332E400057EB7A /* PersistenceManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 19022F0718332E400057EB7A /* PersistenceManager.m */; };
 		19022F1318334E2F0057EB7A /* ListItemTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 19022F1218334E2F0057EB7A /* ListItemTests.m */; };
 		19022F1718335A950057EB7A /* ListTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 19022F1618335A950057EB7A /* ListTableView.m */; };
@@ -34,12 +33,15 @@
 		19022F32183381B50057EB7A /* TestDataGenerator.m in Sources */ = {isa = PBXBuildFile; fileRef = 19022F2818336DF50057EB7A /* TestDataGenerator.m */; };
 		19022F51183442D00057EB7A /* AddListItemTableViewHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = 19022F50183442D00057EB7A /* AddListItemTableViewHeader.m */; };
 		19022F5418344AD90057EB7A /* AFTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 19022F5318344AD90057EB7A /* AFTextField.m */; };
+		191741321841684800A043EA /* ListItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 19022F0318332E0A0057EB7A /* ListItem.m */; };
+		199A33A218416AE100B9F368 /* YumItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 199A33A118416AE100B9F368 /* YumItem.m */; };
+		199A33A518416F4700B9F368 /* UIView+LayoutHelpers.m in Sources */ = {isa = PBXBuildFile; fileRef = 199A33A418416F4700B9F368 /* UIView+LayoutHelpers.m */; };
+		199A33A718427A2A00B9F368 /* Reveal.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 199A33A618427A2A00B9F368 /* Reveal.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		19A35AB718411F9600F5966A /* YumCollectorTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 19A35AB618411F9600F5966A /* YumCollectorTests.m */; };
 		19A35ABA1841238000F5966A /* yum-collection.html in Resources */ = {isa = PBXBuildFile; fileRef = 19A35AB91841238000F5966A /* yum-collection.html */; };
 		19A35AC71841345700F5966A /* YumCollector.m in Sources */ = {isa = PBXBuildFile; fileRef = 19A35AC61841345700F5966A /* YumCollector.m */; };
 		19A35ACA184135EA00F5966A /* YumItem+YumItemHelpers.m in Sources */ = {isa = PBXBuildFile; fileRef = 19A35AC9184135EA00F5966A /* YumItem+YumItemHelpers.m */; };
 		19A35ACD18413A0300F5966A /* YumParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 19A35ACC18413A0300F5966A /* YumParser.m */; };
-		19A35AD71841437200F5966A /* YumItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 19A35AD61841437200F5966A /* YumItem.m */; };
 		19A633F5183B5B32002B8867 /* ListItem+ListItemHelpers.m in Sources */ = {isa = PBXBuildFile; fileRef = 19A633F3183B5B32002B8867 /* ListItem+ListItemHelpers.m */; };
 		19A633FA183B8DAA002B8867 /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 19022F10183348AA0057EB7A /* MainViewController.m */; };
 		19A633FD183B90DE002B8867 /* AFCheckbox.m in Sources */ = {isa = PBXBuildFile; fileRef = 19A633FC183B90DE002B8867 /* AFCheckbox.m */; };
@@ -109,6 +111,11 @@
 		19022F50183442D00057EB7A /* AddListItemTableViewHeader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AddListItemTableViewHeader.m; path = Classes/AddListItemTableViewHeader.m; sourceTree = "<group>"; };
 		19022F5218344AD90057EB7A /* AFTextField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AFTextField.h; path = Classes/AFTextField.h; sourceTree = "<group>"; };
 		19022F5318344AD90057EB7A /* AFTextField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AFTextField.m; path = Classes/AFTextField.m; sourceTree = "<group>"; };
+		199A33A018416AE100B9F368 /* YumItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = YumItem.h; path = Classes/YumItem.h; sourceTree = "<group>"; };
+		199A33A118416AE100B9F368 /* YumItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = YumItem.m; path = Classes/YumItem.m; sourceTree = "<group>"; };
+		199A33A318416F4700B9F368 /* UIView+LayoutHelpers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIView+LayoutHelpers.h"; path = "Classes/UIView+LayoutHelpers.h"; sourceTree = "<group>"; };
+		199A33A418416F4700B9F368 /* UIView+LayoutHelpers.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIView+LayoutHelpers.m"; path = "Classes/UIView+LayoutHelpers.m"; sourceTree = "<group>"; };
+		199A33A618427A2A00B9F368 /* Reveal.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Reveal.framework; path = "../../../../../../../Applications/Reveal.app/Contents/SharedSupport/iOS-Libraries/Reveal.framework"; sourceTree = "<group>"; };
 		19A35AB618411F9600F5966A /* YumCollectorTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YumCollectorTests.m; sourceTree = "<group>"; };
 		19A35AB91841238000F5966A /* yum-collection.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; name = "yum-collection.html"; path = "Fixtures/yum-collection.html"; sourceTree = "<group>"; };
 		19A35AC51841345700F5966A /* YumCollector.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = YumCollector.h; path = Classes/YumCollector.h; sourceTree = "<group>"; };
@@ -117,8 +124,6 @@
 		19A35AC9184135EA00F5966A /* YumItem+YumItemHelpers.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "YumItem+YumItemHelpers.m"; path = "Classes/YumItem+YumItemHelpers.m"; sourceTree = "<group>"; };
 		19A35ACB18413A0300F5966A /* YumParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = YumParser.h; path = Classes/YumParser.h; sourceTree = "<group>"; };
 		19A35ACC18413A0300F5966A /* YumParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = YumParser.m; path = Classes/YumParser.m; sourceTree = "<group>"; };
-		19A35AD51841437200F5966A /* YumItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = YumItem.h; path = Classes/YumItem.h; sourceTree = "<group>"; };
-		19A35AD61841437200F5966A /* YumItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = YumItem.m; path = Classes/YumItem.m; sourceTree = "<group>"; };
 		19A633F3183B5B32002B8867 /* ListItem+ListItemHelpers.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "ListItem+ListItemHelpers.m"; path = "Classes/ListItem+ListItemHelpers.m"; sourceTree = "<group>"; };
 		19A633F4183B5B32002B8867 /* ListItem+ListItemHelpers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "ListItem+ListItemHelpers.h"; path = "Classes/ListItem+ListItemHelpers.h"; sourceTree = "<group>"; };
 		19A633FB183B90DE002B8867 /* AFCheckbox.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AFCheckbox.h; path = Classes/AFCheckbox.h; sourceTree = "<group>"; };
@@ -144,6 +149,7 @@
 				19022ECF183328890057EB7A /* CoreGraphics.framework in Frameworks */,
 				19022ED3183328890057EB7A /* CoreData.framework in Frameworks */,
 				19022ED1183328890057EB7A /* UIKit.framework in Frameworks */,
+				199A33A718427A2A00B9F368 /* Reveal.framework in Frameworks */,
 				19022ECD183328890057EB7A /* Foundation.framework in Frameworks */,
 				33E85E9DC8F741688B5F9617 /* libPods-YumList.a in Frameworks */,
 			);
@@ -271,9 +277,9 @@
 		19022F0518332E220057EB7A /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				19A35AD51841437200F5966A /* YumItem.h */,
-				19A35AD61841437200F5966A /* YumItem.m */,
 				19022EE0183328890057EB7A /* YumList.xcdatamodeld */,
+				199A33A018416AE100B9F368 /* YumItem.h */,
+				199A33A118416AE100B9F368 /* YumItem.m */,
 				19022F0218332E0A0057EB7A /* ListItem.h */,
 				19022F0318332E0A0057EB7A /* ListItem.m */,
 			);
@@ -317,6 +323,8 @@
 				19022F50183442D00057EB7A /* AddListItemTableViewHeader.m */,
 				19A633FB183B90DE002B8867 /* AFCheckbox.h */,
 				19A633FC183B90DE002B8867 /* AFCheckbox.m */,
+				199A33A318416F4700B9F368 /* UIView+LayoutHelpers.h */,
+				199A33A418416F4700B9F368 /* UIView+LayoutHelpers.m */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -350,6 +358,7 @@
 		19A35ACE18413A0B00F5966A /* Parser */ = {
 			isa = PBXGroup;
 			children = (
+				199A33A618427A2A00B9F368 /* Reveal.framework */,
 				19A35ACB18413A0300F5966A /* YumParser.h */,
 				19A35ACC18413A0300F5966A /* YumParser.m */,
 			);
@@ -537,12 +546,13 @@
 				19022F51183442D00057EB7A /* AddListItemTableViewHeader.m in Sources */,
 				19022F0818332E400057EB7A /* PersistenceManager.m in Sources */,
 				19022F1718335A950057EB7A /* ListTableView.m in Sources */,
+				199A33A518416F4700B9F368 /* UIView+LayoutHelpers.m in Sources */,
 				19022F1E183361470057EB7A /* ListItemTableViewCell.m in Sources */,
 				19A633FD183B90DE002B8867 /* AFCheckbox.m in Sources */,
 				19022F5418344AD90057EB7A /* AFTextField.m in Sources */,
-				19022F0418332E0A0057EB7A /* ListItem.m in Sources */,
 				19A633FA183B8DAA002B8867 /* MainViewController.m in Sources */,
 				19BD001C183AEBCD00A95C6C /* NSManagedObject+Helpers.m in Sources */,
+				191741321841684800A043EA /* ListItem.m in Sources */,
 				19022F221833635F0057EB7A /* FormatUtils.m in Sources */,
 				19A35ACD18413A0300F5966A /* YumParser.m in Sources */,
 				19022EE2183328890057EB7A /* YumList.xcdatamodeld in Sources */,
@@ -552,7 +562,7 @@
 				19022EDB183328890057EB7A /* main.m in Sources */,
 				19A35AC71841345700F5966A /* YumCollector.m in Sources */,
 				19A35ACA184135EA00F5966A /* YumItem+YumItemHelpers.m in Sources */,
-				19A35AD71841437200F5966A /* YumItem.m in Sources */,
+				199A33A218416AE100B9F368 /* YumItem.m in Sources */,
 				19022F32183381B50057EB7A /* TestDataGenerator.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
