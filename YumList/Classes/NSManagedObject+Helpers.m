@@ -80,11 +80,15 @@
 }
 
 -(NSString *)description {
-    NSEntityDescription *entityDescription = [self.class entityDescriptionInContext:self.managedObjectContext];
-    NSArray *instanceProperties = entityDescription.properties;
     NSMutableString *descriptionString = [NSMutableString new];
-    for (NSPropertyDescription *propertyDesc in instanceProperties) {
-        [descriptionString appendFormat:@"%@ = %@, ", propertyDesc.name, [self valueForKey:propertyDesc.name]];
+    if (self.managedObjectContext != nil) {
+        NSEntityDescription *entityDescription = [self.class entityDescriptionInContext:self.managedObjectContext];
+        NSArray *instanceProperties = entityDescription.properties;
+        for (NSPropertyDescription *propertyDesc in instanceProperties) {
+            [descriptionString appendFormat:@"%@ = %@, ", propertyDesc.name, [self valueForKey:propertyDesc.name]];
+        }
+    } else {
+        [descriptionString appendString:NSStringFromClass(self.class)];
     }
     return descriptionString;
 }
