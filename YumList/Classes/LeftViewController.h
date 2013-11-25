@@ -1,0 +1,3 @@
+@interface LeftViewController : UITableViewController
+
+@end
