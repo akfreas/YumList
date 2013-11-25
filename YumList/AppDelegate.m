@@ -1,9 +1,23 @@
 #import "AppDelegate.h"
 #import "PersistenceManager.h"
 #import "MainViewController.h"
+#import "LeftViewController.h"
+#import <SWRevealViewController/SWRevealViewController.h>
+
 
 @implementation AppDelegate {
-    MainViewController *mainViewController;
+    SWRevealViewController *revealController;
+}
+
++(SWRevealViewController *)sharedRevealController {
+    static SWRevealViewController *revealController;
+    if (revealController == nil) {
+        static dispatch_once_t onceToken;
+        dispatch_once(&onceToken, ^{
+            revealController = [[SWRevealViewController alloc] init];
+        });
+    }
+    return revealController;
 }
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
@@ -11,9 +25,14 @@
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     // Override point for customization after application launch.
     self.window.backgroundColor = [UIColor whiteColor];
-    mainViewController = [MainViewController new];
-    self.window.rootViewController = mainViewController;
+    MainViewController *mainController = [MainViewController new];
+    LeftViewController *leftController = [[LeftViewController alloc] initWithStyle:UITableViewStylePlain];
+    revealController = [AppDelegate sharedRevealController];
+    revealController.rearViewController = leftController;
+    revealController.frontViewController = mainController;
+    self.window.rootViewController = revealController;
     [self.window makeKeyAndVisible];
+
     return YES;
 }
 
