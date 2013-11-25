@@ -6,4 +6,7 @@
 +(NSFetchedResultsController *)fetchControllerForAllYumItemsInContext:(NSManagedObjectContext *)context;
 +(NSFetchedResultsController *)fetchControllerForAllYumItems;
 
++(NSFetchedResultsController *)fetchControllerForYumSourcesInContext:(NSManagedObjectContext *)context;
++(NSFetchedResultsController *)fetchControllerForYumSources;
+
 @end

@@ -2,6 +2,7 @@
 #import "PersistenceManager.h"
 #import "ListItem.h"
 #import "YumItem.h"
+#import "YumSource.h"
 
 @implementation NSFetchedResultsControllerFactory
 
@@ -31,6 +32,19 @@
 
 +(NSFetchedResultsController *)fetchControllerForAllYumItems {
     return [self fetchControllerForAllYumItemsInContext:[PersistenceManager managedObjectContext]];
+}
+
+
++(NSFetchedResultsController *)fetchControllerForYumSources {
+    return [self fetchControllerForYumSourcesInContext:[PersistenceManager managedObjectContext]];
+}
+
++(NSFetchedResultsController *)fetchControllerForYumSourcesInContext:(NSManagedObjectContext *)context {
+    NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:NSStringFromClass([YumSource class])];
+    NSSortDescriptor *sortDescriptor = [NSSortDescriptor sortDescriptorWithKey:@"name" ascending:NO];
+    request.sortDescriptors = @[sortDescriptor];
+    NSFetchedResultsController *controller = [[NSFetchedResultsController alloc] initWithFetchRequest:request managedObjectContext:context sectionNameKeyPath:nil cacheName:nil];
+    return controller;
 }
 
 @end
