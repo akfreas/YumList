@@ -2,7 +2,6 @@
 
 @implementation HeaderToolbar {
     UIBarButtonItem *leftNavigationButton;
-    UIBarButtonItem *rightNavigationButton;
 }
 
 -(id)initWithFrame:(CGRect)frame {
@@ -13,19 +12,6 @@
         self.translucent = NO;
     }
     return self;
-}
-
--(void)setRightNavigationButtonTappedAction:(void (^)())rightNavigationButtonTappedAction {
-    _rightNavigationButtonTappedAction = rightNavigationButtonTappedAction;
-    NSMutableArray *itemArray = [NSMutableArray arrayWithArray:self.items];
-    if (rightNavigationButton != nil) {
-        [itemArray removeObject:rightNavigationButton];
-    }
-    rightNavigationButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd handler:^(id sender) {
-        _rightNavigationButtonTappedAction();
-    }];
-    [itemArray addObject:rightNavigationButton];
-    self.items = [NSArray arrayWithArray:itemArray];
 }
 
 -(void)setLeftNavigationButtonTappedAction:(void (^)())leftNavigationButtonTappedAction {
