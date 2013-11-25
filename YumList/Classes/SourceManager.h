@@ -5,10 +5,11 @@
 
 @property (strong, nonatomic) YumSource *currentYumSource;
 @property (copy, nonatomic) void(^yumSourceChangedAction)(YumSource *);
+@property (strong, nonatomic) NSMutableArray *changedActions;
 
 +(YumSource *)currentYumSource;
 +(void)setCurrentYumSource:(YumSource *)source;
 +(void(^)(YumSource *))yumSourceChangedAction;
-+(void)setYumSourceChangedAction:(void(^)(YumSource *))action;
++(void)addYumSourceChangedAction:(void(^)(YumSource *))action;
 
 @end

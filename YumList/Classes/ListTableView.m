@@ -41,7 +41,7 @@ static NSString *identifier = @"ListCellID";
 
 -(void)setupSourceChangedBehavior {
     
-    [SourceManager setYumSourceChangedAction:^(YumSource *source) {
+    [SourceManager addYumSourceChangedAction:^(YumSource *source) {
         self.fetchController = [NSFetchedResultsControllerFactory fetchControllerForYumItemsFromSource:source];
         [collector syncYumsForSource:source completion:^(NSArray *newYums) {
             [self.fetchController performFetch:NULL];

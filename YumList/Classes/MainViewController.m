@@ -1,9 +1,11 @@
 #import "MainViewController.h"
 #import "ListTableView.h"
-#import "TestDataGenerator.h"
-
+#import "HeaderToolbar.h"
+#import "AppDelegate.h"
+#import <SWRevealViewController.h>
 @implementation MainViewController {
     
+    HeaderToolbar *toolbar;
     ListTableView *tableViewList;
 }
 
@@ -11,17 +13,40 @@
     self = [super init];
     if (self) {
         self.view.autoresizesSubviews = YES;
-        self.view.autoresizingMask = ( UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleTopMargin);
+        self.view.backgroundColor = [UIColor whiteColor];
     }
     return self;
 }
-- (void)viewDidLoad
-{
-    [super viewDidLoad];
+
+-(void)addHeaderToolbar {
+    toolbar = [[HeaderToolbar alloc] initWithFrame:CGRectZero];
+    toolbar.leftNavigationButtonTappedAction = ^{
+        [[AppDelegate sharedRevealController] revealToggleAnimated:YES];
+    };
+    [self.view addSubview:toolbar];
+}
+
+-(void)addTableView {
+    
     tableViewList = [[ListTableView alloc] initWithFrame:self.view.frame];
     [self.view addSubview:tableViewList];
     
     [tableViewList reloadData];
+}
+
+-(void)addLayoutConstraints {
+    NSDictionary *bindings = MXDictionaryOfVariableBindings(tableViewList, toolbar);
+    [self.view addConstraintWithVisualFormat:@"V:|-20-[toolbar][tableViewList]|" bindings:bindings];
+    [self.view addConstraintWithVisualFormat:@"H:|[toolbar]|" bindings:bindings];
+    [self.view addConstraintWithVisualFormat:@"H:|[tableViewList]|" bindings:bindings];
+}
+
+- (void)viewDidLoad
+{
+    [super viewDidLoad];
+    [self addTableView];
+    [self addHeaderToolbar];
+    [self addLayoutConstraints];
 }
 -(BOOL)shouldAutorotate {
     return YES;

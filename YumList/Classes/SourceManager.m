@@ -2,7 +2,14 @@
 #import "YumSource.h"
 
 
-@implementation SourceManager {
+@implementation SourceManager
+
+-(id)init {
+    self = [super init];
+    if (self) {
+        self.changedActions = [NSMutableArray array];
+    }
+    return self;
 }
 
 +(SourceManager *)sharedInstance {
@@ -16,9 +23,9 @@
     return sharedInstance;
 }
 
-+(void)setYumSourceChangedAction:(void (^)(YumSource *))action {
++(void)addYumSourceChangedAction:(void (^)(YumSource *))action {
     SourceManager *manager = [self sharedInstance];
-    manager.yumSourceChangedAction = action;
+    [manager.changedActions addObject:[action copy]];
 }
 
 +(void (^)(YumSource *))yumSourceChangedAction {
@@ -35,6 +42,9 @@
     managerInstance.currentYumSource = currentYumSource;
     if (managerInstance.yumSourceChangedAction != NULL) {
         managerInstance.yumSourceChangedAction(currentYumSource);
+    }
+    for (void(^block)(YumSource *) in managerInstance.changedActions) {
+        block(currentYumSource);
     }
 }
 

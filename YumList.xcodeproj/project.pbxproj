@@ -58,6 +58,7 @@
 		19A9628E1842CDF8008E7CD1 /* AddYumSourceView.m in Sources */ = {isa = PBXBuildFile; fileRef = 19A9628D1842CDF8008E7CD1 /* AddYumSourceView.m */; };
 		19BD001C183AEBCD00A95C6C /* NSManagedObject+Helpers.m in Sources */ = {isa = PBXBuildFile; fileRef = 19022F0B18333B700057EB7A /* NSManagedObject+Helpers.m */; };
 		19BF80FC1843250500516204 /* YumSourcesTable.m in Sources */ = {isa = PBXBuildFile; fileRef = 19BF80FB1843250500516204 /* YumSourcesTable.m */; };
+		19D4057518434576008538D4 /* SourceManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 19D4057318434576008538D4 /* SourceManager.m */; };
 		33E85E9DC8F741688B5F9617 /* libPods-YumList.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BAD75CB70ACC4647A45D91BD /* libPods-YumList.a */; };
 		9D39F315819346079BFDD5B4 /* libPods-YumListTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0C7A10C88FC94EB3AABAA660 /* libPods-YumListTests.a */; };
 /* End PBXBuildFile section */
@@ -154,6 +155,8 @@
 		19A9628D1842CDF8008E7CD1 /* AddYumSourceView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AddYumSourceView.m; path = Classes/AddYumSourceView.m; sourceTree = "<group>"; };
 		19BF80FA1843250500516204 /* YumSourcesTable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = YumSourcesTable.h; path = Classes/YumSourcesTable.h; sourceTree = "<group>"; };
 		19BF80FB1843250500516204 /* YumSourcesTable.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = YumSourcesTable.m; path = Classes/YumSourcesTable.m; sourceTree = "<group>"; };
+		19D4057318434576008538D4 /* SourceManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SourceManager.m; path = Classes/SourceManager.m; sourceTree = "<group>"; };
+		19D4057418434576008538D4 /* SourceManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SourceManager.h; path = Classes/SourceManager.h; sourceTree = "<group>"; };
 		ABFAE3D966F545E385A0486F /* Pods-YumListTests.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-YumListTests.xcconfig"; path = "Pods/Pods-YumListTests.xcconfig"; sourceTree = "<group>"; };
 		BAD75CB70ACC4647A45D91BD /* libPods-YumList.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-YumList.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		CF3E5BE010224CDB9FEFF0EB /* Pods-YumList.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-YumList.xcconfig"; path = "Pods/Pods-YumList.xcconfig"; sourceTree = "<group>"; };
@@ -362,6 +365,8 @@
 		19022F1F183363480057EB7A /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
+				19D4057318434576008538D4 /* SourceManager.m */,
+				19D4057418434576008538D4 /* SourceManager.h */,
 				19022F201833635F0057EB7A /* FormatUtils.h */,
 				19022F211833635F0057EB7A /* FormatUtils.m */,
 			);
@@ -599,6 +604,7 @@
 				19A9628B1842A929008E7CD1 /* YumSource.m in Sources */,
 				19A35ACA184135EA00F5966A /* YumItem+YumItemHelpers.m in Sources */,
 				199A33A218416AE100B9F368 /* YumItem.m in Sources */,
+				19D4057518434576008538D4 /* SourceManager.m in Sources */,
 				19022F32183381B50057EB7A /* TestDataGenerator.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
