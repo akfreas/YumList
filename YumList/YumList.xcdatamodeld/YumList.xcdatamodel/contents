@@ -14,6 +14,7 @@
         <attribute name="imageURL" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="syncDate" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="title" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="source" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="YumSource" syncable="YES"/>
     </entity>
     <entity name="YumSource" representedClassName="YumSource" syncable="YES">
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
