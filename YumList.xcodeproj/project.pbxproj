@@ -55,8 +55,9 @@
 		19A6340C183BB5DA002B8867 /* NSString+Random.m in Sources */ = {isa = PBXBuildFile; fileRef = 19A63409183BB5DA002B8867 /* NSString+Random.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		19A6340D183BB5DA002B8867 /* NSStringRandom.m in Sources */ = {isa = PBXBuildFile; fileRef = 19A6340B183BB5DA002B8867 /* NSStringRandom.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		19A9628B1842A929008E7CD1 /* YumSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 19A9628A1842A929008E7CD1 /* YumSource.m */; };
-		19A9628E1842CDF8008E7CD1 /* AddYumSourceCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 19A9628D1842CDF8008E7CD1 /* AddYumSourceCell.m */; };
+		19A9628E1842CDF8008E7CD1 /* AddYumSourceView.m in Sources */ = {isa = PBXBuildFile; fileRef = 19A9628D1842CDF8008E7CD1 /* AddYumSourceView.m */; };
 		19BD001C183AEBCD00A95C6C /* NSManagedObject+Helpers.m in Sources */ = {isa = PBXBuildFile; fileRef = 19022F0B18333B700057EB7A /* NSManagedObject+Helpers.m */; };
+		19BF80FC1843250500516204 /* YumSourcesTable.m in Sources */ = {isa = PBXBuildFile; fileRef = 19BF80FB1843250500516204 /* YumSourcesTable.m */; };
 		33E85E9DC8F741688B5F9617 /* libPods-YumList.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BAD75CB70ACC4647A45D91BD /* libPods-YumList.a */; };
 		9D39F315819346079BFDD5B4 /* libPods-YumListTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0C7A10C88FC94EB3AABAA660 /* libPods-YumListTests.a */; };
 /* End PBXBuildFile section */
@@ -149,8 +150,10 @@
 		19A6340B183BB5DA002B8867 /* NSStringRandom.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NSStringRandom.m; path = NSStringRandom/NSStringRandom.m; sourceTree = "<group>"; };
 		19A962891842A929008E7CD1 /* YumSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = YumSource.h; path = Classes/YumSource.h; sourceTree = "<group>"; };
 		19A9628A1842A929008E7CD1 /* YumSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = YumSource.m; path = Classes/YumSource.m; sourceTree = "<group>"; };
-		19A9628C1842CDF8008E7CD1 /* AddYumSourceCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AddYumSourceCell.h; path = Classes/AddYumSourceCell.h; sourceTree = "<group>"; };
-		19A9628D1842CDF8008E7CD1 /* AddYumSourceCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AddYumSourceCell.m; path = Classes/AddYumSourceCell.m; sourceTree = "<group>"; };
+		19A9628C1842CDF8008E7CD1 /* AddYumSourceView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AddYumSourceView.h; path = Classes/AddYumSourceView.h; sourceTree = "<group>"; };
+		19A9628D1842CDF8008E7CD1 /* AddYumSourceView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AddYumSourceView.m; path = Classes/AddYumSourceView.m; sourceTree = "<group>"; };
+		19BF80FA1843250500516204 /* YumSourcesTable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = YumSourcesTable.h; path = Classes/YumSourcesTable.h; sourceTree = "<group>"; };
+		19BF80FB1843250500516204 /* YumSourcesTable.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = YumSourcesTable.m; path = Classes/YumSourcesTable.m; sourceTree = "<group>"; };
 		ABFAE3D966F545E385A0486F /* Pods-YumListTests.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-YumListTests.xcconfig"; path = "Pods/Pods-YumListTests.xcconfig"; sourceTree = "<group>"; };
 		BAD75CB70ACC4647A45D91BD /* libPods-YumList.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-YumList.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		CF3E5BE010224CDB9FEFF0EB /* Pods-YumList.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-YumList.xcconfig"; path = "Pods/Pods-YumList.xcconfig"; sourceTree = "<group>"; };
@@ -334,8 +337,8 @@
 			children = (
 				19022F5218344AD90057EB7A /* AFTextField.h */,
 				19022F5318344AD90057EB7A /* AFTextField.m */,
-				19A9628C1842CDF8008E7CD1 /* AddYumSourceCell.h */,
-				19A9628D1842CDF8008E7CD1 /* AddYumSourceCell.m */,
+				19A9628C1842CDF8008E7CD1 /* AddYumSourceView.h */,
+				19A9628D1842CDF8008E7CD1 /* AddYumSourceView.m */,
 				197A58EB1842A5A7008CDFA6 /* AddYumSourceSheet.h */,
 				197A58EC1842A5A7008CDFA6 /* AddYumSourceSheet.m */,
 				19022F1518335A950057EB7A /* ListTableView.h */,
@@ -350,6 +353,8 @@
 				197A58E9184294EB008CDFA6 /* HeaderToolbar.m */,
 				199A33A318416F4700B9F368 /* UIView+LayoutHelpers.h */,
 				199A33A418416F4700B9F368 /* UIView+LayoutHelpers.m */,
+				19BF80FA1843250500516204 /* YumSourcesTable.h */,
+				19BF80FB1843250500516204 /* YumSourcesTable.m */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -572,7 +577,7 @@
 				19022F0818332E400057EB7A /* PersistenceManager.m in Sources */,
 				19022F1718335A950057EB7A /* ListTableView.m in Sources */,
 				199A33A518416F4700B9F368 /* UIView+LayoutHelpers.m in Sources */,
-				19A9628E1842CDF8008E7CD1 /* AddYumSourceCell.m in Sources */,
+				19A9628E1842CDF8008E7CD1 /* AddYumSourceView.m in Sources */,
 				19022F1E183361470057EB7A /* ListItemTableViewCell.m in Sources */,
 				19A633FD183B90DE002B8867 /* AFCheckbox.m in Sources */,
 				19022F5418344AD90057EB7A /* AFTextField.m in Sources */,
@@ -584,6 +589,7 @@
 				19022EE2183328890057EB7A /* YumList.xcdatamodeld in Sources */,
 				19022EDF183328890057EB7A /* AppDelegate.m in Sources */,
 				19022F1A18335BD70057EB7A /* NSFetchedResultsControllerFactory.m in Sources */,
+				19BF80FC1843250500516204 /* YumSourcesTable.m in Sources */,
 				197A58E718429249008CDFA6 /* LeftViewController.m in Sources */,
 				19A633F5183B5B32002B8867 /* ListItem+ListItemHelpers.m in Sources */,
 				19022EDB183328890057EB7A /* main.m in Sources */,
