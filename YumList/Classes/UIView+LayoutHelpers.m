@@ -17,13 +17,14 @@
 #pragma mark -
 @implementation UIView (LayoutHelpers)
 
-- (void)addConstraintWithVisualFormat:(NSString *)format bindings:(NSDictionary *)bindings
+- (NSArray *)addConstraintWithVisualFormat:(NSString *)format bindings:(NSDictionary *)bindings
 {
-    [self addConstraints:
-     [NSLayoutConstraint constraintsWithVisualFormat:format
-                                             options:0
-                                             metrics:nil
-                                               views:bindings]];
+   NSArray *constraints = [NSLayoutConstraint constraintsWithVisualFormat:format
+                                            options:0
+                                            metrics:nil
+                                              views:bindings];
+    [self addConstraints:constraints];
+    return constraints;
 }
 
 @end

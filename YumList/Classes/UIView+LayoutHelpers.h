@@ -7,7 +7,5 @@
 #define MXDictionaryOfVariableBindings(...) [NSDictionary MXTranslateAutoresizingMaskIntoConstraints:NSDictionaryOfVariableBindings(__VA_ARGS__)]
 
 @interface UIView (LayoutHelpers)
-- (void)addConstraintWithVisualFormat:(NSString *)format bindings:(NSDictionary *)bindings;
+-(NSArray *)addConstraintWithVisualFormat:(NSString *)format bindings:(NSDictionary *)bindings;
 @end
-
-
