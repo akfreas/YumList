@@ -6,6 +6,7 @@
 #import "PersistenceManager.h"
 #import "YumCollector.h"
 #import "YumItem.h"
+#import "SourceManager.h"
 
 @interface ListTableView () <UITableViewDataSource, UITableViewDelegate>
 
@@ -27,17 +28,26 @@ static NSString *identifier = @"ListCellID";
         self.delegate = self;
         self.autoresizesSubviews = YES;
         self.allowsSelection = NO;
+        collector = [YumCollector new];
+        
         self.autoresizingMask = (UIViewAutoresizingFlexibleHeight  | UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleRightMargin |UIViewAutoresizingFlexibleTopMargin);
         userDrivenChange = NO;
         [self registerClass:[ListItemTableViewCell class] forCellReuseIdentifier:identifier];
         [self setupFetchController];
-        collector = [YumCollector new];
-        [collector syncYums:^(NSArray *newYums) {
-            NSLog(@"New yums: %@", newYums);
-        }];
-        
+        [self setupSourceChangedBehavior];
     }
     return self;
+}
+
+-(void)setupSourceChangedBehavior {
+    
+    [SourceManager setYumSourceChangedAction:^(YumSource *source) {
+        self.fetchController = [NSFetchedResultsControllerFactory fetchControllerForYumItemsFromSource:source];
+        [collector syncYumsForSource:source completion:^(NSArray *newYums) {
+            [self.fetchController performFetch:NULL];
+            [self reloadData];
+        }];
+    }];
 }
 
 -(void)setupFetchController {
