@@ -1,7 +1,8 @@
-
+@class YumSource;
 
 @interface YumCollector : NSObject
 
--(void)syncYums:(void(^)(NSArray *newYums))completion;
+-(void)syncAllYums:(void(^)(NSArray *newYums))completion;
+-(void)syncYumsForSource:(YumSource *)source completion:(void (^)(NSArray *))completion;
 
 @end

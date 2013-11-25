@@ -6,21 +6,24 @@
 #import "YumParser.h"
 #import "YumItem+YumItemHelpers.h"
 #import "YumItem.h"
+#import "YumSource.h"
 
 @implementation YumCollector {
     AFHTTPSessionManager *connectionManager;
 }
 
--(void)syncYums:(void (^)(NSArray *))completion {
+
+
+-(void)syncYumsForSource:(YumSource *)source completion:(void (^)(NSArray *))completion {
     if (connectionManager == nil) {
-        connectionManager = [[AFHTTPSessionManager alloc] initWithBaseURL:[NSURL URLWithString:@"http://www.yummly.com"]];
+        connectionManager = [[AFHTTPSessionManager alloc] init];
         connectionManager.responseSerializer.acceptableContentTypes = [NSSet setWithObject:@"text/html"];
         connectionManager.responseSerializer = [AFHTTPResponseSerializer serializer];
     }
     NSInteger chunkStart = 0;
-    NSString *yumURLString = [NSString stringWithFormat:@"http://www.yummly.com/profile/AlexanderFreas/collections/all-yums/more/%i", chunkStart];
     NSDate *syncDate = [NSDate date];
-    [connectionManager GET:yumURLString parameters:nil success:^(NSURLSessionDataTask *task, NSData *yumData) {
+    NSManagedObjectID *sourceObjID = source.objectID;
+    [connectionManager GET:source.sourceURL parameters:nil success:^(NSURLSessionDataTask *task, NSData *yumData) {
         PersistenceManager *newManager = [PersistenceManager new];
         NSArray *parsedYums = [YumParser parseYumData:yumData];
         NSMutableArray *newYums = [NSMutableArray new];
@@ -28,13 +31,17 @@
             YumItem *dbItem = [YumItem itemWithExternalID:parsedYum[@"externalYumID"] context:newManager.managedObjectContext];
             if (dbItem == nil) {
                 YumItem *newItem = [YumItem newItemWithDictionary:parsedYum context:newManager.managedObjectContext];
+                YumSource *ourSource = [YumSource objectWithObjectID:sourceObjID inContext:newManager.managedObjectContext];
                 newItem.syncDate = syncDate;
+                newItem.source = ourSource;
                 [newYums addObject:newItem];
             }
         }
         [newManager save];
         newManager = nil;
-        completion(newYums);
+        if (completion != NULL) {
+            completion(newYums);
+        }
 
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
         NSLog(@"Failed fetching yums: %@",error);
