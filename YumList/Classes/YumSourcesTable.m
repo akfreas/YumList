@@ -1,7 +1,9 @@
 #import "YumSourcesTable.h"
 #import "YumSource.h"
 #import "NSFetchedResultsControllerFactory.h"
-
+#import "SourceManager.h"
+#import <SWRevealViewController.h>
+#import "AppDelegate.h"
 
 
 @implementation YumSourcesTable {
@@ -13,6 +15,7 @@
     self = [super initWithFrame:frame];
     if (self) {
         self.dataSource = self;
+        self.delegate = self;
         [self registerClass:[UITableViewCell class] forCellReuseIdentifier:@"Generic"];
         [self setupFetchController];
     }
@@ -32,6 +35,15 @@
     }
 }
 
+#pragma mark UITableViewDelegate Methods 
+
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    YumSource *selectedSource = [fetchController objectAtIndexPath:indexPath];
+    [SourceManager setCurrentYumSource:selectedSource];
+    [[AppDelegate sharedRevealController] revealToggleAnimated:YES];
+}
+
+#pragma mark UITableViewDataSource Methods
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     return 1;

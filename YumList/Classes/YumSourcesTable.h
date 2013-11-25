@@ -1,3 +1,3 @@
-@interface YumSourcesTable : UITableView <UITableViewDataSource, NSFetchedResultsControllerDelegate>
+@interface YumSourcesTable : UITableView <UITableViewDataSource, UITableViewDelegate, NSFetchedResultsControllerDelegate>
 
 @end
