@@ -1,22 +1,23 @@
-#import "AddYumSourceCell.h"
+#import "AddYumSourceView.h"
 #import "AddYumSourceSheet.h"
 #import "YumSource.h"
 
-@implementation AddYumSourceCell {
+@implementation AddYumSourceView {
     UIButton *addSourceButton;
     AddYumSourceSheet *addSourceSheet;
     NSArray *constraintsAddedToFitAddSourceSheet;
     NSLayoutConstraint *animatableAddSheetConstraint;
+    NSArray *addSourceButtonConstraints;
 }
 
-static CGFloat collapsedSize = 44;
-static CGFloat expandedSize = 250;
+#define CollapsedSize 44.0f
+#define ExpandedActionSheetSize 200.0f + CollapsedSize
+#define ExpandedSize ExpandedActionSheetSize + 10
 
-- (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
-{
-    self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
+- (id)initWithFrame:(CGRect)frame {
+    self = [super initWithFrame:frame];
     if (self) {
-        // Initialization code
+        self.translatesAutoresizingMaskIntoConstraints = NO;
         [self addAddSourceButton];
     }
     return self;
@@ -31,15 +32,13 @@ static CGFloat expandedSize = 250;
     [addSourceButton setTitle:NSLocalizedString(@"Add Source", @"Add source button.") forState:UIControlStateNormal];
     [self addSubview:addSourceButton];
     [self addConstraintWithVisualFormat:@"H:|-20-[addSourceButton]" bindings:MXDictionaryOfVariableBindings(addSourceButton)];
-    [self addConstraintWithVisualFormat:@"V:|-5-[addSourceButton]" bindings:MXDictionaryOfVariableBindings(addSourceButton)];
+    addSourceButtonConstraints = [self addConstraintWithVisualFormat:@"V:|-5-[addSourceButton]" bindings:MXDictionaryOfVariableBindings(addSourceButton)];
     [addSourceButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
     [addSourceButton addEventHandler:[self addSourceButtonEventHandler] forControlEvents:UIControlEventTouchUpInside];
 }
 
 -(void(^)(id sender))addSourceButtonEventHandler {
     return ^(id sender) {
-        if (self.addSourceButtonTapped != NULL) {
-        }
         if (addSourceSheet == nil) {
             [self addSourceSheet];
         } else {
@@ -48,8 +47,14 @@ static CGFloat expandedSize = 250;
     };
 }
 
--(void(^)())newSourceAddedHandler {
+-(void(^)())addSourceButtonHandler {
     return ^(YumSource *newSource) {
+        [self removeSourceSheet];
+    };
+}
+
+-(void(^)())cancelButtonHandler {
+    return ^{
         [self removeSourceSheet];
     };
 }
@@ -57,23 +62,20 @@ static CGFloat expandedSize = 250;
 -(void)addSourceSheet {
     if (addSourceSheet == nil) {
         addSourceSheet = [[AddYumSourceSheet alloc] initWithFrame:CGRectZero];
-        addSourceSheet.newSourceAdded = [self newSourceAddedHandler];
+        addSourceSheet.newSourceAdded = [self addSourceButtonHandler];
+        addSourceSheet.cancelButtonPressed = [self cancelButtonHandler];
     }
     [self addSubview:addSourceSheet];
-    constraintsAddedToFitAddSourceSheet = [self addConstraintWithVisualFormat:@"V:|-5-[addSourceButton][addSourceSheet(0)]|" bindings:MXDictionaryOfVariableBindings(addSourceButton, addSourceSheet)];
-    [self addConstraintWithVisualFormat:@"H:|[addSourceSheet(260)]|" bindings:MXDictionaryOfVariableBindings(addSourceSheet)];
-    NSInteger animatableIndex = [constraintsAddedToFitAddSourceSheet indexOfObjectPassingTest:^BOOL(NSLayoutConstraint *constraint, NSUInteger idx, BOOL *stop) {
-        if (constraint.firstItem == addSourceSheet && constraint.secondItem == nil) {
-            return YES;
-        } else {
-            return NO;
-        }
-    }];
+    [self removeConstraints:addSourceButtonConstraints];
+    [addSourceButton removeFromSuperview];
+    constraintsAddedToFitAddSourceSheet = [self addConstraintWithVisualFormat:@"V:|-5-[addSourceSheet]" bindings:MXDictionaryOfVariableBindings(addSourceButton, addSourceSheet)];
+    [self addConstraintWithVisualFormat:@"H:|[addSourceSheet(260)]" bindings:MXDictionaryOfVariableBindings(addSourceSheet)];
+    animatableAddSheetConstraint = [NSLayoutConstraint constraintWithItem:addSourceSheet attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:nil attribute:NSLayoutAttributeNotAnAttribute multiplier:0 constant:0];
+    [self addConstraint:animatableAddSheetConstraint];
     [self layoutIfNeeded];
-    animatableAddSheetConstraint = constraintsAddedToFitAddSourceSheet[animatableIndex];
-    self.addSourceButtonTapped(expandedSize);
+    self.addSourceButtonTapped(ExpandedSize);
     [UIView animateWithDuration:0.3f animations:^{
-        animatableAddSheetConstraint.constant = expandedSize - 44;
+        animatableAddSheetConstraint.constant = ExpandedActionSheetSize;
         [self layoutIfNeeded];
         self.expandAnimationCompleted();
     } completion:^(BOOL finished) {
@@ -84,23 +86,18 @@ static CGFloat expandedSize = 250;
 -(void)removeSourceSheet {
     
     [addSourceSheet beginContractAnimation];
-    self.addSourceButtonTapped(collapsedSize);
+    self.addSourceButtonTapped(CollapsedSize);
     [UIView animateWithDuration:0.3f animations:^{
         animatableAddSheetConstraint.constant = 0;
         [self layoutIfNeeded];
+        [self layoutIfNeeded];
+        
         self.expandAnimationCompleted();
     } completion:^(BOOL finished) {
         [self addConstraints:constraintsAddedToFitAddSourceSheet];
         [addSourceSheet removeFromSuperview];
         addSourceSheet = nil;
+        [self addSubview:addSourceButton];
     }];
 }
-
-- (void)setSelected:(BOOL)selected animated:(BOOL)animated
-{
-    [super setSelected:selected animated:animated];
-
-    // Configure the view for the selected state
-}
-
 @end
