@@ -133,15 +133,6 @@ static NSString *identifier = @"ListCellID";
     cell.editing = NO;
 }
 
--(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
-    
-    NSInteger retVal = 0;
-    if (section == 0) {
-        retVal = 20;
-    }
-    return retVal;
-}
-
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     return [[[self.fetchController sections] objectAtIndex:section] numberOfObjects];
 }
