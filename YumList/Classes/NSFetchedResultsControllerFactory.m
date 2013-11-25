@@ -22,8 +22,21 @@
     return [self fetchControllerForAllListItemsInContext:[PersistenceManager managedObjectContext]];
 }
 
++(NSFetchedResultsController *)fetchControllerForYumItemsFromSource:(YumSource *)source {
+    return [self fetchControllerForYumItemsFromSource:source inContext:[PersistenceManager managedObjectContext]];
+}
++(NSFetchedResultsController *)fetchControllerForYumItemsFromSource:(YumSource *)source inContext:(NSManagedObjectContext *)context {
+    NSSortDescriptor *sortDescriptor = [NSSortDescriptor sortDescriptorWithKey:@"title" ascending:YES];
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"source == %@", source];
+    NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:NSStringFromClass([YumItem class])];
+    request.sortDescriptors = @[sortDescriptor];
+    request.predicate = predicate;
+    NSFetchedResultsController *controller = [[NSFetchedResultsController alloc] initWithFetchRequest:request managedObjectContext:context sectionNameKeyPath:nil cacheName:nil];
+    return controller;
+}
+
 +(NSFetchedResultsController *)fetchControllerForAllYumItemsInContext:(NSManagedObjectContext *)context {
-    NSSortDescriptor *sortDescriptor = [NSSortDescriptor sortDescriptorWithKey:@"title" ascending:NO];
+    NSSortDescriptor *sortDescriptor = [NSSortDescriptor sortDescriptorWithKey:@"title" ascending:YES];
     NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:NSStringFromClass([YumItem class])];
     request.sortDescriptors = @[sortDescriptor];
     NSFetchedResultsController *controller = [[NSFetchedResultsController alloc] initWithFetchRequest:request managedObjectContext:context sectionNameKeyPath:nil cacheName:nil];
@@ -41,7 +54,7 @@
 
 +(NSFetchedResultsController *)fetchControllerForYumSourcesInContext:(NSManagedObjectContext *)context {
     NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:NSStringFromClass([YumSource class])];
-    NSSortDescriptor *sortDescriptor = [NSSortDescriptor sortDescriptorWithKey:@"name" ascending:NO];
+    NSSortDescriptor *sortDescriptor = [NSSortDescriptor sortDescriptorWithKey:@"name" ascending:YES];
     request.sortDescriptors = @[sortDescriptor];
     NSFetchedResultsController *controller = [[NSFetchedResultsController alloc] initWithFetchRequest:request managedObjectContext:context sectionNameKeyPath:nil cacheName:nil];
     return controller;
