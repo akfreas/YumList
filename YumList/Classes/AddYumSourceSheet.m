@@ -6,6 +6,7 @@
     UITextField *sourceNameTextField;
     UIButton *submitButton;
     UIButton *cancelButton;
+    NSArray *constraintsForHeight;
 }
 
 -(id)initWithFrame:(CGRect)frame {
@@ -16,17 +17,24 @@
     return self;
 }
 
--(void)finishExpandAnimation {
+-(void)beginExpandAnimation {
     
     [self addURLTextView];
     [self addSubmitButton];
     [self addSourceNameTextField];
     [self addCancelButton];
+}
+
+-(void)finishExpandAnimation {
+    
     [self addLayoutConstraints];
 }
 
 -(void)beginContractAnimation {
-    [self removeConstraints:[self constraints]];
+    [self removeConstraints:constraintsForHeight];
+    constraintsForHeight = nil;
+    constraintsForHeight = [NSLayoutConstraint constraintsWithVisualFormat:@"V:|[sourceNameTextField][URLTextField][submitButton][cancelButton]-|" options:0 metrics:0 views:MXDictionaryOfVariableBindings(sourceNameTextField,URLTextField,submitButton,cancelButton)];
+    [self addConstraints:constraintsForHeight];
 }
 
 -(void)addSourceNameTextField {
@@ -64,7 +72,7 @@
 
 -(void)addLayoutConstraints {
     NSDictionary *bindings = MXDictionaryOfVariableBindings(sourceNameTextField, URLTextField, submitButton, cancelButton);
-    [self addConstraintWithVisualFormat:@"V:|-10-[sourceNameTextField]-[URLTextField]-5-[submitButton(44)]-10-[cancelButton(44)]-10-|" bindings:bindings];
+    constraintsForHeight = [self addConstraintWithVisualFormat:@"V:|-10-[sourceNameTextField]-[URLTextField]-5-[submitButton(44)]-10-[cancelButton(44)]-10-|" bindings:bindings];
     [self addConstraintWithVisualFormat:@"H:|-10-[sourceNameTextField]-10-|" bindings:bindings];
     [self addConstraintWithVisualFormat:@"H:|-10-[URLTextField]-10-|" bindings:bindings];
     [self addConstraintWithVisualFormat:@"H:|-10-[submitButton]-10-|" bindings:bindings];
@@ -84,6 +92,7 @@
         YumSource *newSource = [YumSource new];
         newSource.sourceURL = URLTextField.text;
         newSource.name = sourceNameTextField.text;
+        
         [newSource save];
         if (self.newSourceAdded != NULL) {
             self.newSourceAdded(newSource);
