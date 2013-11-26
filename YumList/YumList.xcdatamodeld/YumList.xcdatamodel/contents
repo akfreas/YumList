@@ -1,27 +1,24 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="3401" systemVersion="13A603" minimumToolsVersion="Automatic" macOSVersion="Automatic" iOSVersion="Automatic">
-    <entity name="ListItem" representedClassName="ListItem" syncable="YES">
-        <attribute name="completed" optional="YES" attributeType="Boolean" defaultValueString="NO" syncable="YES"/>
-        <attribute name="creationDate" optional="YES" attributeType="Date" syncable="YES"/>
-        <attribute name="listOrder" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
-        <attribute name="title" optional="YES" attributeType="String" syncable="YES"/>
-    </entity>
     <entity name="YumItem" representedClassName="YumItem" syncable="YES">
         <attribute name="completed" optional="YES" attributeType="Boolean" syncable="YES"/>
+        <attribute name="externalSiteTitle" optional="YES" transient="YES" attributeType="String" syncable="YES"/>
         <attribute name="externalURL" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="externalYumID" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="image" optional="YES" attributeType="Binary" allowsExternalBinaryDataStorage="YES" storedInTruthFile="YES" syncable="YES"/>
         <attribute name="imageURL" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="listOrder" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="rating" optional="YES" transient="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
         <attribute name="syncDate" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="title" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="source" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="YumSource" syncable="YES"/>
     </entity>
     <entity name="YumSource" representedClassName="YumSource" syncable="YES">
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="order" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
         <attribute name="sourceURL" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
     <elements>
-        <element name="ListItem" positionX="0" positionY="0" width="0" height="0"/>
         <element name="YumItem" positionX="0" positionY="0" width="0" height="0"/>
         <element name="YumSource" positionX="0" positionY="0" width="0" height="0"/>
     </elements>
