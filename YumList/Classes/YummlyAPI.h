@@ -1,0 +1,3 @@
+@interface YummlyAPI : NSObject
+
+@end
