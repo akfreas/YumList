@@ -116,7 +116,7 @@
         YumItem *ourItem = [YumItem objectWithObjectID:ourID inContext:newManager.managedObjectContext];
         NSDictionary *source = [responseJSON objectForKey:@"source"];
         ourItem.externalSiteTitle = source[@"sourceDisplayName"];
-        ourItem.externalURL = source[@"sourceSiteUrl"];
+        ourItem.externalURL = source[@"sourceRecipeUrl"];
         ourItem.title = responseJSON[@"name"];
         [ourItem save];
         NSManagedObjectID *objID = ourItem.objectID;
