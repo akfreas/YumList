@@ -1,8 +1,7 @@
 #import <XCTest/XCTest.h>
-#import "ListTableView.h"
+#import "YumListTableView.h"
 #import "TestDataGenerator.h"
 #import "PersistenceManager.h"
-#import "ListItem.h"
 #import "NSFetchedResultsControllerFactory.h"
 @interface TableViewTests : XCTestCase
 
@@ -11,7 +10,7 @@
 @implementation TableViewTests {
     
     PersistenceManager *ourManager;
-    ListTableView *tableView;
+    YumListTableView *tableView;
     NSInteger numRows;
 }
 
@@ -31,8 +30,8 @@
 -(void)reset {
     tableView = nil;
     [ourManager deleteAllObjectsAndSave];
-    tableView = [[ListTableView alloc] initWithFrame:CGRectMake(0, 0, 0, 0)];
-    tableView.fetchController = [NSFetchedResultsControllerFactory fetchControllerForAllListItemsInContext:ourManager.managedObjectContext];
+    tableView = [[YumListTableView alloc] initWithFrame:CGRectMake(0, 0, 0, 0)];
+    tableView.fetchController = [NSFetchedResultsControllerFactory fetchControllerForAllYumItemsInContext:ourManager.managedObjectContext];
     tableView.fetchController.delegate = tableView;
     NSError *err = nil;
     [tableView.fetchController performFetch:&err];
@@ -41,16 +40,16 @@
     }
 }
 
--(void)generateOrderedListItems {
+-(void)generateOrderedYumItems {
     numRows = arc4random_uniform(100);
-    [TestDataGenerator generateTestListItemDataWithCount:numRows context:ourManager.managedObjectContext];
+    [TestDataGenerator generateTestYumItemDataWithCount:numRows context:ourManager.managedObjectContext];
 
 }
 
 -(void)testTableViewFetchControllerLoadingCorrectness {
     
     [self reset];
-    [self generateOrderedListItems];
+    [self generateOrderedYumItems];
     [tableView reloadData];
     
     NSInteger numberOfRows = [tableView numberOfRowsInSection:0];
@@ -60,20 +59,20 @@
 -(void)testTableViewListOrderCorrectnessAfterInsertion {
     
     [self reset];
-    [self generateOrderedListItems];
+    [self generateOrderedYumItems];
     [tableView reloadData];
     
     NSIndexPath *currentIndexPath;
     for (int i=0; i<numRows; i++) {
         currentIndexPath = [NSIndexPath indexPathForRow:i inSection:0];
-        ListItem *currentItem = [tableView.fetchController objectAtIndexPath:currentIndexPath];
+        YumItem *currentItem = [tableView.fetchController objectAtIndexPath:currentIndexPath];
         XCTAssertEqual(i, [currentItem.listOrder integerValue], @"Ordering for '%@' should be %i, is %@", currentItem.title, i, currentItem.listOrder);
     }
 }
 
 -(void)testTableViewReorderCorrectnessAfterMove {
     [self reset];
-    [self generateOrderedListItems];
+    [self generateOrderedYumItems];
     [tableView reloadData];
     arc4random_stir();
     NSInteger currentRow = arc4random_uniform(numRows);
@@ -81,7 +80,7 @@
     NSInteger newRow = arc4random_uniform(numRows);
     NSIndexPath *newIndexPath = [NSIndexPath indexPathForRow:newRow inSection:0];
     
-    ListItem *currentIndexPathItem = [tableView.fetchController objectAtIndexPath:currentIndexPath];
+    YumItem *currentIndexPathItem = [tableView.fetchController objectAtIndexPath:currentIndexPath];
     XCTAssertTrue([currentIndexPathItem.listOrder isEqualToNumber:[NSNumber numberWithInteger:currentRow]], @"The list item currently in row %i does not have a listOrder value equal to the row. Instead, it's %@", currentRow, currentIndexPathItem.listOrder);
     tableView.editing = YES;
     [tableView moveRowAtIndexPath:currentIndexPath toIndexPath:newIndexPath];
@@ -89,7 +88,7 @@
     NSError *err = nil;
     [tableView.fetchController performFetch:&err];
     XCTAssertNil(err, @"Error fetching items with fetch controller. Error: %@", err);
-    ListItem *newIndexPathItem = [tableView.fetchController objectAtIndexPath:newIndexPath];
+    YumItem *newIndexPathItem = [tableView.fetchController objectAtIndexPath:newIndexPath];
     
     XCTAssertTrue(newIndexPathItem.objectID == currentIndexPathItem.objectID, @"The list item currently in row %i is not the same as the one we attempted to move. \nWhat's there now: %@\nWhat should be there:%@\n", newIndexPath.row, newIndexPathItem, currentIndexPathItem);
 }
