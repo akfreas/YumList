@@ -2,6 +2,7 @@
 #import "PersistenceManager.h"
 #import "YumItem.h"
 #import "YumSource.h"
+#import "YumPhoto.h"
 
 @implementation NSFetchedResultsControllerFactory
 
@@ -41,6 +42,18 @@
     NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:NSStringFromClass([YumSource class])];
     NSSortDescriptor *sortDescriptor = [NSSortDescriptor sortDescriptorWithKey:@"name" ascending:YES];
     request.sortDescriptors = @[sortDescriptor];
+    NSFetchedResultsController *controller = [[NSFetchedResultsController alloc] initWithFetchRequest:request managedObjectContext:context sectionNameKeyPath:nil cacheName:nil];
+    return controller;
+}
+
++(NSFetchedResultsController *)fetchControllerForYumPhotosAttachedToItem:(YumItem *)item {
+    return [self fetchControllerForYumPhotosAttachedToItem:item context:[PersistenceManager managedObjectContext]];
+}
+
++(NSFetchedResultsController *)fetchControllerForYumPhotosAttachedToItem:(YumItem *)item context:(NSManagedObjectContext *)context {
+    NSFetchRequest *request = [YumPhoto baseFetchRequest];
+    NSSortDescriptor *sorter = [NSSortDescriptor sortDescriptorWithKey:@"dateAdded" ascending:YES];
+    request.sortDescriptors = @[sorter];
     NSFetchedResultsController *controller = [[NSFetchedResultsController alloc] initWithFetchRequest:request managedObjectContext:context sectionNameKeyPath:nil cacheName:nil];
     return controller;
 }

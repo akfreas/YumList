@@ -9,4 +9,6 @@
 +(NSFetchedResultsController *)fetchControllerForYumSourcesInContext:(NSManagedObjectContext *)context;
 +(NSFetchedResultsController *)fetchControllerForYumSources;
 
++(NSFetchedResultsController *)fetchControllerForYumPhotosAttachedToItem:(YumItem *)item context:(NSManagedObjectContext *)context;
++(NSFetchedResultsController *)fetchControllerForYumPhotosAttachedToItem:(YumItem *)item;
 @end
