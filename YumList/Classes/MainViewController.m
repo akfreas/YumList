@@ -1,6 +1,5 @@
 #import "MainViewController.h"
 #import "YumListTableView.h"
-#import "HeaderToolbar.h"
 #import "AppDelegate.h"
 #import <SWRevealViewController.h>
 #import "YumSource.h"
