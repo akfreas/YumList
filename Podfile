@@ -8,6 +8,7 @@ target "YumList" do
     pod 'hpple', '~> 0.2.0'
     pod 'SWRevealViewController', '~> 1.0.8'
     pod 'PBWebViewController'
+    pod 'UIColor-Crayola'
 
 end
 
