@@ -1,16 +1,15 @@
 #import <XCTest/XCTest.h>
-#import "ListItem.h"
 #import "PersistenceManager.h"
 #import "TestDataGenerator.h"
 
-@interface ListItemTests : XCTestCase {
+@interface YumItemTests : XCTestCase {
     PersistenceManager *ourManager;
     NSInteger numRowsGenerated;
 }
 
 @end
 
-@implementation ListItemTests
+@implementation YumItemTests
 
 - (void)setUp
 {
@@ -31,44 +30,44 @@
 
 -(void)generateRandomDummyData {
     numRowsGenerated = arc4random_uniform(100);
-    [TestDataGenerator generateTestListItemDataWithCount:numRowsGenerated context:ourManager.managedObjectContext];
+    [TestDataGenerator generateTestYumItemDataWithCount:numRowsGenerated context:ourManager.managedObjectContext];
 }
 
 -(void)generateOrderedDummyData {
     numRowsGenerated = arc4random_uniform(100);
-    [TestDataGenerator generateNumberedTestListItemsWithCount:numRowsGenerated context:ourManager.managedObjectContext];
+    [TestDataGenerator generateNumberedTestYumItemsWithCount:numRowsGenerated context:ourManager.managedObjectContext];
 }
 
--(void)testCreateAndSaveListItem {
-    ListItem *ourListItem = [ListItem newInContext:ourManager.managedObjectContext];
-    [ourListItem saveInContext:ourManager.managedObjectContext];
+-(void)testCreateAndSaveYumItem {
+    YumItem *ourYumItem = [YumItem newInContext:ourManager.managedObjectContext];
+    [ourYumItem saveInContext:ourManager.managedObjectContext];
 }
 
--(void)testPersistListItemSavesToDisk {
+-(void)testPersistYumItemSavesToDisk {
     
     NSString *title = @"Get some fresh air.";
     NSDate *creationDate = [NSDate date];
     NSNumber *listOrder = [NSNumber numberWithInteger:1];
     NSNumber *completed = [NSNumber numberWithBool:NO];
     
-    ListItem *ourListItem = [ListItem newInContext:ourManager.managedObjectContext];
-    ourListItem.title = title;
-    ourListItem.creationDate = creationDate;
-    ourListItem.listOrder = listOrder;
-    ourListItem.completed = completed;
-    [ourListItem saveInContext:ourManager.managedObjectContext];
+    YumItem *ourYumItem = [YumItem newInContext:ourManager.managedObjectContext];
+    ourYumItem.title = title;
+    ourYumItem.syncDate = creationDate;
+    ourYumItem.listOrder = listOrder;
+    ourYumItem.completed = completed;
+    [ourYumItem saveInContext:ourManager.managedObjectContext];
     [ourManager resetManagedObjectContext];
-    NSArray *allItems = [ListItem allObjectsInContext:ourManager.managedObjectContext];
-    NSUInteger itemIndex = [allItems indexOfObjectPassingTest:^BOOL(ListItem *item, NSUInteger index, BOOL *stop) {
-        if ([item.title isEqualToString:title] && [item.creationDate isEqualToDate:creationDate]) {
+    NSArray *allItems = [YumItem allObjectsInContext:ourManager.managedObjectContext];
+    NSUInteger itemIndex = [allItems indexOfObjectPassingTest:^BOOL(YumItem *item, NSUInteger index, BOOL *stop) {
+        if ([item.title isEqualToString:title] && [item.syncDate isEqualToDate:creationDate]) {
             return YES;
         } else {
             return NO;
         };
     }];
-    ListItem *savedObject = allItems[itemIndex];
+    YumItem *savedObject = allItems[itemIndex];
     XCTAssertTrue([savedObject.title isEqualToString:title], @"Title was not saved correctly.");
-    XCTAssertTrue([savedObject.creationDate isEqualToDate:creationDate], @"Date was not saved correctly.");
+    XCTAssertTrue([savedObject.syncDate isEqualToDate:creationDate], @"Date was not saved correctly.");
     XCTAssertTrue([savedObject.listOrder isEqualToNumber:listOrder], @"List order was not saved correctly.");
     XCTAssertTrue([savedObject.completed isEqualToNumber:completed], @"Completed value was not saved correctly.");    
 }
@@ -78,45 +77,45 @@
     
     [self resetPersistenceLayer];
     [self generateRandomDummyData];
-    NSArray *allObjects = [ListItem allObjectsInContext:ourManager.managedObjectContext];
+    NSArray *allObjects = [YumItem allObjectsInContext:ourManager.managedObjectContext];
     NSInteger countRows = [allObjects count];
-    ListItem *ourListItem = [allObjects lastObject];
-    [ourManager deleteObject:ourListItem];
+    YumItem *ourYumItem = [allObjects lastObject];
+    [ourManager deleteObject:ourYumItem];
     
-    NSInteger newCount = [[ListItem allObjectsInContext:ourManager.managedObjectContext] count];
+    NSInteger newCount = [[YumItem allObjectsInContext:ourManager.managedObjectContext] count];
     XCTAssertEqual(newCount, countRows - 1, @"The item was not successfully deleted in the db.");
 }
 
 -(void)testListOrderCorrectnessAfterCreatingNewObject {
     [self resetPersistenceLayer];
     [self generateOrderedDummyData];
-    ListItem *newListItem = [ListItem newOrderedItemInContext:ourManager.managedObjectContext];
-    [newListItem save];
+    YumItem *newYumItem = [YumItem newInContext:ourManager.managedObjectContext];
+    [newYumItem save];
     NSNumber *expectedNumber = [NSNumber numberWithInt:numRowsGenerated]; //We are checking against numRows because listOrder is 0 based.
-    XCTAssertTrue([expectedNumber isEqualToNumber:newListItem.listOrder], @"List order should be %@, got back %@", expectedNumber, newListItem.listOrder);
+    XCTAssertTrue([expectedNumber isEqualToNumber:newYumItem.listOrder], @"List order should be %@, got back %@", expectedNumber, newYumItem.listOrder);
 }
 
--(void)testReorderingOfListItems {
+-(void)testReorderingOfYumItems {
     [self resetPersistenceLayer];
     [self generateOrderedDummyData];
     NSInteger orderInt = arc4random_uniform(numRowsGenerated - 1);
     NSNumber *order = [NSNumber numberWithInteger:orderInt];
     
     
-    ListItem *newListItem = [ListItem newInContext:ourManager.managedObjectContext];
+    YumItem *newYumItem = [YumItem newInContext:ourManager.managedObjectContext];
     NSString *newItemTitle = [NSString stringWithFormat:@"I should be in the %@th place!", order];
-    newListItem.title = newItemTitle;
-    newListItem.creationDate = [NSDate date];
-    newListItem.completed = [NSNumber numberWithBool:NO];
-    newListItem.listOrder = order;
+    newYumItem.title = newItemTitle;
+    newYumItem.syncDate = [NSDate date];
+    newYumItem.completed = [NSNumber numberWithBool:NO];
+    newYumItem.listOrder = order;
     
-    [ListItem insertListItemAndReorderListItems:newListItem inContext:ourManager.managedObjectContext];
+    [YumItem insertYumItemAndReorderYumItems:newYumItem inContext:ourManager.managedObjectContext];
     
-    [PersistenceManager saveContext:ourManager.managedObjectContext];
+    [ourManager save];
     
-    NSArray *allListItemsSorted = [ListItem allObjectsSortedByListOrderInContext:ourManager.managedObjectContext];
+    NSArray *allYumItemsSorted = [YumItem allObjectsSortedByListOrderInContext:ourManager.managedObjectContext];
     
-    for (ListItem *item in allListItemsSorted) {
+    for (YumItem *item in allYumItemsSorted) {
         NSNumber *itemOrder = item.listOrder;
         NSNumber *previousListOrderFromTitle = [NSNumber numberWithInt:[item.title integerValue]];
         if ([itemOrder compare:previousListOrderFromTitle] == NSOrderedSame) {
