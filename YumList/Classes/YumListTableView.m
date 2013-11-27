@@ -1,18 +1,17 @@
-#import "ListTableView.h"
+#import "YumListTableView.h"
 #import "NSFetchedResultsControllerFactory.h"
-#import "ListItemTableViewCell.h"
-#import "AddListItemTableViewHeader.h"
+#import "YumItemTableViewCell.h"
 #import "TestDataGenerator.h"
 #import "PersistenceManager.h"
 #import "YumCollector.h"
 #import "YumItem.h"
 #import "SourceManager.h"
 
-@interface ListTableView () <UITableViewDataSource, UITableViewDelegate>
+@interface YumListTableView () <UITableViewDataSource, UITableViewDelegate>
 
 @end 
 
-@implementation ListTableView {
+@implementation YumListTableView {
     
     YumCollector *collector;
     BOOL userDrivenChange;
@@ -27,12 +26,11 @@ static NSString *identifier = @"ListCellID";
         self.dataSource = self;
         self.delegate = self;
         self.autoresizesSubviews = YES;
-        self.allowsSelection = NO;
         collector = [YumCollector new];
         
         self.autoresizingMask = (UIViewAutoresizingFlexibleHeight  | UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleRightMargin |UIViewAutoresizingFlexibleTopMargin);
         userDrivenChange = NO;
-        [self registerClass:[ListItemTableViewCell class] forCellReuseIdentifier:identifier];
+        [self registerClass:[YumItemTableViewCell class] forCellReuseIdentifier:identifier];
         [self setupFetchController];
         [self setupSourceChangedBehavior];
     }
@@ -66,11 +64,11 @@ static NSString *identifier = @"ListCellID";
     userDrivenChange = YES;
     
     NSMutableArray *reorderArray = [[self.fetchController fetchedObjects] mutableCopy];
-    ListItem *itemToMove = [self.fetchController objectAtIndexPath:indexPath];
+    YumItem *itemToMove = [self.fetchController objectAtIndexPath:indexPath];
     [reorderArray removeObject:itemToMove];
     [reorderArray insertObject:itemToMove atIndex:newIndexPath.row];
     for (int i=0; i<[reorderArray count]; i++) {
-        ListItem *reorderingItem = reorderArray[i];
+        YumItem *reorderingItem = reorderArray[i];
         reorderingItem.listOrder = [NSNumber numberWithInteger:i];
     }
     [PersistenceManager saveContext:self.fetchController.managedObjectContext];
@@ -104,7 +102,7 @@ static NSString *identifier = @"ListCellID";
                 [self insertRowsAtIndexPaths:@[newIndexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
                 break;
             case NSFetchedResultsChangeUpdate:
-                [self configureCell:(ListItemTableViewCell *)[self cellForRowAtIndexPath:indexPath] atIndexPath:indexPath];
+                [self configureCell:(YumItemTableViewCell *)[self cellForRowAtIndexPath:indexPath] atIndexPath:indexPath];
                 break;
             case NSFetchedResultsChangeDelete:
                 [self deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationRight];
@@ -134,12 +132,12 @@ static NSString *identifier = @"ListCellID";
 }
 
 -(void)tableView:(UITableView *)tableView willBeginEditingRowAtIndexPath:(NSIndexPath *)indexPath {
-    ListItemTableViewCell *cell = (ListItemTableViewCell *)[tableView cellForRowAtIndexPath:indexPath];
+    YumItemTableViewCell *cell = (YumItemTableViewCell *)[tableView cellForRowAtIndexPath:indexPath];
     cell.editing = YES;
 }
 
 -(void)tableView:(UITableView *)tableView didEndEditingRowAtIndexPath:(NSIndexPath *)indexPath {
-    ListItemTableViewCell *cell = (ListItemTableViewCell *)[tableView cellForRowAtIndexPath:indexPath];
+    YumItemTableViewCell *cell = (YumItemTableViewCell *)[tableView cellForRowAtIndexPath:indexPath];
     cell.editing = NO;
 }
 
@@ -153,13 +151,13 @@ static NSString *identifier = @"ListCellID";
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    ListItemTableViewCell *cell = (ListItemTableViewCell *)[tableView dequeueReusableCellWithIdentifier:identifier];
+    YumItemTableViewCell *cell = (YumItemTableViewCell *)[tableView dequeueReusableCellWithIdentifier:identifier];
     [self configureCell:cell atIndexPath:indexPath];
     return cell;
 }
 
 
--(void)configureCell:(ListItemTableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath {
+-(void)configureCell:(YumItemTableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath {
     
     YumItem *item = [self.fetchController objectAtIndexPath:indexPath];
     cell.yumItem = item;
@@ -167,7 +165,7 @@ static NSString *identifier = @"ListCellID";
 
 -(void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
     if (editingStyle == UITableViewCellEditingStyleDelete) {
-        ListItem *deleteItem = [self.fetchController objectAtIndexPath:indexPath];
+        YumItem *deleteItem = [self.fetchController objectAtIndexPath:indexPath];
         [deleteItem delete];
     }
 }
@@ -183,7 +181,12 @@ static NSString *identifier = @"ListCellID";
 #pragma mark UITableViewDelegate Delegate Methods
 
 
-
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    if (self.yumItemSelected != nil) {
+        YumItem *item = [self.fetchController objectAtIndexPath:indexPath];
+        self.yumItemSelected(item);
+    }
+}
 
 
 @end
