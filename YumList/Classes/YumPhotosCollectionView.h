@@ -1,13 +1,9 @@
-//
-//  YumPhotosCollectionView.h
-//  YumList
-//
-//  Created by Alexander Freas on 11/27/13.
-//  Copyright (c) 2013 Sashimiblade. All rights reserved.
-//
+@class YumItem;
 
-#import <UIKit/UIKit.h>
+@interface YumPhotosCollectionView : UICollectionView <NSFetchedResultsControllerDelegate, UICollectionViewDataSource, UICollectionViewDelegate>
 
-@interface YumPhotosCollectionView : UICollectionView
+-(id)initWithYumItem:(YumItem *)item;
+
+@property (strong, nonatomic) YumItem *item;
 
 @end
