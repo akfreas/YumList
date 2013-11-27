@@ -7,6 +7,7 @@ target "YumList" do
     pod 'AFNetworking', '~> 2.0'
     pod 'hpple', '~> 0.2.0'
     pod 'SWRevealViewController', '~> 1.0.8'
+    pod 'PBWebViewController'
 
 end
 
