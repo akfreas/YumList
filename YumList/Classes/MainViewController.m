@@ -1,12 +1,15 @@
 #import "MainViewController.h"
-#import "ListTableView.h"
+#import "YumListTableView.h"
 #import "HeaderToolbar.h"
 #import "AppDelegate.h"
 #import <SWRevealViewController.h>
+#import "YumSource.h"
+#import "SourceManager.h"
+#import "YumDetailViewViewController.h"
+
+
 @implementation MainViewController {
-    
-    HeaderToolbar *toolbar;
-    ListTableView *tableViewList;
+    YumListTableView *tableViewList;
 }
 
 -(id)init {
@@ -18,36 +21,48 @@
     return self;
 }
 
--(void)addHeaderToolbar {
-    toolbar = [[HeaderToolbar alloc] initWithFrame:CGRectZero];
-    toolbar.leftNavigationButtonTappedAction = ^{
+-(void)configureNavigationBar {
+    UIImage *barImage = [UIImage imageWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"256-box2" ofType:@"png"]];
+    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithImage:barImage style:UIBarButtonItemStylePlain handler:^(id sender) {
         [[AppDelegate sharedRevealController] revealToggleAnimated:YES];
-    };
-    [self.view addSubview:toolbar];
+    }];
+    YumSource *currentSource = [SourceManager currentYumSource];
+    if (currentSource != nil) {
+        self.title = currentSource.name;
+    }
+    [SourceManager addYumSourceChangedAction:^(YumSource *changedSource) {
+        self.title = changedSource.name;
+    }];
 }
 
 -(void)addTableView {
     
-    tableViewList = [[ListTableView alloc] initWithFrame:self.view.frame];
-    [self.view addSubview:tableViewList];
-    
-    [tableViewList reloadData];
+    YumListTableView *ourTableViewList = [[YumListTableView alloc] initWithFrame:self.view.frame];
+    [self.view addSubview:ourTableViewList];
+    ourTableViewList.yumItemSelected = ^(YumItem *selectedItem){
+        YumDetailViewViewController *detailController = [[YumDetailViewViewController alloc] initWithYumItem:selectedItem];
+        [self.navigationController pushViewController:detailController animated:YES];
+    };
+    [ourTableViewList reloadData];
+    tableViewList = ourTableViewList;
 }
 
 -(void)addLayoutConstraints {
-    NSDictionary *bindings = MXDictionaryOfVariableBindings(tableViewList, toolbar);
-    [self.view addConstraintWithVisualFormat:@"V:|-20-[toolbar][tableViewList]|" bindings:bindings];
-    [self.view addConstraintWithVisualFormat:@"H:|[toolbar]|" bindings:bindings];
+    NSDictionary *bindings = MXDictionaryOfVariableBindings(tableViewList);
+    [self.view addConstraintWithVisualFormat:@"V:|[tableViewList]|" bindings:bindings];
     [self.view addConstraintWithVisualFormat:@"H:|[tableViewList]|" bindings:bindings];
 }
 
-- (void)viewDidLoad
-{
+-(void)viewDidLoad {
+    
     [super viewDidLoad];
     [self addTableView];
-    [self addHeaderToolbar];
+    [self configureNavigationBar];
+    
     [self addLayoutConstraints];
 }
+
+
 -(BOOL)shouldAutorotate {
     return YES;
 }
