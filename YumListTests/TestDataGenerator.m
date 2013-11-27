@@ -1,5 +1,5 @@
 #import "PersistenceManager.h"
-#import "ListItem.h"
+#import "YumItem.h"
 #import "NSString+Random.h"
 #import "TestDataGenerator.h"
 
@@ -8,41 +8,42 @@
 
 
 
-+(void)generateTestListItemDataWithCount:(NSInteger)count {
-    [self generateTestListItemDataWithCount:count context:[PersistenceManager managedObjectContext]];
++(void)generateTestYumItemDataWithCount:(NSInteger)count {
+    [self generateTestYumItemDataWithCount:count context:[PersistenceManager managedObjectContext]];
 }
 
-+(void)generateTestListItemDataWithCount:(NSInteger)count context:(NSManagedObjectContext *)context {
++(void)generateTestYumItemDataWithCount:(NSInteger)count context:(NSManagedObjectContext *)context {
     
     for (int i=0; i < count; i++) {
-        ListItem *aListItem = [self populatedTestListItemInContext:context];
-        aListItem.listOrder = [NSNumber numberWithInteger:i];
+        YumItem *aYumItem = [self populatedTestYumItemInContext:context];
+        aYumItem.listOrder = [NSNumber numberWithInteger:i];
+        aYumItem.imageURL = @"http://lh4.ggpht.com/265hqVltrJ9V4B1Iemqeyi8Yv0L8Q0hv9iAK9MbwMUHTyrzhpO2FKOVc1AM2-UMRxCJLRyNBOMr4NUHgRC4q=s100";
     }
     [PersistenceManager saveContext:context];
 }
 
-+(void)generateNumberedTestListItemsWithCount:(NSInteger)count {
-    [self generateNumberedTestListItemsWithCount:count context:[PersistenceManager managedObjectContext]];
++(void)generateNumberedTestYumItemsWithCount:(NSInteger)count {
+    [self generateNumberedTestYumItemsWithCount:count context:[PersistenceManager managedObjectContext]];
 }
 
-+(void)generateNumberedTestListItemsWithCount:(NSInteger)count context:(NSManagedObjectContext *)context {
++(void)generateNumberedTestYumItemsWithCount:(NSInteger)count context:(NSManagedObjectContext *)context {
     for (int i=0; i < count; i++) {
-        ListItem *aListItem = [self populatedTestListItemInContext:context ];
-        aListItem.listOrder = [NSNumber numberWithInt:i];
-        aListItem.title = [aListItem.listOrder stringValue];
+        YumItem *aYumItem = [self populatedTestYumItemInContext:context ];
+        aYumItem.listOrder = [NSNumber numberWithInt:i];
+        aYumItem.title = [aYumItem.listOrder stringValue];
     }
     [PersistenceManager saveContext:context];
 }
 
-+(ListItem *)populatedTestListItemInContext:(NSManagedObjectContext *)context {
++(YumItem *)populatedTestYumItemInContext:(NSManagedObjectContext *)context {
     
-    ListItem *aListItem = [ListItem newInContext:context];
+    YumItem *aYumItem = [YumItem newInContext:context];
     
-    aListItem.title = [NSString randomizedString];
-    aListItem.creationDate = [self randomDateWithinReason];
-    aListItem.completed = [NSNumber numberWithBool:arc4random_uniform(1)];
+    aYumItem.title = [NSString randomizedString];
+    aYumItem.syncDate = [self randomDateWithinReason];
+    aYumItem.completed = [NSNumber numberWithBool:arc4random_uniform(1)];
     
-    return aListItem;
+    return aYumItem;
 }
 
 +(NSDate *)randomDateWithinReason {

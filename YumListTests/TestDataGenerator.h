@@ -1,8 +1,8 @@
 
 @interface TestDataGenerator : NSObject
 
-+(void)generateTestListItemDataWithCount:(NSInteger)count;
-+(void)generateTestListItemDataWithCount:(NSInteger)count context:(NSManagedObjectContext *)context;
-+(void)generateNumberedTestListItemsWithCount:(NSInteger)count;
-+(void)generateNumberedTestListItemsWithCount:(NSInteger)count context:(NSManagedObjectContext *)context;
++(void)generateTestYumItemDataWithCount:(NSInteger)count;
++(void)generateTestYumItemDataWithCount:(NSInteger)count context:(NSManagedObjectContext *)context;
++(void)generateNumberedTestYumItemsWithCount:(NSInteger)count;
++(void)generateNumberedTestYumItemsWithCount:(NSInteger)count context:(NSManagedObjectContext *)context;
 @end
