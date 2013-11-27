@@ -26,10 +26,11 @@
     // Override point for customization after application launch.
     self.window.backgroundColor = [UIColor whiteColor];
     MainViewController *mainController = [MainViewController new];
+    UINavigationController *mainNavigationController = [[UINavigationController alloc] initWithRootViewController:mainController];
     LeftViewController *leftController = [[LeftViewController alloc] init];
     revealController = [AppDelegate sharedRevealController];
     revealController.rearViewController = leftController;
-    revealController.frontViewController = mainController;
+    revealController.frontViewController = mainNavigationController;
     self.window.rootViewController = revealController;
     [self.window makeKeyAndVisible];
 
