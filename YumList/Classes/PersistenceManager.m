@@ -67,12 +67,12 @@
 
 #pragma mark Boilerplate CoreData
 
--(NSManagedObjectModel *)managedObjectModel {
++(NSManagedObjectModel *)managedObjectModel {
     NSManagedObjectModel *mom = [NSManagedObjectModel mergedModelFromBundles:nil];
     return mom;
 }
 
-- (NSURL *)persistentStoreURL {
++(NSURL *)persistentStoreURL {
 	
     NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
     NSString *basePath = ([paths count] > 0) ? [paths objectAtIndex:0] : nil;
@@ -80,32 +80,28 @@
     return url;
 }
 
--(NSPersistentStoreCoordinator *)persistentStoreCoordinator {
++(NSPersistentStoreCoordinator *)persistentStoreCoordinator {
     
-    NSError *error;
     static NSPersistentStoreCoordinator *staticCoordinator;
-    if (staticCoordinator != nil) {
-        persistentStoreCoordinator = staticCoordinator;
-        return persistentStoreCoordinator;
-    } else {
-        NSURL *dbPath = [self persistentStoreURL];
-        persistentStoreCoordinator = [[NSPersistentStoreCoordinator alloc] initWithManagedObjectModel:self.managedObjectModel];
-        [persistentStoreCoordinator addPersistentStoreWithType:NSSQLiteStoreType configuration:nil URL:dbPath options:nil error:&error];
+    if (staticCoordinator == nil) {
+        static dispatch_once_t onceToken;
+        dispatch_once(&onceToken, ^{
+            NSError *error;
+            NSURL *dbPath = [self persistentStoreURL];
+            staticCoordinator = [[NSPersistentStoreCoordinator alloc] initWithManagedObjectModel:self.managedObjectModel];
+            [staticCoordinator addPersistentStoreWithType:NSSQLiteStoreType configuration:nil URL:dbPath options:nil error:&error];
+            if (error != nil) {
+                [NSException raise:YLCoreDataException format:@"Error loading persistent store coordinator: %@", error];
+            }
+        });
     }
-    
-    if (error == nil) {
-        return persistentStoreCoordinator;
-    } else {
-        NSLog(@"Error loading persistent store coordinator: %@", error);
-        return nil;
-    }
-    
+    return staticCoordinator;
 }
 
 -(NSManagedObjectContext *)managedObjectContext {
     if (_managedObjectContext == nil) {
-        _managedObjectContext = [[NSManagedObjectContext alloc] initWithConcurrencyType:NSMainQueueConcurrencyType];
-        _managedObjectContext.persistentStoreCoordinator = [self persistentStoreCoordinator];
+        _managedObjectContext = [[NSManagedObjectContext alloc] initWithConcurrencyType:NSPrivateQueueConcurrencyType];
+        _managedObjectContext.persistentStoreCoordinator = [PersistenceManager persistentStoreCoordinator];
     }
     return _managedObjectContext;
 }
@@ -136,7 +132,7 @@
 }
 
 -(void)deletePersistentStore {
-    NSURL *persistentStoreURL = self.persistentStoreURL;
+    NSURL *persistentStoreURL = [PersistenceManager persistentStoreURL];
     if ([[NSFileManager defaultManager] fileExistsAtPath:persistentStoreURL.path]) {
         [[NSFileManager defaultManager] removeItemAtURL:persistentStoreURL error:NULL];
     }
@@ -153,7 +149,7 @@
 }
 
 -(void)deleteAllObjectsInContext:(NSManagedObjectContext *)context {
-    NSManagedObjectModel *mom = [self managedObjectModel];
+    NSManagedObjectModel *mom = [PersistenceManager managedObjectModel];
     NSError *error;
     NSArray *objArray;
     for (NSEntityDescription *entityDesc in mom) {
