@@ -47,7 +47,7 @@
     };
 }
 
--(void(^)())addSourceButtonHandler {
+-(void(^)())addCompletedSourceButtonHandler {
     return ^(YumSource *newSource) {
         [self removeSourceSheet];
     };
@@ -62,7 +62,7 @@
 -(void)addSourceSheet {
     if (addSourceSheet == nil) {
         addSourceSheet = [[AddYumSourceSheet alloc] initWithFrame:CGRectZero];
-        addSourceSheet.newSourceAdded = [self addSourceButtonHandler];
+        addSourceSheet.newSourceAdded = [self addCompletedSourceButtonHandler];
         addSourceSheet.cancelButtonPressed = [self cancelButtonHandler];
     }
     [self addSubview:addSourceSheet];
@@ -74,6 +74,7 @@
     [self addConstraint:animatableAddSheetConstraint];
     [self layoutIfNeeded];
     self.addSourceButtonTapped(ExpandedSize);
+    [addSourceSheet beginExpandAnimation];
     [UIView animateWithDuration:0.3f animations:^{
         animatableAddSheetConstraint.constant = ExpandedActionSheetSize;
         [self layoutIfNeeded];
