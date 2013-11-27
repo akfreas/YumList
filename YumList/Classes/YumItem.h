@@ -2,7 +2,7 @@
 //  YumItem.h
 //  YumList
 //
-//  Created by Alexander Freas on 11/25/13.
+//  Created by Alexander Freas on 11/26/13.
 //  Copyright (c) 2013 Sashimiblade. All rights reserved.
 //
 
@@ -18,8 +18,11 @@
 @property (nonatomic, retain) NSString * externalYumID;
 @property (nonatomic, retain) NSData * image;
 @property (nonatomic, retain) NSString * imageURL;
+@property (nonatomic, retain) NSNumber * listOrder;
 @property (nonatomic, retain) NSDate * syncDate;
 @property (nonatomic, retain) NSString * title;
+@property (nonatomic, retain) NSString * externalSiteTitle;
+@property (nonatomic, retain) NSNumber * rating;
 @property (nonatomic, retain) YumSource *source;
 
 @end
