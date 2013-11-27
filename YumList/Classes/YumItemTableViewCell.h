@@ -1,5 +1,5 @@
 @class YumItem;
-@interface ListItemTableViewCell : UITableViewCell
+@interface YumItemTableViewCell : UITableViewCell
 
 @property (strong, nonatomic) YumItem *yumItem;
 

@@ -1,10 +1,10 @@
-#import "ListItemTableViewCell.h"
+#import "YumItemTableViewCell.h"
 #import "FormatUtils.h"
 #import "AFCheckbox.h"
 #import "UIView+LayoutHelpers.h"
 #import <AFNetworking.h>
 
-@implementation ListItemTableViewCell {
+@implementation YumItemTableViewCell {
     
 
     UILabel *creationDateLabel;
@@ -59,6 +59,10 @@
 }
 -(CGSize)intrinsicContentSize {
     return CGSizeMake(320.0f, 120.0f);
+}
+
+-(void)prepareForReuse {
+    imageView.image = nil;
 }
 
 -(void)addTitleLabel {
