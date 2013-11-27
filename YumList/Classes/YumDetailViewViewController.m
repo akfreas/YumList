@@ -1,6 +1,13 @@
 #import "YumDetailViewViewController.h"
 #import "YumItem.h"
 #import "PBWebViewController.h"
+#import <DLAlertView/DLAVAlertView.h>
+
+#define PostMadeThisButtonTakePhoto 1
+
+#define PostUploadPhotoButtonUseLastPhotoTaken 0
+#define PostUploadPhotoButtonPullFromLibrary 1
+#define PostUploadPhotoButtonTakePicture 2
 
 @interface YumDetailViewViewController ()
 
@@ -55,20 +62,66 @@
         [self.navigationController pushViewController:externalView animated:YES];
     } forControlEvents:UIControlEventTouchUpInside];
     viewRecipeButton = externalViewRecipeButton;
-    viewRecipeButton.backgroundColor = [UIColor colorWithHue:146.0f saturation:0.40f brightness:0.65f alpha:1.0f];
+    viewRecipeButton.backgroundColor = [UIColor crayolaJungleGreenColor];
     [self.view addSubview:viewRecipeButton];
     
     [self.view addConstraint:[NSLayoutConstraint constraintWithItem:viewRecipeButton attribute:NSLayoutAttributeTop relatedBy:NSLayoutRelationEqual toItem:mainImageView attribute:NSLayoutAttributeBaseline multiplier:1.0f constant:30.0f]];
-    NSDictionary *bindings = MXDictionaryOfVariableBindings(viewRecipeButton);
-    [self.view addConstraintWithVisualFormat:@"V:[viewRecipeButton(44)]" bindings:bindings];
-    [self.view addConstraintWithVisualFormat:@"H:|-30-[viewRecipeButton]-30-|" bindings:bindings];
 }
 
--(void)setupLayoutConstraints {
+-(void)addIMadeThisButton {
+    UIButton *madeThisButton = [[UIButton alloc] initWithFrame:CGRectZero];
+    [madeThisButton setTitle:NSLocalizedString(@"I Made This", @"I made this button title.") forState:UIControlStateNormal];
+    [madeThisButton addEventHandler:^(id sender) {
+        [self presentActionSheetAfterIMadeThis];
+    } forControlEvents:UIControlEventTouchUpInside];
+    iMadeThisButton = madeThisButton;
+    iMadeThisButton.backgroundColor = [UIColor crayolaJungleGreenColor];
+    [self.view addSubview:iMadeThisButton];
+
+}
+
+-(void)presentActionSheetAfterIMadeThis {
+    UIAlertView *alert = [UIAlertView alertViewWithTitle:NSLocalizedString(@"Awesome!\nDo you want to add a photo?", @"Prompt for do you want to add a photo.")];
+    [alert addButtonWithTitle:NSLocalizedString(@"Not Now", @"'dont want to add photo now' button") handler:NULL];
+    [alert addButtonWithTitle:@"Yes!" handler:^{
+        [self presentTakePhotoActionSheet];
+    }];
+    [alert show];
+}
+
+-(DLAVAlertViewCompletionHandler)postIMadeThisAlertAction {
+    return ^(DLAVAlertView *alertView, NSInteger buttonIndex) {
+        if (buttonIndex == PostMadeThisButtonTakePhoto) {
+            [self presentTakePhotoActionSheet];
+        }
+    };
+}
+
+-(void)presentTakePhotoActionSheet {
+    DLAVAlertView *alert = [[DLAVAlertView alloc] initWithTitle:nil message:nil delegate:nil cancelButtonTitle:NSLocalizedString(@"Cancel", @"Cancel button.") otherButtonTitles:@"Use last photo taken", @"Upload from photos", @"Take new picture", nil];
+    [alert showWithCompletion:[self postPhotoUploadPromptAction]];
+}
+
+-(DLAVAlertViewCompletionHandler)postPhotoUploadPromptAction {
+    return ^(DLAVAlertView *alertView, NSInteger buttonIndex) {
+        
+    };
+}
+
+-(void)setupInitialLayoutConstraints {
     NSDictionary *bindings = MXDictionaryOfVariableBindings(mainImageView, titleLabel);
     [self.view addConstraintWithVisualFormat:@"H:|-20-[mainImageView(100)]-[titleLabel]-|" bindings:bindings];
     [self.view addConstraintWithVisualFormat:@"V:|-20-[mainImageView(100)]" bindings:bindings];
     [self.view addConstraintWithVisualFormat:@"V:|-20-[titleLabel]" bindings:bindings];
+}
+
+-(void)setupPostButtonAddConstraints {
+    NSDictionary *bindings = MXDictionaryOfVariableBindings(viewRecipeButton, iMadeThisButton);
+    
+    [self.view addConstraintWithVisualFormat:@"V:[viewRecipeButton(44)]" bindings:bindings];
+    [self.view addConstraintWithVisualFormat:@"H:|-30-[viewRecipeButton]-30-|" bindings:bindings];
+    [self.view addConstraintWithVisualFormat:@"V:[viewRecipeButton]-10-[iMadeThisButton(44)]" bindings:bindings];
+    [self.view addConstraintWithVisualFormat:@"H:|-30-[iMadeThisButton]-30-|" bindings:bindings];
 }
 
 -(void)setYumItem:(YumItem *)yumItem {
@@ -83,10 +136,12 @@
         [self addExternalRecipeButton];
         titleLabel.text = item.title;
         [titleLabel sizeToFit];
+        [self addIMadeThisButton];
+        [self setupPostButtonAddConstraints];
     }];
     [self addMainImageView];
     [self addRecipeTitleLabel];
-    [self setupLayoutConstraints];
+    [self setupInitialLayoutConstraints];
 }
 
 -(void)viewDidLoad {
