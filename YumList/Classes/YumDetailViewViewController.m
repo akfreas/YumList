@@ -1,7 +1,6 @@
 #import "YumDetailViewViewController.h"
 #import "YumItem.h"
 #import "PBWebViewController.h"
-#import <DLAlertView/DLAVAlertView.h>
 
 #define PostMadeThisButtonTakePhoto 1
 
@@ -9,7 +8,7 @@
 #define PostUploadPhotoButtonPullFromLibrary 1
 #define PostUploadPhotoButtonTakePicture 2
 
-@interface YumDetailViewViewController ()
+@interface YumDetailViewViewController () <UIImagePickerControllerDelegate, UINavigationControllerDelegate>
 
 @end
 
@@ -86,26 +85,47 @@
     [alert addButtonWithTitle:@"Yes!" handler:^{
         [self presentTakePhotoActionSheet];
     }];
+    [alert addButtonWithTitle:NSLocalizedString(@"Cancel", @"") handler:NULL];
     [alert show];
 }
 
--(DLAVAlertViewCompletionHandler)postIMadeThisAlertAction {
-    return ^(DLAVAlertView *alertView, NSInteger buttonIndex) {
-        if (buttonIndex == PostMadeThisButtonTakePhoto) {
-            [self presentTakePhotoActionSheet];
-        }
-    };
-}
-
 -(void)presentTakePhotoActionSheet {
-    DLAVAlertView *alert = [[DLAVAlertView alloc] initWithTitle:nil message:nil delegate:nil cancelButtonTitle:NSLocalizedString(@"Cancel", @"Cancel button.") otherButtonTitles:@"Use last photo taken", @"Upload from photos", @"Take new picture", nil];
-    [alert showWithCompletion:[self postPhotoUploadPromptAction]];
+    UIAlertView *alert = [UIAlertView alertViewWithTitle:NSLocalizedString(@"Take Photo", @"Get photo alertview title")];
+    [alert addButtonWithTitle:NSLocalizedString(@"Use Last Photo In Library", @"Use last photo taken button title") handler:^{
+        
+    }];
+    [alert addButtonWithTitle:NSLocalizedString(@"Photo Library", @"Photo library button title") handler:^{
+        UIImagePickerController *controller = [self pickerControllerForLibrarySourceWithDelegate:self];
+        [self presentViewController:controller animated:YES completion:NULL];
+    }];
+    NSArray *arr = [UIImagePickerController availableMediaTypesForSourceType:UIImagePickerControllerSourceTypeCamera];
+    if ([arr count] > 0) {
+        [alert addButtonWithTitle:NSLocalizedString(@"Take New Picture", @"Take new picture button title") handler:^{
+            UIImagePickerController *controller = [self pickerControllerForCameraSourceWithDelegate:self];
+            [self presentViewController:controller animated:YES completion:NULL];
+        }];
+    }
+    [alert addButtonWithTitle:NSLocalizedString(@"Cancel", @"Cancel button title") handler:NULL];
+    [alert show];
 }
 
--(DLAVAlertViewCompletionHandler)postPhotoUploadPromptAction {
-    return ^(DLAVAlertView *alertView, NSInteger buttonIndex) {
-        
-    };
+-(UIImagePickerController *)basePickerControllerWithDelegate:(id<UIImagePickerControllerDelegate, UINavigationControllerDelegate>)delegate {
+    UIImagePickerController *pickerController = [[UIImagePickerController alloc] init];
+    pickerController.delegate = delegate;
+    pickerController.allowsEditing = YES;
+    return pickerController;
+}
+
+-(UIImagePickerController *)pickerControllerForCameraSourceWithDelegate:(id<UIImagePickerControllerDelegate, UINavigationControllerDelegate>)delegate {
+    UIImagePickerController *pickerController = [self basePickerControllerWithDelegate:delegate];
+    pickerController.mediaTypes = [UIImagePickerController availableMediaTypesForSourceType:UIImagePickerControllerSourceTypeCamera];
+    return pickerController;
+}
+
+-(UIImagePickerController *)pickerControllerForLibrarySourceWithDelegate:(id<UIImagePickerControllerDelegate, UINavigationControllerDelegate>)delegate {
+    UIImagePickerController *pickerController = [self basePickerControllerWithDelegate:delegate];
+    pickerController.mediaTypes = [UIImagePickerController availableMediaTypesForSourceType:(UIImagePickerControllerSourceTypePhotoLibrary | UIImagePickerControllerSourceTypeSavedPhotosAlbum)];
+    return pickerController;
 }
 
 -(void)setupInitialLayoutConstraints {
@@ -147,6 +167,16 @@
 -(void)viewDidLoad {
     [super viewDidLoad];
     self.view.backgroundColor = [UIColor whiteColor];
+}
+
+#pragma mark UIImagePickerController Delegate Methods
+
+-(void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info {
+    [picker dismissViewControllerAnimated:YES completion:NULL];
+}
+
+-(void)imagePickerControllerDidCancel:(UIImagePickerController *)picker {
+    [picker dismissViewControllerAnimated:YES completion:NULL];
 }
 
 @end
