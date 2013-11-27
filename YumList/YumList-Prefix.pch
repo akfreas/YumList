@@ -18,6 +18,7 @@
     #import "YumItem+YumItemHelpers.h"
     #import "YumSource+Helpers.h"
     #import "UIView+LayoutHelpers.h"
+    #import "NSFetchedResultsController+ErrorHandling.h"
     #import <BlocksKit/BlocksKit.h>
     #import "Constants.h"
     #import <UIColor-Crayola/UIColor+Crayola.h>
