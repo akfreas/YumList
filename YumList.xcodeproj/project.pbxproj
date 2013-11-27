@@ -30,6 +30,8 @@
 		19022F2918336DF50057EB7A /* TestDataGenerator.m in Sources */ = {isa = PBXBuildFile; fileRef = 19022F2818336DF50057EB7A /* TestDataGenerator.m */; };
 		19022F32183381B50057EB7A /* TestDataGenerator.m in Sources */ = {isa = PBXBuildFile; fileRef = 19022F2818336DF50057EB7A /* TestDataGenerator.m */; };
 		19022F5418344AD90057EB7A /* AFTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 19022F5318344AD90057EB7A /* AFTextField.m */; };
+		194EEE2B1845C1E5001932C6 /* YumPhoto.m in Sources */ = {isa = PBXBuildFile; fileRef = 194EEE2A1845C1E5001932C6 /* YumPhoto.m */; };
+		194EEE2E1845CB56001932C6 /* YumPhotosCollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 194EEE2D1845CB56001932C6 /* YumPhotosCollectionView.m */; };
 		197A58E718429249008CDFA6 /* LeftViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 197A58E618429249008CDFA6 /* LeftViewController.m */; };
 		197A58ED1842A5A7008CDFA6 /* AddYumSourceSheet.m in Sources */ = {isa = PBXBuildFile; fileRef = 197A58EC1842A5A7008CDFA6 /* AddYumSourceSheet.m */; };
 		199A33A518416F4700B9F368 /* UIView+LayoutHelpers.m in Sources */ = {isa = PBXBuildFile; fileRef = 199A33A418416F4700B9F368 /* UIView+LayoutHelpers.m */; };
@@ -113,6 +115,10 @@
 		19022F31183376050057EB7A /* TestDataGenerator.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TestDataGenerator.h; sourceTree = "<group>"; };
 		19022F5218344AD90057EB7A /* AFTextField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AFTextField.h; path = Classes/AFTextField.h; sourceTree = "<group>"; };
 		19022F5318344AD90057EB7A /* AFTextField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AFTextField.m; path = Classes/AFTextField.m; sourceTree = "<group>"; };
+		194EEE291845C1E5001932C6 /* YumPhoto.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = YumPhoto.h; path = Classes/YumPhoto.h; sourceTree = "<group>"; };
+		194EEE2A1845C1E5001932C6 /* YumPhoto.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = YumPhoto.m; path = Classes/YumPhoto.m; sourceTree = "<group>"; };
+		194EEE2C1845CB56001932C6 /* YumPhotosCollectionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = YumPhotosCollectionView.h; path = Classes/YumPhotosCollectionView.h; sourceTree = "<group>"; };
+		194EEE2D1845CB56001932C6 /* YumPhotosCollectionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = YumPhotosCollectionView.m; path = Classes/YumPhotosCollectionView.m; sourceTree = "<group>"; };
 		197A58E518429249008CDFA6 /* LeftViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LeftViewController.h; path = Classes/LeftViewController.h; sourceTree = "<group>"; };
 		197A58E618429249008CDFA6 /* LeftViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LeftViewController.m; path = Classes/LeftViewController.m; sourceTree = "<group>"; };
 		197A58EB1842A5A7008CDFA6 /* AddYumSourceSheet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AddYumSourceSheet.h; path = Classes/AddYumSourceSheet.h; sourceTree = "<group>"; };
@@ -300,6 +306,8 @@
 			isa = PBXGroup;
 			children = (
 				19022EE0183328890057EB7A /* YumList.xcdatamodeld */,
+				194EEE291845C1E5001932C6 /* YumPhoto.h */,
+				194EEE2A1845C1E5001932C6 /* YumPhoto.m */,
 				19F289E2184518EA00BA2A5E /* YumItem.h */,
 				19F289E3184518EA00BA2A5E /* YumItem.m */,
 				19D4057F1843DD08008538D4 /* YumSource.h */,
@@ -355,6 +363,8 @@
 				199A33A418416F4700B9F368 /* UIView+LayoutHelpers.m */,
 				19BF80FA1843250500516204 /* YumSourcesTable.h */,
 				19BF80FB1843250500516204 /* YumSourcesTable.m */,
+				194EEE2C1845CB56001932C6 /* YumPhotosCollectionView.h */,
+				194EEE2D1845CB56001932C6 /* YumPhotosCollectionView.m */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -585,6 +595,8 @@
 				199A33A518416F4700B9F368 /* UIView+LayoutHelpers.m in Sources */,
 				19A9628E1842CDF8008E7CD1 /* AddYumSourceView.m in Sources */,
 				19022F1E183361470057EB7A /* YumItemTableViewCell.m in Sources */,
+				194EEE2E1845CB56001932C6 /* YumPhotosCollectionView.m in Sources */,
+				194EEE2B1845C1E5001932C6 /* YumPhoto.m in Sources */,
 				19F289E4184518EA00BA2A5E /* YumItem.m in Sources */,
 				19A633FD183B90DE002B8867 /* AFCheckbox.m in Sources */,
 				19022F5418344AD90057EB7A /* AFTextField.m in Sources */,
