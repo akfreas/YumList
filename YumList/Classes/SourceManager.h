@@ -10,6 +10,6 @@
 +(YumSource *)currentYumSource;
 +(void)setCurrentYumSource:(YumSource *)source;
 +(void(^)(YumSource *))yumSourceChangedAction;
-+(void)addYumSourceChangedAction:(void(^)(YumSource *))action;
++(void)addYumSourceChangedAction:(void(^)(YumSource *changedSource))action;
 
 @end

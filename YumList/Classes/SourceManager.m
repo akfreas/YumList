@@ -8,6 +8,8 @@
     self = [super init];
     if (self) {
         self.changedActions = [NSMutableArray array];
+        YumSource *currentSource = [YumSource topSource];
+        self.currentYumSource = currentSource;
     }
     return self;
 }
