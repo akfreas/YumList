@@ -1,13 +1,3 @@
-//
-//  main.m
-//  WunderTest
-//
-//  Created by Alexander Freas on 11/12/13.
-//  Copyright (c) 2013 Sashimiblade. All rights reserved.
-//
-
-#import <UIKit/UIKit.h>
-
 #import "AppDelegate.h"
 
 int main(int argc, char * argv[])
