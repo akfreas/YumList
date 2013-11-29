@@ -34,6 +34,7 @@
 		194EEE2E1845CB56001932C6 /* YumPhotosCollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 194EEE2D1845CB56001932C6 /* YumPhotosCollectionView.m */; };
 		194EEE311845CF22001932C6 /* YumPhotoCollectionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 194EEE301845CF22001932C6 /* YumPhotoCollectionCell.m */; };
 		194EEE341845D353001932C6 /* NSFetchedResultsController+ErrorHandling.m in Sources */ = {isa = PBXBuildFile; fileRef = 194EEE331845D353001932C6 /* NSFetchedResultsController+ErrorHandling.m */; };
+		194EEE3A1845D7E0001932C6 /* YumItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 194EEE391845D7E0001932C6 /* YumItem.m */; };
 		197A58E718429249008CDFA6 /* LeftViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 197A58E618429249008CDFA6 /* LeftViewController.m */; };
 		197A58ED1842A5A7008CDFA6 /* AddYumSourceSheet.m in Sources */ = {isa = PBXBuildFile; fileRef = 197A58EC1842A5A7008CDFA6 /* AddYumSourceSheet.m */; };
 		199A33A518416F4700B9F368 /* UIView+LayoutHelpers.m in Sources */ = {isa = PBXBuildFile; fileRef = 199A33A418416F4700B9F368 /* UIView+LayoutHelpers.m */; };
@@ -61,7 +62,6 @@
 		19D4058A1844D81D008538D4 /* 256-box2.png in Resources */ = {isa = PBXBuildFile; fileRef = 19D405881844D81D008538D4 /* 256-box2.png */; };
 		19D4058B1844D81D008538D4 /* 256-box2@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 19D405891844D81D008538D4 /* 256-box2@2x.png */; };
 		19D4058E1844E062008538D4 /* YummlyAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = 19D4058D1844E062008538D4 /* YummlyAPI.m */; };
-		19F289E4184518EA00BA2A5E /* YumItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 19F289E3184518EA00BA2A5E /* YumItem.m */; };
 		33E85E9DC8F741688B5F9617 /* libPods-YumList.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BAD75CB70ACC4647A45D91BD /* libPods-YumList.a */; };
 		9D39F315819346079BFDD5B4 /* libPods-YumListTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0C7A10C88FC94EB3AABAA660 /* libPods-YumListTests.a */; };
 /* End PBXBuildFile section */
@@ -125,6 +125,8 @@
 		194EEE301845CF22001932C6 /* YumPhotoCollectionCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = YumPhotoCollectionCell.m; path = Classes/YumPhotoCollectionCell.m; sourceTree = "<group>"; };
 		194EEE321845D353001932C6 /* NSFetchedResultsController+ErrorHandling.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSFetchedResultsController+ErrorHandling.h"; path = "Classes/NSFetchedResultsController+ErrorHandling.h"; sourceTree = "<group>"; };
 		194EEE331845D353001932C6 /* NSFetchedResultsController+ErrorHandling.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSFetchedResultsController+ErrorHandling.m"; path = "Classes/NSFetchedResultsController+ErrorHandling.m"; sourceTree = "<group>"; };
+		194EEE381845D7DF001932C6 /* YumItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = YumItem.h; path = Classes/YumItem.h; sourceTree = "<group>"; };
+		194EEE391845D7E0001932C6 /* YumItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = YumItem.m; path = Classes/YumItem.m; sourceTree = "<group>"; };
 		197A58E518429249008CDFA6 /* LeftViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LeftViewController.h; path = Classes/LeftViewController.h; sourceTree = "<group>"; };
 		197A58E618429249008CDFA6 /* LeftViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LeftViewController.m; path = Classes/LeftViewController.m; sourceTree = "<group>"; };
 		197A58EB1842A5A7008CDFA6 /* AddYumSourceSheet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AddYumSourceSheet.h; path = Classes/AddYumSourceSheet.h; sourceTree = "<group>"; };
@@ -166,8 +168,6 @@
 		19D405891844D81D008538D4 /* 256-box2@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "256-box2@2x.png"; sourceTree = "<group>"; };
 		19D4058C1844E062008538D4 /* YummlyAPI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = YummlyAPI.h; path = Classes/YummlyAPI.h; sourceTree = "<group>"; };
 		19D4058D1844E062008538D4 /* YummlyAPI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = YummlyAPI.m; path = Classes/YummlyAPI.m; sourceTree = "<group>"; };
-		19F289E2184518EA00BA2A5E /* YumItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = YumItem.h; path = Classes/YumItem.h; sourceTree = "<group>"; };
-		19F289E3184518EA00BA2A5E /* YumItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = YumItem.m; path = Classes/YumItem.m; sourceTree = "<group>"; };
 		ABFAE3D966F545E385A0486F /* Pods-YumListTests.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-YumListTests.xcconfig"; path = "Pods/Pods-YumListTests.xcconfig"; sourceTree = "<group>"; };
 		BAD75CB70ACC4647A45D91BD /* libPods-YumList.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-YumList.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		CF3E5BE010224CDB9FEFF0EB /* Pods-YumList.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-YumList.xcconfig"; path = "Pods/Pods-YumList.xcconfig"; sourceTree = "<group>"; };
@@ -311,11 +311,11 @@
 		19022F0518332E220057EB7A /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				194EEE381845D7DF001932C6 /* YumItem.h */,
+				194EEE391845D7E0001932C6 /* YumItem.m */,
 				19022EE0183328890057EB7A /* YumList.xcdatamodeld */,
 				194EEE291845C1E5001932C6 /* YumPhoto.h */,
 				194EEE2A1845C1E5001932C6 /* YumPhoto.m */,
-				19F289E2184518EA00BA2A5E /* YumItem.h */,
-				19F289E3184518EA00BA2A5E /* YumItem.m */,
 				19D4057F1843DD08008538D4 /* YumSource.h */,
 				19D405801843DD08008538D4 /* YumSource.m */,
 			);
@@ -607,7 +607,6 @@
 				19022F1E183361470057EB7A /* YumItemTableViewCell.m in Sources */,
 				194EEE2E1845CB56001932C6 /* YumPhotosCollectionView.m in Sources */,
 				194EEE2B1845C1E5001932C6 /* YumPhoto.m in Sources */,
-				19F289E4184518EA00BA2A5E /* YumItem.m in Sources */,
 				19A633FD183B90DE002B8867 /* AFCheckbox.m in Sources */,
 				194EEE311845CF22001932C6 /* YumPhotoCollectionCell.m in Sources */,
 				19022F5418344AD90057EB7A /* AFTextField.m in Sources */,
@@ -620,6 +619,7 @@
 				19D4058718441347008538D4 /* YumDetailViewViewController.m in Sources */,
 				19022F1A18335BD70057EB7A /* NSFetchedResultsControllerFactory.m in Sources */,
 				19D405781843DBD7008538D4 /* YumSource+Helpers.m in Sources */,
+				194EEE3A1845D7E0001932C6 /* YumItem.m in Sources */,
 				19BF80FC1843250500516204 /* YumSourcesTable.m in Sources */,
 				197A58E718429249008CDFA6 /* LeftViewController.m in Sources */,
 				19022EDB183328890057EB7A /* main.m in Sources */,
