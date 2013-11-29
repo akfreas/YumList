@@ -1,6 +1,8 @@
 #import "YumDetailViewViewController.h"
 #import "YumItem.h"
+#import "YumPhoto.h"
 #import "PBWebViewController.h"
+#import "YumPhotosCollectionView.h"
 
 #define PostMadeThisButtonTakePhoto 1
 
@@ -19,6 +21,7 @@
     UIButton *viewRecipeButton;
     UIButton *iMadeThisButton;
     UIButton *addPhotoButton;
+    YumPhotosCollectionView *collectionView;
 }
 
 
@@ -77,6 +80,16 @@
     iMadeThisButton.backgroundColor = [UIColor crayolaJungleGreenColor];
     [self.view addSubview:iMadeThisButton];
 
+}
+
+-(void)addPhotoCollectionView {
+    if ([self.yumItem.photos count] > 0) {
+        collectionView = [[YumPhotosCollectionView alloc] initWithYumItem:self.yumItem];
+        [self.view addSubview:collectionView];
+        NSDictionary *bindings = MXDictionaryOfVariableBindings(iMadeThisButton, collectionView);
+        [self.view addConstraintWithVisualFormat:@"V:[iMadeThisButton]-10-[collectionView]-|" bindings:bindings];
+        [self.view addConstraintWithVisualFormat:@"H:|-[collectionView]-|" bindings:bindings];
+    }
 }
 
 -(void)presentActionSheetAfterIMadeThis {
@@ -158,6 +171,7 @@
         [titleLabel sizeToFit];
         [self addIMadeThisButton];
         [self setupPostButtonAddConstraints];
+        [self addPhotoCollectionView];
     }];
     [self addMainImageView];
     [self addRecipeTitleLabel];
@@ -172,6 +186,12 @@
 #pragma mark UIImagePickerController Delegate Methods
 
 -(void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info {
+    UIImage *image = info[UIImagePickerControllerOriginalImage];
+    YumPhoto *photo = [YumPhoto new];
+    photo.image = UIImageJPEGRepresentation(image, 7.0f);
+    photo.dateTaken = [NSDate date];
+    photo.yumItem = self.yumItem;
+    [photo save];
     [picker dismissViewControllerAnimated:YES completion:NULL];
 }
 
