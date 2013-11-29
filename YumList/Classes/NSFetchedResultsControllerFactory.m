@@ -52,7 +52,7 @@
 
 +(NSFetchedResultsController *)fetchControllerForYumPhotosAttachedToItem:(YumItem *)item context:(NSManagedObjectContext *)context {
     NSFetchRequest *request = [YumPhoto baseFetchRequest];
-    NSSortDescriptor *sorter = [NSSortDescriptor sortDescriptorWithKey:@"dateAdded" ascending:YES];
+    NSSortDescriptor *sorter = [NSSortDescriptor sortDescriptorWithKey:@"dateTaken" ascending:YES];
     request.sortDescriptors = @[sorter];
     NSFetchedResultsController *controller = [[NSFetchedResultsController alloc] initWithFetchRequest:request managedObjectContext:context sectionNameKeyPath:nil cacheName:nil];
     return controller;
