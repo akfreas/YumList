@@ -11,12 +11,12 @@
         <attribute name="rating" optional="YES" transient="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
         <attribute name="syncDate" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="title" optional="YES" attributeType="String" syncable="YES"/>
-        <relationship name="photos" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="YumPhoto" inverseName="yumItem" inverseEntity="YumPhoto" syncable="YES"/>
+        <relationship name="photos" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="YumPhoto" inverseName="yumItem" inverseEntity="YumPhoto" syncable="YES"/>
         <relationship name="source" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="YumSource" syncable="YES"/>
     </entity>
     <entity name="YumPhoto" representedClassName="YumPhoto" syncable="YES">
         <attribute name="dateTaken" optional="YES" attributeType="Date" syncable="YES"/>
-        <attribute name="image" optional="YES" attributeType="Binary" syncable="YES"/>
+        <attribute name="image" optional="YES" attributeType="Binary" allowsExternalBinaryDataStorage="YES" syncable="YES"/>
         <relationship name="yumItem" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="YumItem" inverseName="photos" inverseEntity="YumItem" syncable="YES"/>
     </entity>
     <entity name="YumSource" representedClassName="YumSource" syncable="YES">
