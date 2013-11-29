@@ -7,34 +7,21 @@
     UIButton *submitButton;
     UIButton *cancelButton;
     NSArray *constraintsForHeight;
+    UIImageView *underlineImageView;
 }
 
 -(id)initWithFrame:(CGRect)frame {
     self = [super initWithFrame:frame];
     if (self) {
         self.backgroundColor = [UIColor whiteColor];
+        
+        [self addURLTextView];
+        [self addSubmitButton];
+        [self addSourceNameTextField];
+        [self addCancelButton];
+        [self addLayoutConstraints];
     }
     return self;
-}
-
--(void)beginExpandAnimation {
-    
-    [self addURLTextView];
-    [self addSubmitButton];
-    [self addSourceNameTextField];
-    [self addCancelButton];
-}
-
--(void)finishExpandAnimation {
-    
-    [self addLayoutConstraints];
-}
-
--(void)beginContractAnimation {
-    [self removeConstraints:constraintsForHeight];
-    constraintsForHeight = nil;
-    constraintsForHeight = [NSLayoutConstraint constraintsWithVisualFormat:@"V:|[sourceNameTextField][URLTextField][submitButton][cancelButton]-|" options:0 metrics:0 views:MXDictionaryOfVariableBindings(sourceNameTextField,URLTextField,submitButton,cancelButton)];
-    [self addConstraints:constraintsForHeight];
 }
 
 -(void)addSourceNameTextField {
@@ -50,13 +37,17 @@
     URLTextField.autocorrectionType = UITextAutocorrectionTypeNo;
     URLTextField.autocapitalizationType = UITextAutocapitalizationTypeNone;
     URLTextField.textContainerInset = UIEdgeInsetsMake(5, 2, 2, 2);
-    URLTextField.backgroundColor = [UIColor purpleColor];
+    
+    UIImage *baseImage = [[UIImage alloc] initWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"checkbox_underline" ofType:@"png"]];
+   UIImage *capInsetImage =  [baseImage resizableImageWithCapInsets:UIEdgeInsetsMake(0.0f, 2.0f, 5.0f, 2.0f)];
+    underlineImageView = [[UIImageView alloc] initWithImage:capInsetImage];
+    underlineImageView.backgroundColor = [UIColor redColor];
 }
 
 -(void)addSubmitButton {
     submitButton = [[UIButton alloc] initWithFrame:CGRectZero];
-    submitButton.backgroundColor = [UIColor greenColor];
-    [submitButton setTitle:NSLocalizedString(@"Submit", @"Submit button text") forState:UIControlStateNormal];
+    submitButton.backgroundColor = [UIColor crayolaJungleGreenColor];
+    [submitButton setTitle:NSLocalizedString(@"Add", @"Submit button text") forState:UIControlStateNormal];
     [submitButton addEventHandler:[self submitButtonEventHandler] forControlEvents:UIControlEventTouchUpInside];
     [self addSubview:submitButton];
     
@@ -64,19 +55,21 @@
 
 -(void)addCancelButton {
     cancelButton = [[UIButton alloc] initWithFrame:CGRectZero];
-    cancelButton.backgroundColor = [UIColor redColor];
+    cancelButton.backgroundColor = [UIColor crayolaBrickRedColor];
     [cancelButton setTitle:NSLocalizedString(@"Cancel", @"Cancel button title.") forState:UIControlStateNormal];
     [cancelButton addEventHandler:[self cancelButtonEventHandler] forControlEvents:UIControlEventTouchUpInside];
+    
     [self addSubview:cancelButton];
 }
 
 -(void)addLayoutConstraints {
     NSDictionary *bindings = MXDictionaryOfVariableBindings(sourceNameTextField, URLTextField, submitButton, cancelButton);
-    constraintsForHeight = [self addConstraintWithVisualFormat:@"V:|-10-[sourceNameTextField]-[URLTextField]-5-[submitButton(44)]-10-[cancelButton(44)]-10-|" bindings:bindings];
+    [self addConstraintWithVisualFormat:@"V:|-10-[sourceNameTextField]-[URLTextField(80)]-[cancelButton(44)]" bindings:bindings];
+    [self addConstraintWithVisualFormat:@"V:[URLTextField]-[submitButton(44)]" bindings:bindings];
+    
     [self addConstraintWithVisualFormat:@"H:|-10-[sourceNameTextField]-10-|" bindings:bindings];
     [self addConstraintWithVisualFormat:@"H:|-10-[URLTextField]-10-|" bindings:bindings];
-    [self addConstraintWithVisualFormat:@"H:|-10-[submitButton]-10-|" bindings:bindings];
-    [self addConstraintWithVisualFormat:@"H:|-10-[cancelButton]-10-|" bindings:bindings];
+    [self addConstraintWithVisualFormat:@"H:|-10-[cancelButton(==submitButton)]-10-[submitButton(>=80)]-10-|" bindings:bindings];
 }
 
 -(void(^)(id))cancelButtonEventHandler {
@@ -89,14 +82,36 @@
 
 -(void(^)(id))submitButtonEventHandler {
     return ^(id sender){
-        YumSource *newSource = [YumSource new];
-        newSource.sourceURL = URLTextField.text;
-        newSource.name = sourceNameTextField.text;
         
-        [newSource save];
-        if (self.newSourceAdded != NULL) {
-            self.newSourceAdded(newSource);
+        BOOL shouldDismiss = YES;
+        if (URLTextField.text == nil || [URLTextField.text isEqualToString:@""]) {
+            shouldDismiss = NO;
+            [UIView animateWithDuration:0.3f animations:^{
+                URLTextField.layer.borderColor = [UIColor crayolaScarletColor].CGColor;
+                URLTextField.layer.borderWidth = 2.0f;
+            }];
+        } else {
+            URLTextField.layer.borderColor = [UIColor clearColor].CGColor;
         }
+        
+        if (sourceNameTextField.text == nil || [URLTextField.text isEqualToString:@""]) {
+            shouldDismiss = NO;
+                sourceNameTextField.layer.borderColor = [UIColor crayolaScarletColor].CGColor;
+                sourceNameTextField.layer.borderWidth = 2.0f;
+        } else {
+            sourceNameTextField.layer.borderColor = [UIColor clearColor].CGColor;
+        }
+        
+        if (shouldDismiss == YES) {
+            YumSource *newSource = [YumSource new];
+            newSource.sourceURL = URLTextField.text;
+            newSource.name = sourceNameTextField.text;
+            
+            [newSource save];
+            if (self.newSourceAdded != NULL) {
+                self.newSourceAdded(newSource);
+            }
+        } 
     };
 }
 

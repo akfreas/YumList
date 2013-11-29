@@ -3,7 +3,4 @@
 
 @property (copy, nonatomic) void(^newSourceAdded)(YumSource *);
 @property (copy, nonatomic) void(^cancelButtonPressed)();
--(void)beginExpandAnimation;
--(void)finishExpandAnimation;
--(void)beginContractAnimation;
 @end
