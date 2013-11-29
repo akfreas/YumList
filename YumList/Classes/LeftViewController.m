@@ -42,15 +42,21 @@
 -(void)setupAddSourceView {
     AddYumSourceView *sourceView = [[AddYumSourceView alloc] initWithFrame:CGRectZero];
     [sourceView setAddSourceButtonTapped:^(CGFloat newSize) {
-        [UIView animateWithDuration:1.3f animations:^{
-            animatableConstraint.constant = newSize;
+        animatableConstraint.constant = newSize;
+        [UIView animateWithDuration:0.3f animations:^{
+            [self.view layoutIfNeeded];
         }];
     }];
-    [sourceView setExpandAnimationCompleted:^{
-        [self.view setNeedsLayout];
+    [sourceView setSubmitOrCancelButtonTapped:^(CGFloat newSize) {
+        animatableConstraint.constant = newSize;
+        [UIView animateWithDuration:0.3f animations:^{
+            [self.view layoutIfNeeded];
+        } completion:^(BOOL finished) {
+            [addSourceView removeSourceSheet];
+        }];
     }];
     addSourceView = sourceView;
-    [self.view addSubview:addSourceView];
+    [self.view insertSubview:addSourceView belowSubview:sourcesTable];
 }
 
 - (void)viewDidLoad
