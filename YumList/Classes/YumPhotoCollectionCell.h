@@ -1,6 +1,6 @@
 @class YumPhoto;
 
-@interface YumPhotoCollectionCell : UICollectionReusableView
+@interface YumPhotoCollectionCell : UICollectionViewCell
 
 @property (strong, nonatomic) YumPhoto *photo;
 

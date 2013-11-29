@@ -18,14 +18,20 @@
     if (imageView == nil) {
         UIImage *image = [UIImage imageWithData:self.photo.image];
         imageView = [[UIImageView alloc] initWithImage:image];
+        imageView.contentScaleFactor = 2.0f;
+        imageView.contentMode = UIViewContentModeScaleAspectFit;
         [self addSubview:imageView];
     }
 }
 
+-(CGSize)intrinsicContentSize {
+    return CGSizeMake(100, 100);
+}
+
 -(void)addLayoutConstraints {
     NSDictionary *bindings = MXDictionaryOfVariableBindings(imageView);
-    [self addConstraintWithVisualFormat:@"V:|-[imageView]-|" bindings:bindings];
-    [self addConstraintWithVisualFormat:@"H:|-[imageView]-|" bindings:bindings];
+    [self addConstraintWithVisualFormat:@"V:|[imageView]|" bindings:bindings];
+    [self addConstraintWithVisualFormat:@"H:|[imageView]|" bindings:bindings];
 }
 
 #pragma mark Accessors
