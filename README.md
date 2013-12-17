@@ -13,6 +13,14 @@ Current feature list
 *  Manage multiple lists from different sources
 *  Compatible on iPhone and iPad
 
+
+Feature road map
+---------------------
+
+*  Sign into Pinterest and pull boards into a YumList
+*  Automatic posting of photos to Twitter
+*  View Twitter/Pinterest followers' YumList activity
+
 Setup
 -----------------
 
