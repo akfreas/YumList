@@ -14,5 +14,6 @@ env:
 install:
 - sudo easy_install boto gitpython requests biplist
 - python ./ios-ci-tools/install_certs.py
+- sh ./ios-ci-tools/initialize-cocoapods.sh
 script: xctool -project YumList.xcodeproj -scheme YumList build archive
 after_success: python ./ios-ci-tools/TestFlightDistribute.py
