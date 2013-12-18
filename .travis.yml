@@ -1,0 +1,16 @@
+language: objective-c
+env:
+  xcode_sdk: iphoneos7.0
+  global:
+  - export S3_CERT_BUCKET="sashimiblog-assets"
+  - export S3_CERT_KEY="certs.zip"
+  - secure: eJwK5dkMQA05KUNezjMpN2T0GfdidVkkpcFY6cvj8PJyV5GwkZHMFAAxoFSireV3j4wYK9MK7lSDzxHFlnbZW7d9UfNejOY+VEW/SENzXdkjVwFgTEu2CnYpqSXqxRvGcglelyMbM6AkfRRt0fwV9UIGTbF7kXjREzVn6UmusfM=
+  - secure: exg9fTEXwwH9ZHlDNHDRxLsLAUekj1RByAnossWEVVtmVFclbAovozt0+STrrEsmmpHAW063Ih6CmnFwMITOa4FDkiAv7th/9A5IfU7vuqeAcD+NOz/LJd22gnsMDLWJBK9ewIPnVjMqdA+nhQI//JboYE0xEMVfcIVcqj+UywU=
+  - secure: F2ey0EFVAVrViiUjBDE8AZtMoQ82frKvo11h5q5qVyum5PqRLz/4l/zxtmFuSI5fFzW2bDWKEhCzvzk6lN3WKuSBzIJu5jL57uWA1iW1BaWw3+ZNxFHxxsD6QuWj/FRtCmZlaHXh3TQKghM9sDMttZIqennXBMGiUnRYpL/fw8E=
+  - secure: SRXE6rSalhAo9Ru9GE4AKmL2PokA5HuYQ8XZUF2GbFFGQA/ZA6/jqGtdF9NA/HQVPh8f27bZ3CabOeOy5Byo4nTair++ALSnmwJbzYU9l1YCVN3MPxRkdHxPKjl+6InHn4ZGTzmjYaUcijQGXA4RGukaKry84V5qcbgUMzbey98=
+  - secure: e819iJYhuT0hyCihs1/jSLSnVpObzNNjM3/1f6U+LMcvftuX6/VymXcEg/0QgoqFY5L3JfntZD97uAiEYK+UKFliyCilz/g8D8/MDTwxZD4r37utegS0JWgGgqdt1w0nhltbek48DzGaHRIGo4RuWSft/1lFmW4MAjM2BgTWSoc=
+install:
+- sudo easy_install boto gitpython requests biplist
+- python ./scripts/install_certs.py
+script: xctool -project TravisTest.xcodeproj -scheme TravisTest build archive
+after_success: python ./scripts/TestFlightDistribute.py
