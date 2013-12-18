@@ -9,6 +9,8 @@ env:
   - secure: F2ey0EFVAVrViiUjBDE8AZtMoQ82frKvo11h5q5qVyum5PqRLz/4l/zxtmFuSI5fFzW2bDWKEhCzvzk6lN3WKuSBzIJu5jL57uWA1iW1BaWw3+ZNxFHxxsD6QuWj/FRtCmZlaHXh3TQKghM9sDMttZIqennXBMGiUnRYpL/fw8E=
   - secure: SRXE6rSalhAo9Ru9GE4AKmL2PokA5HuYQ8XZUF2GbFFGQA/ZA6/jqGtdF9NA/HQVPh8f27bZ3CabOeOy5Byo4nTair++ALSnmwJbzYU9l1YCVN3MPxRkdHxPKjl+6InHn4ZGTzmjYaUcijQGXA4RGukaKry84V5qcbgUMzbey98=
   - secure: e819iJYhuT0hyCihs1/jSLSnVpObzNNjM3/1f6U+LMcvftuX6/VymXcEg/0QgoqFY5L3JfntZD97uAiEYK+UKFliyCilz/g8D8/MDTwxZD4r37utegS0JWgGgqdt1w0nhltbek48DzGaHRIGo4RuWSft/1lFmW4MAjM2BgTWSoc=
+  - secure: gT1F5pdHPEflETWPqqBCBa/1a1GsHwg+h6T9TWZ34k0YCJhkEOxtfofrQ7QKxFWdyQdIQFPTEnuq94KHlzKoZD2GlThre0IGNuqIxx9btdvutCtDHyOdfinoMm/2iV2FlwkWCDJ3Z/Zby+zoPW3FRJcJFQ9USFT7QKb5zlX+vH0=
+  - secure: ZqJ6r6TUVMwTYG4f/hlcECQTUJieVZsnYVtKu0eODvess2uzP4jSepuaq2Og0lU4X7D9OD9su92zZ7E33Oibe3WaaWhJdmbHHPgO32EjjROhu9F98TsNQ/UswT8ovyciqzrXGl9AoDy7ttwWS7jW5++P9VTXDFEG/BC/7ze2tSM=
 install:
 - sudo easy_install boto gitpython requests biplist
 - python ./ios-ci-tools/install_certs.py
