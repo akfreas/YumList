@@ -37,8 +37,8 @@
 		194EEE3A1845D7E0001932C6 /* YumItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 194EEE391845D7E0001932C6 /* YumItem.m */; };
 		197A58E718429249008CDFA6 /* LeftViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 197A58E618429249008CDFA6 /* LeftViewController.m */; };
 		197A58ED1842A5A7008CDFA6 /* AddYumSourceSheet.m in Sources */ = {isa = PBXBuildFile; fileRef = 197A58EC1842A5A7008CDFA6 /* AddYumSourceSheet.m */; };
+		1982639918613ED800CA3FEE /* Pods-YumList.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = CF3E5BE010224CDB9FEFF0EB /* Pods-YumList.xcconfig */; };
 		199A33A518416F4700B9F368 /* UIView+LayoutHelpers.m in Sources */ = {isa = PBXBuildFile; fileRef = 199A33A418416F4700B9F368 /* UIView+LayoutHelpers.m */; };
-		199A33A718427A2A00B9F368 /* Reveal.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 199A33A618427A2A00B9F368 /* Reveal.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		19A35AB718411F9600F5966A /* YumCollectorTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 19A35AB618411F9600F5966A /* YumCollectorTests.m */; };
 		19A35ABA1841238000F5966A /* yum-collection.html in Resources */ = {isa = PBXBuildFile; fileRef = 19A35AB91841238000F5966A /* yum-collection.html */; };
 		19A35AC71841345700F5966A /* YumCollector.m in Sources */ = {isa = PBXBuildFile; fileRef = 19A35AC61841345700F5966A /* YumCollector.m */; };
@@ -181,7 +181,6 @@
 				19022ECF183328890057EB7A /* CoreGraphics.framework in Frameworks */,
 				19022ED3183328890057EB7A /* CoreData.framework in Frameworks */,
 				19022ED1183328890057EB7A /* UIKit.framework in Frameworks */,
-				199A33A718427A2A00B9F368 /* Reveal.framework in Frameworks */,
 				19022ECD183328890057EB7A /* Foundation.framework in Frameworks */,
 				33E85E9DC8F741688B5F9617 /* libPods-YumList.a in Frameworks */,
 			);
@@ -513,6 +512,7 @@
 				19D4058B1844D81D008538D4 /* 256-box2@2x.png in Resources */,
 				19A63403183BAA59002B8867 /* Raleway-Thin.ttf in Resources */,
 				19D4058A1844D81D008538D4 /* 256-box2.png in Resources */,
+				1982639918613ED800CA3FEE /* Pods-YumList.xcconfig in Resources */,
 				19A63406183BAF8E002B8867 /* checkbox_underline.png in Resources */,
 				19022EE4183328890057EB7A /* Images.xcassets in Resources */,
 				19A63407183BAF8E002B8867 /* checkbox_underline@2x.png in Resources */,
