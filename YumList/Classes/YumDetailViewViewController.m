@@ -58,7 +58,7 @@
 -(void)addExternalRecipeButton {
     UIButton * externalViewRecipeButton = [[UIButton alloc] initWithFrame:CGRectZero];
     [externalViewRecipeButton setTitle:NSLocalizedString(@"View Recipe", @"Button to view recipe in webview.") forState:UIControlStateNormal];
-    [externalViewRecipeButton addEventHandler:^(id sender) {
+    [externalViewRecipeButton bk_addEventHandler:^(id sender) {
         PBWebViewController *externalView = [[PBWebViewController alloc] init];
         externalView.URL = [NSURL URLWithString:_yumItem.externalURL];
         [self.navigationController pushViewController:externalView animated:YES];
@@ -73,7 +73,7 @@
 -(void)addIMadeThisButton {
     UIButton *madeThisButton = [[UIButton alloc] initWithFrame:CGRectZero];
     [madeThisButton setTitle:NSLocalizedString(@"I Made This", @"I made this button title.") forState:UIControlStateNormal];
-    [madeThisButton addEventHandler:^(id sender) {
+    [madeThisButton bk_addEventHandler:^(id sender) {
         [self presentActionSheetAfterIMadeThis];
     } forControlEvents:UIControlEventTouchUpInside];
     iMadeThisButton = madeThisButton;
@@ -93,32 +93,32 @@
 }
 
 -(void)presentActionSheetAfterIMadeThis {
-    UIAlertView *alert = [UIAlertView alertViewWithTitle:NSLocalizedString(@"Awesome!\nDo you want to add a photo?", @"Prompt for do you want to add a photo.")];
-    [alert addButtonWithTitle:NSLocalizedString(@"Not Now", @"'dont want to add photo now' button") handler:NULL];
-    [alert addButtonWithTitle:@"Yes!" handler:^{
+    UIAlertView *alert = [UIAlertView bk_alertViewWithTitle:NSLocalizedString(@"Awesome!\nDo you want to add a photo?", @"Prompt for do you want to add a photo.")];
+    [alert bk_addButtonWithTitle:NSLocalizedString(@"Not Now", @"'dont want to add photo now' button") handler:NULL];
+    [alert bk_addButtonWithTitle:@"Yes!" handler:^{
         [self presentTakePhotoActionSheet];
     }];
-    [alert addButtonWithTitle:NSLocalizedString(@"Cancel", @"") handler:NULL];
+    [alert bk_addButtonWithTitle:NSLocalizedString(@"Cancel", @"") handler:NULL];
     [alert show];
 }
 
 -(void)presentTakePhotoActionSheet {
-    UIAlertView *alert = [UIAlertView alertViewWithTitle:NSLocalizedString(@"Take Photo", @"Get photo alertview title")];
-    [alert addButtonWithTitle:NSLocalizedString(@"Use Last Photo In Library", @"Use last photo taken button title") handler:^{
+    UIAlertView *alert = [UIAlertView bk_alertViewWithTitle:NSLocalizedString(@"Take Photo", @"Get photo alertview title")];
+    [alert bk_addButtonWithTitle:NSLocalizedString(@"Use Last Photo In Library", @"Use last photo taken button title") handler:^{
         
     }];
-    [alert addButtonWithTitle:NSLocalizedString(@"Photo Library", @"Photo library button title") handler:^{
+    [alert bk_addButtonWithTitle:NSLocalizedString(@"Photo Library", @"Photo library button title") handler:^{
         UIImagePickerController *controller = [self pickerControllerForLibrarySourceWithDelegate:self];
         [self presentViewController:controller animated:YES completion:NULL];
     }];
     NSArray *arr = [UIImagePickerController availableMediaTypesForSourceType:UIImagePickerControllerSourceTypeCamera];
     if ([arr count] > 0) {
-        [alert addButtonWithTitle:NSLocalizedString(@"Take New Picture", @"Take new picture button title") handler:^{
+        [alert bk_addButtonWithTitle:NSLocalizedString(@"Take New Picture", @"Take new picture button title") handler:^{
             UIImagePickerController *controller = [self pickerControllerForCameraSourceWithDelegate:self];
             [self presentViewController:controller animated:YES completion:NULL];
         }];
     }
-    [alert addButtonWithTitle:NSLocalizedString(@"Cancel", @"Cancel button title") handler:NULL];
+    [alert bk_addButtonWithTitle:NSLocalizedString(@"Cancel", @"Cancel button title") handler:NULL];
     [alert show];
 }
 

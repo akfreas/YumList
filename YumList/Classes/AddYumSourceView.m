@@ -34,7 +34,7 @@
     [self addConstraintWithVisualFormat:@"H:|-20-[addSourceButton]" bindings:MXDictionaryOfVariableBindings(addSourceButton)];
     addSourceButtonConstraints = [self addConstraintWithVisualFormat:@"V:|-5-[addSourceButton]" bindings:MXDictionaryOfVariableBindings(addSourceButton)];
     [addSourceButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
-    [addSourceButton addEventHandler:[self addSourceButtonEventHandler] forControlEvents:UIControlEventTouchUpInside];
+    [addSourceButton bk_addEventHandler:[self addSourceButtonEventHandler] forControlEvents:UIControlEventTouchUpInside];
 }
 
 -(void(^)(id sender))addSourceButtonEventHandler {

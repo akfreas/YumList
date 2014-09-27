@@ -24,7 +24,7 @@
 
     if (buttonChecked != NULL) {
         _buttonChecked = buttonChecked;
-        [self addEventHandler:[self checkedAction]
+        [self bk_addEventHandler:[self checkedAction]
              forControlEvents:UIControlEventTouchUpInside];
     }
 }

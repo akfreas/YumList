@@ -153,7 +153,7 @@
             [item saveInContext:ourManager.managedObjectContext];
             completion(imageData);
         } failure:^(NSURLSessionDataTask *task, NSError *error) {
-            NSLog(@"Error fetching image data for %@. Error: %@", self, error);
+//            NSLog(@"Error fetching image data for %@. Error: %@", self, error);
             completion(nil);
         }];
     } else if ([self.imageURL isEqualToString:@""] == YES) {

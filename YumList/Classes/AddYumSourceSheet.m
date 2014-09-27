@@ -48,7 +48,7 @@
     submitButton = [[UIButton alloc] initWithFrame:CGRectZero];
     submitButton.backgroundColor = [UIColor crayolaJungleGreenColor];
     [submitButton setTitle:NSLocalizedString(@"Add", @"Submit button text") forState:UIControlStateNormal];
-    [submitButton addEventHandler:[self submitButtonEventHandler] forControlEvents:UIControlEventTouchUpInside];
+    [submitButton bk_addEventHandler:[self submitButtonEventHandler] forControlEvents:UIControlEventTouchUpInside];
     [self addSubview:submitButton];
     
 }
@@ -57,7 +57,7 @@
     cancelButton = [[UIButton alloc] initWithFrame:CGRectZero];
     cancelButton.backgroundColor = [UIColor crayolaBrickRedColor];
     [cancelButton setTitle:NSLocalizedString(@"Cancel", @"Cancel button title.") forState:UIControlStateNormal];
-    [cancelButton addEventHandler:[self cancelButtonEventHandler] forControlEvents:UIControlEventTouchUpInside];
+    [cancelButton bk_addEventHandler:[self cancelButtonEventHandler] forControlEvents:UIControlEventTouchUpInside];
     
     [self addSubview:cancelButton];
 }

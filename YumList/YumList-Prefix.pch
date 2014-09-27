@@ -20,6 +20,7 @@
     #import "UIView+LayoutHelpers.h"
     #import "NSFetchedResultsController+ErrorHandling.h"
     #import <BlocksKit/BlocksKit.h>
+    #import <BlocksKit/BlocksKit+UIKit.h>
     #import "Constants.h"
     #import <UIColor-Crayola/UIColor+Crayola.h>
 #endif

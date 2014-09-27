@@ -3,10 +3,10 @@
 
 target "YumList" do
 
-    pod 'BlocksKit', '~> 1.8.3'
+    pod 'BlocksKit', :head
     pod 'AFNetworking', '~> 2.0'
     pod 'hpple', '~> 0.2.0'
-    pod 'SWRevealViewController', '~> 1.0.8'
+    pod 'SWRevealViewController', '~> 2.3.0'
     pod 'PBWebViewController'
     pod 'UIColor-Crayola'
     pod 'DLAlertView'
@@ -15,7 +15,7 @@ end
 
 target "YumListTests" do
 
-    pod 'BlocksKit', '~> 1.8.3'
+    pod 'BlocksKit', :head
 
 end
 

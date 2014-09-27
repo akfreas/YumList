@@ -22,7 +22,7 @@
 
 -(void)configureNavigationBar {
     UIImage *barImage = [UIImage imageWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"256-box2" ofType:@"png"]];
-    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithImage:barImage style:UIBarButtonItemStylePlain handler:^(id sender) {
+    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] bk_initWithImage:barImage style:UIBarButtonItemStylePlain handler:^(id sender) {
         [[AppDelegate sharedRevealController] revealToggleAnimated:YES];
     }];
     YumSource *currentSource = [SourceManager currentYumSource];
